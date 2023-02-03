@@ -31,8 +31,8 @@ const bagMunchkinGrey = {bagmunchkingrey1, bagmunchkingrey2, bagmunchkingrey3, b
 const bagGoldenEyesRed = {baggoldeneyesred1, baggoldeneyesred2, baggoldeneyesred3, baggoldeneyesred4};
 const backpackExplorerLight = { backpackexplorerlight1, backpackexplorerlight2,backpackexplorerlight3, backpackexplorerlight4, backpackexplorerlight5, backpackexplorerlight6};
 const phoneIphonePurple = {phoneiphonepurple1, phoneiphonepurple2, phoneiphonepurple3};
+
 /* EXPORT ALL */
 
-
-export default {bagMunchkinGrey, bagGoldenEyesRed, backpackExplorerLight, phoneIphonePurple};
+export default {bagMunchkinGrey, bagGoldenEyesRed, backpackExplorerLight, phoneIphonePurple}
 

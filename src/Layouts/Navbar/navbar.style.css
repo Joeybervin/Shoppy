@@ -1,0 +1,22 @@
+nav {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: rgb(152, 255, 212);
+}
+
+.logo img {
+    max-width : 160px;
+}
+
+.navigation {
+    width: 40%;
+    min-width : 320px;
+    display: flex;
+    justify-content: space-between;
+}
+.auth {
+    display: flex;
+    align-items: center;
+}

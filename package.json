@@ -1,5 +1,5 @@
 {
-  "name": "cuppy",
+  "name": "shoppy",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -11,6 +11,7 @@
     "react-icons": "^4.7.1",
     "react-router-dom": "^6.8.0",
     "react-scripts": "5.0.1",
+    "styled-components": "^5.3.6",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
@@ -36,7 +37,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "devDependencies": {
   }
 }
