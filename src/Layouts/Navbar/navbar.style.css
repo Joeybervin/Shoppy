@@ -3,15 +3,14 @@ nav {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background-color: rgb(152, 255, 212);
 }
 
 .logo img {
     max-width : 160px;
 }
 
-.navigation {
-    width: 40%;
+.NavNavigation {
+    width: 35%;
     min-width : 320px;
     display: flex;
     justify-content: space-between;
@@ -19,4 +18,18 @@ nav {
 .auth {
     display: flex;
     align-items: center;
+}
+
+.panier {
+    position : relative;
+}
+
+.badge {
+    position : absolute;
+    bottom : 0;
+    right : 2px;
+    background-color: rgb(152, 152, 255);
+    padding : 0.2rem;
+    border-radius: 5px;
+    font-size: 0.8rem;
 }

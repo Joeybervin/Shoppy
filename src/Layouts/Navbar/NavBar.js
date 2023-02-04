@@ -16,7 +16,7 @@ export default function NavBar() {
         <Link className="logo" to="/"><img src={logo} alt="shoppy logo" /></Link>
 
       {/* middle */}
-      <div className="navigation">
+      <div className="NavNavigation">
         <Link to="/">Accueil</Link>
         <Link to="/shopping">Shopping</Link>
         <Link to="/about">About</Link>
@@ -28,7 +28,10 @@ export default function NavBar() {
       <div className="auth">
         <Link to="/auth/signIn">Login</Link>
         <Link to="/auth/signUp"><Button>Sign up</Button></Link>
-        <Link to="/cart"><BsBag size="1.5em" /></Link>
+        <Link className="panier"  to="/cart">
+          <BsBag size="1.6rem" />
+          <span className="badge">0</span>
+        </Link>
       </div>
       
     </nav>
