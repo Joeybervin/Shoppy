@@ -54,6 +54,7 @@ font: inherit;
 /* https://matthewjamestaylor.com/responsive-font-size */
 body{
 	font-size: calc(${(props) => props.theme.fontSize.paragraphe.regular } + 0.390625vw);
+	line-height: calc(${(props) => props.theme.fontSize.paragraphe.regular} + 1.5vw);
 	font-family: ${(props) => props.theme.fonts.primaryFont || props.theme.fonts.secondaryFont};
 	color: ${(props) => props.theme.colors.primaryTextColor};
 }
@@ -66,12 +67,15 @@ font-weight: ${(props) => props.theme.fontWeight.bold};
 }
 h1 { 
 	font-size: calc(${(props) => props.theme.fontSize.title.h1 } + 0.390625vw);
+	line-height: calc(${(props) => props.theme.fontSize.title.h1 } + 1vw)
 }
 h2 { 
 	font-size: calc(${(props) => props.theme.fontSize.title.h2 } + 0.390625vw);
+	line-height: calc(${(props) => props.theme.fontSize.title.h2 } + 1vw)
 }
 h3 {
 	font-size: calc(${(props) => props.theme.fontSize.title.h3 } + 0.390625vw);
+	line-height: calc(${(props) => props.theme.fontSize.title.h3 } + 1vw)
 }
 
 @media screen and (min-width : 425px) {

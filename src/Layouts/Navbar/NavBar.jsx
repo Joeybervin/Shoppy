@@ -1,12 +1,16 @@
 import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
+
 /* Style */
 import NavStyled from './NavBar.style';
+
 /* Compoments */
 import StyledButton from '../../Components/Button'
 import StyledCart from '../../Components/Cart';
+
 /* Logo */
 import logo from "../../assets/logo/logo.png";
+
 /* Icons */
 import { RxCross1 } from "react-icons/rx";
 import { SlMenu } from "react-icons/sl";
@@ -33,14 +37,17 @@ export default function NavBar() {
         <div className='mobileNavigation'>
           {/* auth */}
           {/* user profile */}
-          <div className="user">
+          <div onClick={()=>setNavigationSidebarOpen(false)} className="user">
             <HiOutlineUserCircle className="userProfilelogo" size="1.5rem" />
             {/* user's name */}
             <p>user</p>
           </div>
           {/* Cart */}
           <NavLink to="/cart">
-            <StyledCart >0</StyledCart>
+            <span onClick={()=>setNavigationSidebarOpen(false)}>
+              <StyledCart  >0</StyledCart>
+            </span>
+            
           </NavLink>
           {/* navigation: burgermenu */}
           {navigationSidebarOpen ? < RxCross1 className="burgerMenuClose" size="1.5rem" onClick={handleToggle}/> : <SlMenu className="burgerMenu" size="1.5rem" onClick={handleToggle}/>}
@@ -48,12 +55,12 @@ export default function NavBar() {
         
         
       {/* navigation */}
-      <div className={`navNavigation ${!navigationSidebarOpen ? "hideSidebarNavigation" : ""}`}>
+      <div onClick={handleToggle} className={`navNavigation ${!navigationSidebarOpen ? "hideSidebarNavigation" : ""}`}>
         <ul>
-          <li><NavLink to="/">Accueil</NavLink></li>
-          <li><NavLink to="/shopping">Shopping</NavLink></li>
-          <li><NavLink to="/about">About</NavLink></li>
-          <li><NavLink to="/contact">Contact</NavLink></li>
+          <li onClick={handleToggle}><NavLink to="/">Accueil</NavLink></li>
+          <li onClick={handleToggle}><NavLink to="/shopping">Shopping</NavLink></li>
+          <li onClick={handleToggle}><NavLink to="/about">About</NavLink></li>
+          <li onClick={handleToggle}><NavLink to="/contact">Contact</NavLink></li>
         </ul>
       </div>
 

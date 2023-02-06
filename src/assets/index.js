@@ -6,6 +6,8 @@ import bagmunchkingrey4 from './products/bags/bagmunchkingrey/bagmunchkingrey4.w
 import bagmunchkingrey5 from './products/bags/bagmunchkingrey/bagmunchkingrey5.webp';
 import bagmunchkingrey6 from './products/bags/bagmunchkingrey/bagmunchkingrey6.webp';
 
+/* PRODUCT IMG */
+
 /* baggoldeneyesred1 */
 import baggoldeneyesred1 from './products/bags/baggoldeneyesred/baggoldeneyesred1.webp';
 import baggoldeneyesred2 from './products/bags/baggoldeneyesred/baggoldeneyesred2.webp';
@@ -21,10 +23,16 @@ import backpackexplorerlight5 from './products/bags/backpackexplorerlight/backpa
 import backpackexplorerlight6 from './products/bags/backpackexplorerlight/backpackexplorerlight6.webp';
 
 /* phoneiphonepurple */
-import phoneiphonepurple1 from './products/bags/phoneiphonepurple/phoneiphonepurple1.webp';
-import phoneiphonepurple2 from './products/bags/phoneiphonepurple/phoneiphonepurple2.webp';
-import phoneiphonepurple3 from './products/bags/phoneiphonepurple/phoneiphonepurple3.webp';
+import phoneiphonepurple1 from './products/tech/phoneiphonepurple/phoneiphonepurple1.jpeg';
+import phoneiphonepurple2 from './products/tech/phoneiphonepurple/phoneiphonepurple2.jpeg';
+import phoneiphonepurple3 from './products/tech/phoneiphonepurple/phoneiphonepurple3.jpeg';
 
+/* CATEGORIES IMG */
+import catFashion from './categories/clothes/jason-leung.jpg';
+import catShoes from './categories/shoes/irene-kredenets.jpg';
+import catTech from './categories/tech/christopher-gower.jpg';
+import catBag from './categories/bag/david-kang.jpg';
+import catBeauty from './categories/beauty/element5-digital.jpg';
 
 
 const bagMunchkinGrey = {bagmunchkingrey1, bagmunchkingrey2, bagmunchkingrey3, bagmunchkingrey4, bagmunchkingrey5, bagmunchkingrey6};
@@ -33,6 +41,7 @@ const backpackExplorerLight = { backpackexplorerlight1, backpackexplorerlight2,b
 const phoneIphonePurple = {phoneiphonepurple1, phoneiphonepurple2, phoneiphonepurple3};
 
 /* EXPORT ALL */
-
-export default {bagMunchkinGrey, bagGoldenEyesRed, backpackExplorerLight, phoneIphonePurple}
-
+/* products */
+export  {bagMunchkinGrey, bagGoldenEyesRed, backpackExplorerLight, phoneIphonePurple}
+/* categories */
+export {catFashion, catShoes, catTech, catBag, catBeauty}

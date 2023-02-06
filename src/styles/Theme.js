@@ -3,8 +3,8 @@
 export const theme = {
     colors: {
         /* general */
-        primary : 'rgb(152, 152, 255)',
-        secondary : 'rgb(255, 242, 183)',
+        primary : '#7777FF',
+        secondary : '#EC8C97 ',
         tertiary: '#303030',
         black: '#000000',
         white: '#ffffff',
@@ -13,9 +13,16 @@ export const theme = {
         /* text */
         primaryTextColor: '#000000',
         secondaryTextColor: '#777777',
-        tertiaryTextColor: 'rgb(152, 152, 255)',
+        tertiaryTextColor: '#6666CC',
         inputPlaceholder: '#C7C7C7',
         darkGrayText: '#303030',
+        /* buttons */
+        buttonsStateColors : {
+            normal: '#7777FF',
+            hover : '#EC8C97' ,
+            active: "#B25864",
+            focus: ""
+        },
         /* notifications */
         danger: '',
         warning : '',
@@ -27,15 +34,15 @@ export const theme = {
     },
     fontSize : {
         paragraphe : {
-            small : '0.7rem', /* 12px */
-            regular : '0.8rem', /* 12px */
-            medium : '0.9rem', /* 16px */
-            large : '1rem', /* 18px */
+            small : '0.7rem', /* 11.2px */
+            regular : '0.8rem', /* 12.8px */
+            medium : '0.9rem', /* 14.4px */
+            large : '1rem', /* 16px */
         },
         title : {
-            h1 : '1.25rem', /* 32px */
-            h2 : '1.125rem', /* 25px */
-            h3 : '1rem', /* 20px */
+            h1 : '1.563rem', /* 25px */
+            h2 : '1.125rem', /* 18px */
+            h3 : '1rem', /* 16px */
             
 
         }
@@ -46,6 +53,7 @@ export const theme = {
         bold : 600,
         extraBold : 800,
     },
+    
     paddings: {
         textPadding: 5,
         

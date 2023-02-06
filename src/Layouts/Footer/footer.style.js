@@ -44,9 +44,9 @@ li a {
 @media screen and (min-width: 768px) {
 
     /* A REVOIR */
-    position : absolute;
+/*     position : absolute;
     left : 0;
-    bottom : 0;
+    bottom : 0; */
     
 .footerNavigation {
 
