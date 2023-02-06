@@ -1,0 +1,21 @@
+<NavBar />
+<Routes>
+  {/* Home */}
+  <Route path="/" element={< Home />}/>
+  {/* About */}
+  <Route path="/about" element={< About />} />
+  {/* Contact */}
+  <Route path="/contact" element={< Contact />} />
+  {/* Shop A REVOIR */}
+  <Route path="/shopping" element={< Shop />}>
+    <Route path="/shopping/product/:category/:type/:refProduct" element={< Product />}/>
+  </Route>
+  {/* Cart */}
+  <Route path="/cart" element={< Cart />} />
+  {/* Authentification */}
+  <Route path="/auth/signin" element={< SignIn />} />
+  <Route path="/auth/signup" element={< SignUp />} />
+
+  <Route path="*" element={< Home />}/>
+</Routes>
+< Footer/>

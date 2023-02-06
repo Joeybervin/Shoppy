@@ -1,14 +1,18 @@
+import { Link } from 'react-router-dom';
 /* Style */
-import './footer.style.css';
+import './footer.style.js';
 /* Components */
 import Mailto from '../../Components/Mailto';
-/* logo */
+import {StyledFooter} from './footer.style'
 /* Logo */
 import logo from "../../assets/logo/logo.png";
+/* icons */
+import { SlSocialLinkedin, SlSocialInstagram, SlSocialPintarest, SlSocialYoutube, SlSocialTwitter, SlSocialFacebook } from "react-icons/sl";
+
 
 export default function Footer() {
     return (
-        <footer >
+        <StyledFooter >
             {/* TOP */}
             <div className='footerNavigation'>
 
@@ -22,7 +26,7 @@ export default function Footer() {
 
                 {/* About Shoppy */}
                 <div className='aboutShoppy'>
-                    <h2>About Shoppy</h2>
+                    <p>About Shoppy</p>
                     <ul>
                         <li>About us</li>
                         <li>Ours products</li>
@@ -33,7 +37,7 @@ export default function Footer() {
 
                 {/* HELP */}
                 <div className='help'>
-                    <h2>help</h2>
+                    <p>help</p>
                     <ul>
                         <li>Payment & return</li>
                         <li>Return & refund</li>
@@ -43,7 +47,7 @@ export default function Footer() {
 
                 {/* Contact */}
                 <div className='Contact'>
-                    <h2>Cotaact Us</h2>
+                    <p>Contact Us</p>
                     <ul>
                         <li><Mailto email="support@Shoppy.com">support@Shoppy.com</Mailto></li>
                         <li>021 - 254 - 558</li>
@@ -54,10 +58,18 @@ export default function Footer() {
             </div>
 
             {/* BOTTOM */}
+            <div className='socialNetwork'>
+                <Link to="#"><SlSocialLinkedin size="1.3rem" /></Link>
+                <Link to="#"><SlSocialInstagram size="1.3rem"/></Link>
+                <Link to="#"><SlSocialPintarest size="1.3rem"/></Link>
+                <Link to="#"><SlSocialYoutube size="1.3rem"/></Link>
+                <Link to="#"><SlSocialTwitter size="1.3rem"/></Link>
+                <Link to="#"><SlSocialFacebook size="1.3rem"/></Link>
+            </div>
             <div className='copyright'>
                 <p>Copyright 2023 • All Rights Reserved Shoppy by Bervin Joey</p>
             </div>
 
-        </footer>
+        </StyledFooter>
     );
 }

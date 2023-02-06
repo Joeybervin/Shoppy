@@ -1,7 +1,9 @@
 import { Route, Routes } from "react-router-dom";
 /* Style */
-import './reset.css'; /* clean all browsers default congigs */
 import './App.css';
+import { ThemeProvider } from 'styled-components'
+import { GlobalStyles } from '../styles/Global'
+import { theme } from '../styles/Theme'
 
 /* Pages */
 import About from "../Pages/about/About";
@@ -20,8 +22,13 @@ import Footer from '../Layouts/Footer/Footer';
 
 function App() {
   return (
+    <ThemeProvider theme={theme} >
+      <GlobalStyles />
     <div className="App">
+      {/* NAVBAR */}
       <NavBar />
+    
+      {/* ROUTES */}
       <Routes>
         {/* Home */}
         <Route path="/" element={< Home />}/>
@@ -41,8 +48,11 @@ function App() {
 
         <Route path="*" element={< Home />}/>
       </Routes>
+
+      {/* FOOTER */}
       < Footer/>
     </div>
+    </ThemeProvider>
   );
 }
 

@@ -1,14 +1,22 @@
 import styled from 'styled-components';
-import '../App/App.css';
 
-export const Button = styled.button`
+const StyledButton = styled.button`
   /* Adapt the colors based on primary prop */
-  background: ${props => props.primary ? "palevioletred" : "rgb(152, 152, 255)" };
+  background: ${(props) => props.primary ? props.theme.colors.primary : props.theme.colors.secondary};
   color: #FFF;
   border: none;
   font-size: 1em;
   padding: 0.45em 1em;
   border-radius: 6px;
+  /*  hover */
+  &:hover {
+    background-color: lightblue;
+    cursor: pointer;
+  }
+  /* active */
+  &:active {
+    background-color: var(--black);
+  }
 `;
-
+export default StyledButton ;
 
