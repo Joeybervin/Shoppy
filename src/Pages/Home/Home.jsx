@@ -90,6 +90,15 @@ export default function Home() {
                 </div>
 
             </Section>
+
+            {/* section : services */}
+            <Section className='servicesSection'>
+                <h2>Why choose Sho<span>ppy</span></h2>
+                <div>
+                    
+                </div>
+            </Section>
+
     
         </div>
     );

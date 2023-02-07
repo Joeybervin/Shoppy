@@ -30,6 +30,10 @@
 
 }
 
+/* SECTION : SERVICES */
+
+
+/* For bigger devices as desktop or big screen */
 
 @media screen and (min-width: 768px) {
 
@@ -74,5 +78,7 @@
         height: 100%;
         width: calc(clamp(100px, 20vh, 170px) * 2);
     }
+
+    /* SECTION : SERVICES */
 
 }

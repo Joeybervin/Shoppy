@@ -33,7 +33,7 @@ const Div = styled.div`
 
 `
 
-const CategoryBox = ({src, alt, category, productsNumber, ...props }) => {
+const CategoryBox = ({src, alt, category, productsNumber }) => {
     return (
         <Div>
             <div>
