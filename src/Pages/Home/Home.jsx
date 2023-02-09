@@ -1,28 +1,59 @@
 /* style */
-import './home.css'
+import './home.css';
+
 /* imge */
-import {catFashion, catShoes, catTech, catBag, catBeauty} from '../../assets/index'
-/* components */
-import Section from '../../Components/Section'
-import CategoryBox from '../../Components/CategoryBox' ;
+import {catFashion, catShoes, catTech, catBag, catBeauty} from '../../assets/index';
+
 /* layouts */
 import Header from "../../Layouts/Header/Header";
+
+/* components */
+import TitleHighlight from '../../components/TitleHighlight';
+import CategoryBox from '../../components/CategoryContainer' ;
+import ServiceContainer from '../../components/ServiceContainer';
+import {HomePageProductCard} from '../../components/ProductCard'; 
+import {StyledCarousel} from '../../components/carousel/Carousel';
+
+
+
+
 
 export default function Home() {
 
 
-
-
+    const services = [
+        { 
+            service : "Free Delivery",
+            detail : "Lorem ipsum dolor sit amet, consectetu adipiscing elit, sed do eiusmod tempor",
+            icon : "https://cdn-icons-png.flaticon.com/512/3142/3142246.png",
+        },
+        { 
+            service : "Trusted Platfrom",
+            detail : "Lorem ipsum dolor sit amet, consectetu adipiscing elit, sed do eiusmod tempor",
+            icon : "https://cdn-icons-png.flaticon.com/512/4185/4185148.png",
+        },
+        { 
+            service : "Here For You",
+            detail : "Lorem ipsum dolor sit amet, consectetu adipiscing elit, sed do eiusmod tempor",
+            icon : "https://cdn-icons-png.flaticon.com/512/1024/1024759.png",
+        }
+    ]
 
     return (
-        <div >
-            {/* header */}
+        <div className='home'>
+
+            {/* HEADER */}
             < Header />
+
             {/* SECTIONS */} 
 
             {/* section : brands collaborations */}
-            <Section className="collaborationSection">
-                <h2>We Collaborate With 250++ Leading Top <br /> E-Commerce and Brands</h2>
+            <section className="collaborationSection" >
+                <h2>Nous collaborons avec
+                    <br />
+                    <TitleHighlight highlight >plus de 250+</TitleHighlight>
+                    <br />
+                    marques et boutiques en ligne</h2>
                 <div>
                     <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/H%26M-Logo.svg/1064px-H%26M-Logo.svg.png?20130107164928" alt="H&M" />
                     <img src="https://cdn.shopify.com/s/files/1/0904/1894/t/49/assets/logo-rsvp-768_2x.png" alt="rsvp paris" />
@@ -31,13 +62,13 @@ export default function Home() {
                     <img src="https://cdn.shopify.com/s/files/1/1301/7071/files/maverickandco-logo_250x.png?v=1646708755" alt="Maverick & Co." />
                     <img src="https://logos-marques.com/wp-content/uploads/2020/06/Converse-Logo-2011.jpg" alt="converse" />
                 </div>
-            </Section>
+            </section>
 
             {/* section : categories */}
-            <Section className='categoriesSection'>
-                <h2>Browse Categories of
+            <section className='categoriesSection'>
+                <h2>Découvrez toutes nos
                     <br />
-                    The Store
+                    catégories
                 </h2>
 
                 <div>
@@ -89,15 +120,54 @@ export default function Home() {
                     
                 </div>
 
-            </Section>
+            </section>
 
             {/* section : services */}
-            <Section className='servicesSection'>
-                <h2>Why choose Sho<span>ppy</span></h2>
+            <section className='servicesSection'>
+                <h2>Why choose Sho
+                    <TitleHighlight color >ppy</TitleHighlight> ?</h2>
                 <div>
+                    {
+                        services.map((service, index) =>{
+                            return (
+                                <ServiceContainer 
+                                key={`sc${index}`}
+                                iconSrc={service.icon}
+                                iconAlt={service.service}
+                                service={service.service}
+                                serviceDetail={service.detail}
+                                />
+                            )
+                        })
+                    }
                     
                 </div>
-            </Section>
+            </section>
+
+            {/* section : products */}
+            <section className='productsSection'>
+                <h2>Populer Products From 
+                    <br />
+                    All Brands
+                </h2>
+                <StyledCarousel>
+                {["product", "product", "product", "product", "product", "product", "product", "product", "product", "product"].map((product, index) => {
+                    return (
+
+                        <HomePageProductCard
+                            key={`hpp${index}`}
+                            imgSrc="https://images.unsplash.com/photo-1591047139829-d91aecb6caea?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=436&q=80"
+                            imgAlt={product}
+                            productName="product name"
+                            productPrice="105"
+                            onClick={() => console.log(index)}
+                        />
+
+                    )
+                })}
+                </StyledCarousel>
+        
+            </section>
 
     
         </div>

@@ -1,4 +1,5 @@
 import { Route, Routes } from "react-router-dom";
+
 /* Style */
 import './App.css';
 import { ThemeProvider } from 'styled-components'
@@ -20,6 +21,8 @@ import SignUp from "../Pages/auth/signUp/SignUp";
 import NavBar from '../Layouts/Navbar/NavBar';
 import Footer from '../Layouts/Footer/Footer';
 
+
+
 function App() {
   return (
     <ThemeProvider theme={theme} >
@@ -29,7 +32,7 @@ function App() {
       <NavBar />
     
       {/* ROUTES */}
-      <Routes>
+      <Routes >
         {/* Home */}
         <Route path="/" element={< Home />}/>
         {/* About */}

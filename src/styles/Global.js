@@ -20,8 +20,9 @@ html, body, div, span, h1, h2, h3, p, a,img,ol, ul, li, form, label, legend, art
 	font: inherit;
 	vertical-align: baseline;
 }
-html {
+html, body {
 	overflow-x: hidden;
+	
 }
 body {
 	line-height: 1;
@@ -58,7 +59,7 @@ body{
 	font-family: ${(props) => props.theme.fonts.primaryFont || props.theme.fonts.secondaryFont};
 	color: ${(props) => props.theme.colors.primaryTextColor};
 }
-a, p , span, li, h1, h2, h3 {
+a, p , li, h1, h2, h3 {
 padding: ${(props) => props.theme.paddings.textPadding}px;
 color : ${(props) => props.theme.colors.primaryTextColor};
 }
@@ -67,15 +68,16 @@ font-weight: ${(props) => props.theme.fontWeight.bold};
 }
 h1 { 
 	font-size: calc(${(props) => props.theme.fontSize.title.h1 } + 0.390625vw);
-	line-height: calc(${(props) => props.theme.fontSize.title.h1 } + 1vw)
+	line-height: calc(${(props) => props.theme.fontSize.title.h1 } + 1vw);
 }
 h2 { 
 	font-size: calc(${(props) => props.theme.fontSize.title.h2 } + 0.390625vw);
-	line-height: calc(${(props) => props.theme.fontSize.title.h2 } + 1vw)
+	line-height: calc(${(props) => props.theme.fontSize.title.h2 } + 1vw);
+	margin-bottom : 35px;
 }
 h3 {
 	font-size: calc(${(props) => props.theme.fontSize.title.h3 } + 0.390625vw);
-	line-height: calc(${(props) => props.theme.fontSize.title.h3 } + 1vw)
+	line-height: calc(${(props) => props.theme.fontSize.title.h3 } + 1vw);
 }
 
 @media screen and (min-width : 425px) {

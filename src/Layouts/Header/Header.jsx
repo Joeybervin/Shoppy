@@ -1,6 +1,8 @@
 /* style */
 import { StyledHeader } from "../../Layouts/Header/header.style";
-import StyledButton from "../../Components/Button";
+/* Components */
+import { BigButton } from "../../components/Button";
+/* Assets */
 import heroImage from "../../assets/hero/candid.jpg"
 
 
@@ -14,7 +16,7 @@ export default function Header() {
                     <span>Everything.</span>
                 </h1>
                 <p>At Bachira, you can shop for all your favorite beauty brands, clothes, household products and more at a single place.</p>
-                <StyledButton primary shadow>Shopping Now</StyledButton>
+                <BigButton primary shadow>Shopping Now</BigButton>
             </div>
             {/* Image */}
             <div className="heroImage">

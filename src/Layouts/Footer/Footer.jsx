@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 /* Style */
 import './footer.style.js';
 /* Components */
-import Mailto from '../../Components/Mailto';
+import Mailto from '../../components/Mailto';
 import {StyledFooter} from './footer.style'
 /* Logo */
 import logo from "../../assets/logo/logo.png";

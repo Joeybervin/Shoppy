@@ -11,7 +11,7 @@ font-weight: ${(props) => props.theme.fontWeight.regular};
 
 
 > div p:first-child {
-    color: ${(props) => props.theme.colors.tertiaryTextColor};
+    color: ${(props) => props.theme.colors.primary};
     font-weight: ${(props) => props.theme.fontWeight.bold};
     padding: 5px 5px 10px 5px;
 }

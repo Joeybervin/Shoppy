@@ -1,20 +1,23 @@
-import { useState } from 'react';
+
 import { NavLink } from 'react-router-dom';
 
-/* Style */
-import NavStyled from './NavBar.style';
+/* Hooks */
+import { useState } from 'react';
 
 /* Compoments */
-import StyledButton from '../../Components/Button'
-import StyledCart from '../../Components/Cart';
+import { SmallButton } from '../../components/Button'
+import StyledCart from '../../components/Cart';
 
-/* Logo */
+/* Assets */
 import logo from "../../assets/logo/logo.png";
 
-/* Icons */
+/* Icons => library : react-icons */
 import { RxCross1 } from "react-icons/rx";
 import { SlMenu } from "react-icons/sl";
 import { HiOutlineUserCircle } from "react-icons/hi";
+
+/* Style */
+import StyledNavbar from './NavBar.style';
 
 export default function NavBar() {
 
@@ -28,7 +31,7 @@ export default function NavBar() {
 
 
   return (
-    <NavStyled >
+    <StyledNavbar >
       {/* Left */}
 
         <NavLink to="/"><img className="logo" src={logo} alt="shoppy logo" /></NavLink>
@@ -45,7 +48,7 @@ export default function NavBar() {
           {/* Cart */}
           <NavLink to="/cart">
             <span onClick={()=>setNavigationSidebarOpen(false)}>
-              <StyledCart  >0</StyledCart>
+              <StyledCart>0</StyledCart>
             </span>
             
           </NavLink>
@@ -69,14 +72,14 @@ export default function NavBar() {
       <div className="auth">
         {/* auth */}
         <NavLink to="/auth/signIn">Login</NavLink>
-        <NavLink to="/auth/signUp"><StyledButton primary>Sign up</StyledButton></NavLink>
+        <NavLink to="/auth/signUp"><SmallButton primary>Sign up</SmallButton></NavLink>
         {/* cart */}
         <NavLink to="/cart">
             <StyledCart >0</StyledCart>
         </NavLink>
       </div>
       
-    </NavStyled>
+    </StyledNavbar>
   );
 }
 

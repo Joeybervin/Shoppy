@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
-const Div = styled.div`
+/* STYLE */
+const StyleCategoryContainer = styled.div`
 
     position : relative;
     margin: 2%;
@@ -8,20 +9,23 @@ const Div = styled.div`
     > img {
         max-width: 100%;
         border-radius : 20px;
+        object-fit: cover;
         
     }
-    >div {
+    > div {
         position: absolute;
         top: 10%;
         right: 10%;
-        background-color : #00000077;
+        background-color : #FFFFFF77;
         border-radius : 5px;
         
     }
 
     > div p {
         color: ${(pros) => pros.theme.colors.white};
-        text-shadow: 1px 1px 2px black;
+        text-shadow:    0px 4px 3px rgba(0,0,0,0.4),
+                        0px 8px 13px rgba(0,0,0,0.1),
+                        0px 18px 23px rgba(0,0,0,0.1);
         
         
     }
@@ -33,16 +37,16 @@ const Div = styled.div`
 
 `
 
-const CategoryBox = ({src, alt, category, productsNumber }) => {
+const CategoryContainer = ({src, alt, category, productsNumber }) => {
     return (
-        <Div>
+        <StyleCategoryContainer>
             <div>
                 <p>{category}</p>
                 <p>{productsNumber} items</p>
             </div>
-            <img src={src} alt={alt} />
-        </Div>
+            <img src={src} alt={alt}  />
+        </StyleCategoryContainer>
     );
 }
 
-export default CategoryBox ;
+export default CategoryContainer ;

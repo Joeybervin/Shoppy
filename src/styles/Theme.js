@@ -4,6 +4,7 @@ export const theme = {
     colors: {
         /* general */
         primary : '#7777FF',
+        primaryAlpha : '#7777FF40',
         secondary : '#EC8C97 ',
         tertiary: '#303030',
         black: '#000000',
@@ -13,14 +14,14 @@ export const theme = {
         /* text */
         primaryTextColor: '#000000',
         secondaryTextColor: '#777777',
-        tertiaryTextColor: '#6666CC',
+        tertiaryTextColor: '#6666CC', 
         inputPlaceholder: '#C7C7C7',
         darkGrayText: '#303030',
         /* buttons */
         buttonsStateColors : {
             normal: '#7777FF',
             hover : '#EC8C97' ,
-            active: "#B25864",
+            active: "#E07987",
             focus: ""
         },
         /* notifications */

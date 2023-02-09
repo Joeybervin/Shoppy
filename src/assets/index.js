@@ -34,6 +34,8 @@ import catTech from './categories/tech/christopher-gower.jpg';
 import catBag from './categories/bag/david-kang.jpg';
 import catBeauty from './categories/beauty/element5-digital.jpg';
 
+/* ICONS */
+
 
 const bagMunchkinGrey = {bagmunchkingrey1, bagmunchkingrey2, bagmunchkingrey3, bagmunchkingrey4, bagmunchkingrey5, bagmunchkingrey6};
 const bagGoldenEyesRed = {baggoldeneyesred1, baggoldeneyesred2, baggoldeneyesred3, baggoldeneyesred4};
@@ -41,7 +43,10 @@ const backpackExplorerLight = { backpackexplorerlight1, backpackexplorerlight2,b
 const phoneIphonePurple = {phoneiphonepurple1, phoneiphonepurple2, phoneiphonepurple3};
 
 /* EXPORT ALL */
+
 /* products */
 export  {bagMunchkinGrey, bagGoldenEyesRed, backpackExplorerLight, phoneIphonePurple}
+
 /* categories */
 export {catFashion, catShoes, catTech, catBag, catBeauty}
+
