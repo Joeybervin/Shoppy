@@ -1,0 +1,17 @@
+[
+    { 
+        "service" : "Livraison gratuite",
+        "detail" : "La livraison à domicile ou dans un point relais vous est offerte à partir de 29€ d'achat. ",
+        "icon" : "https://cdn-icons-png.flaticon.com/512/3142/3142246.png"
+    },
+    { 
+        "service" : "Avis",
+        "detail" : "Vos données sont protégées et sécurisées. Venez lire les commentaires de nos clients",
+        "icon" : "https://cdn-icons-png.flaticon.com/512/4185/4185148.png"
+    },
+    { 
+        "service" : "Assitance 24h / 7j",
+        "detail" : "Vous avez un soucis avec votre commande ? Notre service client est là pour vous aider à n'importe quel moment.",
+        "icon" : "https://cdn-icons-png.flaticon.com/512/1024/1024759.png"
+    }
+]

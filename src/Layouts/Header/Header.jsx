@@ -11,12 +11,12 @@ export default function Header() {
         <StyledHeader >
             {/* text */}
             <div>
-                <h1>Best Place to Buy
+                <h1>Où ailleurs que
                     <br/>
-                    <span>Everything.</span>
+                    <span>Shoppy !</span>
                 </h1>
-                <p>At Bachira, you can shop for all your favorite beauty brands, clothes, household products and more at a single place.</p>
-                <BigButton primary shadow>Shopping Now</BigButton>
+                <p>Chez Shoppy, vous pouvez acheter toutes vos marques de beauté préférées, des vêtements, des produits tech et plus encore et tout cela réunis à un seul endroit.</p>
+                <BigButton primary shadow>Découvrir Shoppy</BigButton>
             </div>
             {/* Image */}
             <div className="heroImage">

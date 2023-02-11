@@ -26,7 +26,6 @@ export default function NavBar() {
   /* open the siddebar navigation on small devices */
   const handleToggle = () => {
     setNavigationSidebarOpen(!navigationSidebarOpen)
-    console.log(navigationSidebarOpen)
   }
 
 
@@ -62,7 +61,7 @@ export default function NavBar() {
         <ul>
           <li onClick={handleToggle}><NavLink to="/">Accueil</NavLink></li>
           <li onClick={handleToggle}><NavLink to="/shopping">Shopping</NavLink></li>
-          <li onClick={handleToggle}><NavLink to="/about">About</NavLink></li>
+          <li onClick={handleToggle}><NavLink to="/about">À propos</NavLink></li>
           <li onClick={handleToggle}><NavLink to="/contact">Contact</NavLink></li>
         </ul>
       </div>
@@ -71,8 +70,8 @@ export default function NavBar() {
       {/* interface for desktop */}
       <div className="auth">
         {/* auth */}
-        <NavLink to="/auth/signIn">Login</NavLink>
-        <NavLink to="/auth/signUp"><SmallButton primary>Sign up</SmallButton></NavLink>
+        <NavLink to="/auth/signIn">connexion</NavLink>
+        <NavLink to="/auth/signUp"><SmallButton primary>s'inscrire</SmallButton></NavLink>
         {/* cart */}
         <NavLink to="/cart">
             <StyledCart >0</StyledCart>

@@ -6,6 +6,10 @@ const StyleCategoryContainer = styled.div`
     position : relative;
     margin: 2%;
 
+    &:hover {
+        cursor : pointer;
+    }
+
     > img {
         max-width: 100%;
         border-radius : 20px;
@@ -20,7 +24,6 @@ const StyleCategoryContainer = styled.div`
         border-radius : 5px;
         
     }
-
     > div p {
         color: ${(pros) => pros.theme.colors.white};
         text-shadow:    0px 4px 3px rgba(0,0,0,0.4),
@@ -29,7 +32,6 @@ const StyleCategoryContainer = styled.div`
         
         
     }
-
     > div > p:first-child {
         font-weight: ${(pros) => pros.theme.fontWeight.bold};
     }
@@ -37,9 +39,9 @@ const StyleCategoryContainer = styled.div`
 
 `
 
-const CategoryContainer = ({src, alt, category, productsNumber }) => {
+const CategoryContainer = ({src, alt, category, productsNumber , ...props }) => {
     return (
-        <StyleCategoryContainer>
+        <StyleCategoryContainer onClick={props.onClick}>
             <div>
                 <p>{category}</p>
                 <p>{productsNumber} items</p>

@@ -9,11 +9,7 @@
   align-items: center;
 }
 
-/* A REVOIR : All the beakspoints I'll be using */
-/* @media screen and (min-width : 425px) {
-  .App {
-    
-  }
+@media screen and (min-width : 425px) {
 }
 
 @media screen and (min-width : 768px) {
@@ -24,8 +20,5 @@
 }
 
 @media screen and (min-width : 1024px) {
-  .App {
-    
-  }
   
-} */
+}

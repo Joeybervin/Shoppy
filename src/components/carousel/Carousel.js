@@ -27,7 +27,6 @@ const StyledCarousel = ({...props}) => {
             responsive={responsive}
             infinite={true}
             centerMode={true}
-            removeArrowOnDeviceType={["tablet", "mobile"]}
             /* style */
             itemClass="item-container"
             containerClass="carousel-container"
@@ -46,4 +45,4 @@ const StyledCarousel = ({...props}) => {
 
 
 
-export { StyledCarousel }
+export default StyledCarousel ;

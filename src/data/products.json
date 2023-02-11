@@ -1,5 +1,4 @@
-{
-    "bags" : [ 
+[
     
         {
             "ref" : "bagmunchkingrey",
@@ -8,8 +7,8 @@
             "gender" : "F",
             "type" : "crossBody Bag",
             "color" : "grey",
-            "price" : 495 ,
-            "stock" : 10,
+            "price" : "695" ,
+            "stock" : "10",
             "creator" : "Damien Poulain",
             "brand" : "RSVP",
             "description" : [
@@ -18,7 +17,7 @@
                     "productEntretien" : "Cuir de veau italien d'aspect miroir. Tanné au chrome. Peu sensible au rayures et aux marques du quotidien, il est facile d'entretien et se nettoie délicatement avec un chiffon doux."
                 }
             ],
-            "productImage" : [],
+            "productImage" : ["https://cdn.shopify.com/s/files/1/0904/1894/products/RSVP-Paris-Munchkin-Spazolatto-Mirror-01_1920x.jpg?v=1666154709", "https://cdn.shopify.com/s/files/1/0904/1894/products/RSVP-Paris-Munchkin-Spazolatto-Mirror-02_1920x.jpg?v=1666154709", "https://cdn.shopify.com/s/files/1/0904/1894/products/RSVP-Paris-Munchkin-Spazolatto-Mirror-03_1920x.jpg?v=1666154709", "https://cdn.shopify.com/s/files/1/0904/1894/products/RSVP-Paris-Munchkin-Bag_f4efc71d-330c-4e6a-bc78-a9a682be93d8_1920x.jpg?v=1666154709"]
         },
         {
             "ref" : "baggoldeneyesred",
@@ -27,8 +26,8 @@
             "gender" : "F",
             "type" : "crossBody Bag",
             "color" : "red",
-            "price" : 495 ,
-            "stock" : 10,
+            "price" : "495" ,
+            "stock" : "10",
             "creator" : "Damien Poulain",
             "brand" : "RSVP",
             "description" : [
@@ -37,7 +36,7 @@
                     "productEntretien" : "Cuir de veau d'origine France. Tanné au chrome, ce veau box tout droit venu d' Annonay est un classique de la maroquinerie.Initialement développé par un célèbre chausseur Français pour la fabrication de ses mocassins, ce cuir robuste à la main ferme s'est taillé la part du lion en maroquinerie. A tel point qu'il est devenu très difficile de s'en procurer. Heureusement, RSVP a ses entrées.Pleine fleur et peu couvert en pigments, il est sensible aux marques du quotidien, et mérite un soin particulier. Il prendra à l'usage une patine homogène qui confère au sublime. Un must indémodable, à notre humble avis."
                 }
             ],
-            "productImage" : [],
+            "productImage" : ["https://cdn.shopify.com/s/files/1/0904/1894/products/RSVP-Paris-Samples-Sale-GEV2-Damien-Poulain-Rouge-01.jpg?v=1667925968","https://cdn.shopify.com/s/files/1/0904/1894/products/RSVP-Paris-Samples-Sale-GEV2-Damien-Poulain-Rouge-02_1920x.jpg?v=1667925968","https://cdn.shopify.com/s/files/1/0904/1894/products/RSVP-Paris-Samples-Sale-GEV2-Damien-Poulain-Rouge-04_1920x.jpg?v=1667925968"]
         
         },
         {
@@ -47,8 +46,8 @@
             "gender" : "M",
             "type" : "backpack",
             "color" : "black",
-            "price" : 221.95 ,
-            "stock" : 10,
+            "price" : "221.95" ,
+            "stock" : "10",
             "creator" : "",
             "brand" : "Maverick & Co.",
             "description" : [
@@ -57,21 +56,20 @@
                     "productEntretien" : "Microfiber vegan leather."
                 }
             ],
-            "productImage" : [],
+            "productImage" : ["https://cdn.shopify.com/s/files/1/1301/7071/products/maverick-co-explorer-light-backpack-plus-black-1-b_1800x1800.jpg?v=1647583275","https://cdn.shopify.com/s/files/1/1301/7071/products/maverick-co-explorer-light-backpack-plus-black-grey-3_1800x1800.jpg?v=1647583275","https://cdn.shopify.com/s/files/1/1301/7071/products/maverick-co-explorer-light-backpack-plus-black-grey-2_1800x1800.jpg?v=1647583275", "https://cdn.shopify.com/s/files/1/1301/7071/products/maverick-co-explorer-light-backpack-plus-black-grey-4_1800x1800.jpg?v=1647583275"]
         
-        }
-    ],
+        },
 
-    "fashion" : [
+
         {
             "ref" : "topclassictshirtwhite",
             "productName" : "Classic T-shirt",
-            "category" : "clothes",
+            "category" : "fashion",
             "gender" : "UNI",
             "type" : "top",
             "color" : "white",
-            "price" : 8.95 ,
-            "stock" : 50,
+            "price" : "8.95" ,
+            "stock" : "50",
             "creator" : "",
             "brand" : "BrandNew",
             "description" : [
@@ -80,18 +78,18 @@
                     "productEntretien" : "Cotton 100%."
                 }
             ],
-            "productImage" : [],
+            "productImage" : ["https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80","https://images.unsplash.com/photo-1622445270936-5dcb604970e7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80", "https://images.unsplash.com/photo-1622445272054-ef281b3b8639?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80"]
         
         },
         {
             "ref" : "sweatshirtfitsweatshirtblack",
             "productName" : "Fit Sweatshirt",
-            "category" : "clothes",
+            "category" : "fashion",
             "gender" : "M",
             "type" : "sweatshirt",
-            "color" : "BLACK",
-            "price" : 19.99 ,
-            "stock" : 75,
+            "color" : "black",
+            "price" : "19.99" ,
+            "stock" : "75",
             "creator" : "",
             "brand" : "H&M",
             "description" : [
@@ -100,12 +98,11 @@
                     "productEntretien" : "Cotton 100%.Cotton 60%, Polyester 40%"
                 }
             ],
-            "productImage" : [],
+            "productImage" : ["https://lp2.hm.com/hmgoepprod?set=format%5Bwebp%5D%2Cquality%5B79%5D%2Csource%5B%2F54%2F60%2F546091a5910a7edaec2a189b113b6a82f4449e64.jpg%5D%2Corigin%5Bdam%5D%2Ccategory%5B%5D%2Ctype%5BDESCRIPTIVESTILLLIFE%5D%2Cres%5Bm%5D%2Chmver%5B2%5D&call=url%5Bfile%3A%2Fproduct%2Fmain%5D","https://lp2.hm.com/hmgoepprod?set=quality%5B79%5D%2Csource%5B%2Ffc%2Fd1%2Ffcd1b834ec98821caa5f744ff15015a6f3a38cac.jpg%5D%2Corigin%5Bdam%5D%2Ccategory%5B%5D%2Ctype%5BLOOKBOOK%5D%2Cres%5Bm%5D%2Chmver%5B1%5D&call=url[file:/product/main]","https://lp2.hm.com/hmgoepprod?set=format%5Bwebp%5D%2Cquality%5B79%5D%2Csource%5B%2F21%2Fc0%2F21c0260ee71ec5f286c538f6d3d7df30939e785f.jpg%5D%2Corigin%5Bdam%5D%2Ccategory%5B%5D%2Ctype%5BLOOKBOOK%5D%2Cres%5Bm%5D%2Chmver%5B1%5D&call=url%5Bfile%3A%2Fproduct%2Fmain%5D", "https://lp2.hm.com/hmgoepprod?set=format%5Bwebp%5D%2Cquality%5B79%5D%2Csource%5B%2Fae%2F00%2Fae00b9422602766bac841010850b4f81de37b1ce.jpg%5D%2Corigin%5Bdam%5D%2Ccategory%5B%5D%2Ctype%5BLOOKBOOK%5D%2Cres%5Bm%5D%2Chmver%5B1%5D&call=url%5Bfile%3A%2Fproduct%2Fmain%5D"]
         
-        }
-    ],
+        },
 
-    "shoes" : [
+
         {
             "ref" : "shoesairforceonemulti",
             "productName" : "Air Force 1 Shadow sneakers",
@@ -113,8 +110,8 @@
             "gender" : "F",
             "type" : "sneackers",
             "color" : "multi",
-            "price" : 330.95 ,
-            "stock" : 120,
+            "price" : "330.95" ,
+            "stock" : "120",
             "creator" : "",
             "brand" : "Nike",
             "description" : [
@@ -123,18 +120,18 @@
                     "productEntretien" : "Sole: Rubber 100% | Outer: Leather 100% | Lining: Polyamide 100%"
                 }
             ],
-            "productImage" : [],
+            "productImage" : ["https://img01.ztat.net/article/spp-media-p1/d501bfe565db4226a4bf088f3332a263/2e7bc4baf85e4fa1b600e8526348bfc3.jpg?imwidth=1800","https://cdn-images.farfetch-contents.com/16/09/66/67/16096667_30288835_1000.jpg", "https://cdn-images.farfetch-contents.com/16/09/66/67/16096667_30288838_1000.jpg", "https://cdn-images.farfetch-contents.com/16/09/66/67/16096667_30288840_1000.jpg", "https://img01.ztat.net/article/spp-media-p1/46a20f39c4484a8b9e953baa4fa87cce/90374e70fd04498e847171de231dbd30.jpg?imwidth=1800"]
         
         },
         {
             "ref" : "shoesairjordanonemidlightsmokegrey",
-            "productName" : "Explorer Light Backpack Plus",
+            "productName" : "Air Jordan One Mid light Smoke Grey",
             "category" : "shoes",
             "gender" : "M",
             "type" : "sneackers",
             "color" : "grey",
-            "price" : 251 ,
-            "stock" : 5,
+            "price" : "251." ,
+            "stock" : "5",
             "creator" : "",
             "brand" : "Nike",
             "description" : [
@@ -143,12 +140,11 @@
                     "productEntretien" : "Sole: Rubber 100% | Outer: Leather 100% | Lining: Fabric 100%"
                 }
             ],
-            "productImage" : [],
+            "productImage" : ["https://laced.imgix.net/products/2a5e2a26-4e80-49c6-a26b-d3e170dbe1e3.jpg?auto=format&fit=crop&w=1200","https://laced.imgix.net/products/e6ff01f6-9718-4365-a9a8-bf280491fa99.jpg?auto=format&fit=crop&w=1200","http://cdn.shopify.com/s/files/1/1471/7880/products/image_e35e9e9c-d5d5-49d4-965e-e8d0cb9cb13e_1200x1200.jpg?v=1663238912"]
         
-        }
-    ],
+        },
 
-    "tech": [
+
         {
                 "ref" : "phoneiphonepurple",
                 "productName" : "Iphone",
@@ -156,8 +152,8 @@
                 "gender" : "UNI",
                 "type" : "phone",
                 "color" : "purple",
-                "price" : 1005 ,
-                "stock" : 100,
+                "price" : "1005" ,
+                "stock" : "100",
                 "creator" : "Apple",
                 "brand" : "Apple",
                 "description" : [
@@ -166,8 +162,7 @@
                         "productEntretien" : ""
                     }
                 ],
-                "productImage" : [],
+                "productImage" : ["https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/iphone-14-storage-select-202209-6-7inch-purple?wid=2560&hei=1440&fmt=p-jpg&qlt=80&.v=1660691794379", "https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/iphone-14-finish-select-202209-6-7inch-purple_AV1_GEO_EMEA?wid=2560&hei=1440&fmt=p-jpg&qlt=80&.v=1661027854395", "https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/iphone-14-finish-select-202209-6-7inch-purple_AV2?wid=2560&hei=1440&fmt=p-jpg&qlt=80&.v=1661028261503"]
         }
-    ]
 
-}
+]

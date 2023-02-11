@@ -1,7 +1,7 @@
-/* style */
-import './home.css';
+/* hooks */
+import { useNavigate } from "react-router-dom";
 
-/* imge */
+/* assets */
 import {catFashion, catShoes, catTech, catBag, catBeauty} from '../../assets/index';
 
 /* layouts */
@@ -12,32 +12,29 @@ import TitleHighlight from '../../components/TitleHighlight';
 import CategoryBox from '../../components/CategoryContainer' ;
 import ServiceContainer from '../../components/ServiceContainer';
 import {HomePageProductCard} from '../../components/ProductCard'; 
-import {StyledCarousel} from '../../components/carousel/Carousel';
+import StyledCarousel from '../../components/carousel/Carousel';
 
+/* Data */
+import productsData from "../../data/products.json";
+import servicesData from "../../data/services.json";
 
-
-
+/* style */
+import './home.css';
 
 export default function Home() {
 
+    /* hooks */
+    const navigate = useNavigate()
 
-    const services = [
-        { 
-            service : "Free Delivery",
-            detail : "Lorem ipsum dolor sit amet, consectetu adipiscing elit, sed do eiusmod tempor",
-            icon : "https://cdn-icons-png.flaticon.com/512/3142/3142246.png",
-        },
-        { 
-            service : "Trusted Platfrom",
-            detail : "Lorem ipsum dolor sit amet, consectetu adipiscing elit, sed do eiusmod tempor",
-            icon : "https://cdn-icons-png.flaticon.com/512/4185/4185148.png",
-        },
-        { 
-            service : "Here For You",
-            detail : "Lorem ipsum dolor sit amet, consectetu adipiscing elit, sed do eiusmod tempor",
-            icon : "https://cdn-icons-png.flaticon.com/512/1024/1024759.png",
-        }
-    ]
+    /* variables */
+    const services = [...servicesData] 
+    const data = [...productsData]
+
+
+
+
+    
+    
 
     return (
         <div className='home'>
@@ -70,8 +67,9 @@ export default function Home() {
                     <br />
                     catégories
                 </h2>
-
+                {/* CATEGORIES CARDS */}
                 <div>
+                    {/* category : fashion and tech */}
                     <div className='horizontalCat'>
                     {/* FASHION */}
                     <CategoryBox 
@@ -79,6 +77,7 @@ export default function Home() {
                         productsNumber="10"
                         src={catFashion}
                         alt="clothes"
+                        onClick={() => navigate("/shop/fashion")}
                     />
 
                     {/* TECH */}
@@ -87,17 +86,19 @@ export default function Home() {
                         productsNumber="10"
                         src={catTech}
                         alt="a comuter , mac"
+                        onClick={() => navigate("/shop/tech")}
                     />
                     </div>
 
-                    {/* cat: bag and shoes */}
+                    {/* category : bag and shoes */}
                     <div className='verticalCat'>
                         {/* BAGS */}
                         <CategoryBox 
-                            category="Bags"
+                            category="Bag"
                             productsNumber="10"
                             src={catBag}
                             alt="a tote bag"
+                            onClick={() => navigate("/shop/bag")}
                         />
 
                         {/* SHOES */}
@@ -106,26 +107,24 @@ export default function Home() {
                             productsNumber="10"
                             src={catShoes}
                             alt="sneackers"
+                            onClick={() => navigate("/shop/shoes")}
                         />
-                        {/* SHOES */}
+                        {/* BEAUTY */}
                         <CategoryBox 
                             category="Beauty"
                             productsNumber="10"
                             src={catBeauty}
                             alt="beauty products"
+                            onClick={() => navigate("/shop/beauty")}
                         />
                     </div>
-                        
-                   
-                    
                 </div>
 
             </section>
 
             {/* section : services */}
             <section className='servicesSection'>
-                <h2>Why choose Sho
-                    <TitleHighlight color >ppy</TitleHighlight> ?</h2>
+                <h2>Pourquoi Sho<TitleHighlight $color >ppy</TitleHighlight> ?</h2>
                 <div>
                     {
                         services.map((service, index) =>{
@@ -146,21 +145,18 @@ export default function Home() {
 
             {/* section : products */}
             <section className='productsSection'>
-                <h2>Populer Products From 
-                    <br />
-                    All Brands
-                </h2>
+                <h2>Nos produits</h2>
                 <StyledCarousel>
-                {["product", "product", "product", "product", "product", "product", "product", "product", "product", "product"].map((product, index) => {
+                {data.map((product, index) => {
                     return (
 
                         <HomePageProductCard
                             key={`hpp${index}`}
-                            imgSrc="https://images.unsplash.com/photo-1591047139829-d91aecb6caea?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=436&q=80"
-                            imgAlt={product}
-                            productName="product name"
-                            productPrice="105"
-                            onClick={() => console.log(index)}
+                            imgSrc={product.productImage}
+                            imgAlt={product.productName}
+                            productName={product.productName}
+                            productPrice={product.price}
+                            onClick={() => navigate(`/shop/${product.category}/product/${product.ref}`)}
                         />
 
                     )

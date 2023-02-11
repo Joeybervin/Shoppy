@@ -25,7 +25,6 @@ const StyledNavbar = styled.nav`
         display: flex;
         justify-content: space-between;
         align-items: center;
-        width: 35%;
     } 
     .navNavigation ul li a:hover {
         font-weight: ${(props) => props.theme.fontWeight.bold} ;

@@ -4,11 +4,12 @@
     margin : 0 15px;
 }
 
+/* DEVICE : big devices (tablet, desktop, large monitor */
+
 @media screen and (min-width : 768px) {
     .carousel-container {
         right: 0;
         overflow: unset;
-    
     }
     
     .slider-container {
@@ -16,6 +17,7 @@
         position: relative;
         right: 0;
     }
+
     .item-container {
         max-width: 230px ;
     }

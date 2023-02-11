@@ -1,0 +1,57 @@
+.shop {
+    width : 100%;
+}
+
+
+.shop > div:first-child {
+    
+    margin: 30px 0;
+}
+
+.shop > div:first-child > div:first-of-type {
+    background-color: #7777FF;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.shop > div:first-child > div:first-of-type p {
+    padding : 10px 30px 10px 5px;
+}
+
+.filtre {
+    background-color: #7777FF40;
+    padding : 15px 0;
+}
+
+div .filterIsClosed {
+    display : none;
+}
+
+
+.productsList {
+
+    background-color:  #7777FF20;
+    width : 100%;
+    display: flex;
+    flex-wrap: wrap;
+    padding-top : 10px;
+}
+
+@media screen and (min-width: 768px) {
+
+    .filtre {
+        display: flex;
+        justify-content: space-around;
+    }
+
+    
+}
+
+/* DEVICES /: small devices as smartphone */
+@media screen and (max-width: 425px) {
+    .productsList {
+    justify-content: center;
+    }
+}
