@@ -12,7 +12,7 @@ import TitleHighlight from '../../components/TitleHighlight';
 import CategoryBox from '../../components/CategoryContainer' ;
 import ServiceContainer from '../../components/ServiceContainer';
 import {HomePageProductCard} from '../../components/ProductCard'; 
-import StyledCarousel from '../../components/carousel/Carousel';
+import {StyledCarousel , responsiveMultiItems as responsive} from '../../components/Carousel';
 
 /* Data */
 import productsData from "../../data/products.json";
@@ -29,12 +29,6 @@ export default function Home() {
     /* variables */
     const services = [...servicesData] 
     const data = [...productsData]
-
-
-
-
-    
-    
 
     return (
         <div className='home'>
@@ -146,21 +140,25 @@ export default function Home() {
             {/* section : products */}
             <section className='productsSection'>
                 <h2>Nos produits</h2>
-                <StyledCarousel>
-                {data.map((product, index) => {
-                    return (
+                <StyledCarousel
+                    responsive={responsive}
+                    infinite
+                    centerMode
+                >
+                    {data.map((product, index) => {
+                        return (
 
-                        <HomePageProductCard
-                            key={`hpp${index}`}
-                            imgSrc={product.productImage}
-                            imgAlt={product.productName}
-                            productName={product.productName}
-                            productPrice={product.price}
-                            onClick={() => navigate(`/shop/${product.category}/product/${product.ref}`)}
-                        />
+                            <HomePageProductCard
+                                key={`hpp${index}`}
+                                imgSrc={product.productImage}
+                                imgAlt={product.productName}
+                                productName={product.productName}
+                                productPrice={product.price}
+                                onClick={() => navigate(`/shop/${product.category}/product/${product.ref}`)}
+                            />
 
-                    )
-                })}
+                        )
+                    })}
                 </StyledCarousel>
         
             </section>

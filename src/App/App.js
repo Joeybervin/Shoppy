@@ -14,7 +14,7 @@ import Footer from '../Layouts/Footer/Footer';
 import About from "../Pages/about/About";
 import Home from "../Pages/home/Home";
 import Shop from "../Pages/shop/Shop";
-import Product from "../Pages/product/Product";
+import Product from "../Pages/product/Product";       
 import Cart from "../Pages/cart/Cart";
 import Contact from "../Pages/contact/Contact";
 /* Auth */

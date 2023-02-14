@@ -12,6 +12,7 @@ const StyledNavbar = styled.nav`
     align-items: center;
     justify-content: space-between;
     box-sizing : border-box;
+    margin-bottom : 60px;
 
     /* LEFT side => RIGHT side */
 
@@ -53,6 +54,8 @@ const StyledNavbar = styled.nav`
     /* DEVICES : small devices (tablet, smartphone) */
 
     @media screen and (max-width: 768px) {
+
+        margin-bottom : 30px;
 
         /* Logo */
         img.logo  {

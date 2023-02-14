@@ -41,6 +41,11 @@
 
 /* SECTION : SERVICES */
 
+/* SECTION : PRODUCTS => CAROUSEL */
+.home .item-container {
+    min-width: 200px ;
+    margin : 0 15px;
+}
 
 /* For bigger devices as desktop or big screen */
 
@@ -75,7 +80,6 @@
         display: flex;
         flex-direction: column;
         min-width: 40vw;
-       
     }
     div.horizontalCat img {
         height: clamp(100px, 20vh, 170px);
@@ -93,6 +97,23 @@
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
+    }
+
+    /* SECTION : PRODUCTS => CAROUSEL */
+
+    .home .carousel-container {
+        right: 0;
+        overflow: unset;
+    }
+    
+    .home .slider-container {
+        max-width: 100vw;
+        position: relative;
+        right: 0;
+    }
+
+    .home .item-container {
+        max-width: 230px ;
     }
 
 }

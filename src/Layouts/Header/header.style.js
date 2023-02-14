@@ -22,7 +22,7 @@ export const StyledHeader = styled.header `
         justify-content: space-between;
         padding : 0 ;
         text-align: left;
-        margin : 20px auto 0 auto;
+        margin : 0 auto ;
         
 
         > div:first-child {
