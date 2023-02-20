@@ -5,13 +5,13 @@ import { useNavigate } from "react-router-dom";
 import {catFashion, catShoes, catTech, catBag, catBeauty} from '../../assets/index';
 
 /* layouts */
-import Header from "../../Layouts/Header/Header";
+import Header from "../../components/layouts/Header/Header";
 
 /* components */
 import TitleHighlight from '../../components/TitleHighlight';
-import CategoryBox from '../../components/CategoryContainer' ;
-import ServiceContainer from '../../components/ServiceContainer';
-import {HomePageProductCard} from '../../components/ProductCard'; 
+import CategoryBox from '../../components/ui/CategoryCard' ;
+import ServiceContainer from '../../components/ServiceCard';
+import {HomePageProductCard} from '../../components/ui/ProductCard'; 
 import {StyledCarousel , responsiveMultiItems as responsive} from '../../components/Carousel';
 
 /* Data */

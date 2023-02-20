@@ -3,8 +3,8 @@ import { useState} from "react";
 import { useParams, useNavigate } from "react-router-dom";
 
 /* components */
-import { ShopPageProductCard } from "../../components/ProductCard";
-import Select from "../../components/Select";
+import { ShopPageProductCard } from "../../components/ui/ProductCard";
+import Select from "../../components/ui/Select";
 
 /* style */
 import "./shop.css";

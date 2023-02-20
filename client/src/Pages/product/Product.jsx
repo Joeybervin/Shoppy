@@ -3,9 +3,9 @@ import { useState } from "react";
 import { useParams } from "react-router-dom";
 
 /* component */
-import { BigButton, SmallButton } from "../../components/Button";
-import { RadioInput, RadioLabel } from "../../components/Input";
-import Badge from "../../components/Badge";
+import { BigButton, SmallButton } from "../../components/ui/Button";
+import { RadioInput, RadioLabel } from "../../components/ui/Input";
+import Badge from "../../components/ui/Badge";
 import { ThumbsGalleryLoopPart } from "../../components/Swiper";
 
 /* Icons */
@@ -120,6 +120,17 @@ export default function Product() {
                 {/* product name */}
                 <p className="productName">{product.productName}</p>
 
+                {/* product price */}
+                <p className="productPrice">{product.price} <span>€</span></p>
+
+                {/* product color */}
+                <div className="color">
+                        <p>Couleur : </p>
+                            <div style={{border : `1px solid ${product.color}`}}>
+                                <div style={{backgroundColor : `${product.color}`}} className="productColor"></div>
+                            </div>
+                    </div>
+
                 {/* product review */}
                 <div className="review">
                     <div className="stars">
@@ -186,20 +197,13 @@ export default function Product() {
                             })}
                         </div>
                     </div>
-                    <div className="color">
-                        <p>Couleur : </p>
-                            <div style={{border : `1px solid ${product.color}`}}>
-                                <div style={{backgroundColor : `${product.color}`}} className="productColor"></div>
-                            </div>
-                    </div>
                 </div>
 
                 <div className="cart">
-                    <p>{product.price} €</p>
-                    <div>
+                    
                         <BigButton> Acheter </BigButton>
                         <BigButton primary> Ajouter <BsCartPlus /></BigButton>
-                    </div>
+                    
                 </div>
             </div>
         </ProductStyle>

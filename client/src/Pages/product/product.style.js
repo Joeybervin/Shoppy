@@ -4,7 +4,7 @@ const ProductStyle = styled.div`
 
     display: flex;
     flex-wrap: wrap;
-    margin : auto 0;
+    margin : 10px 0 75px 0;
     justify-content: space-between;
 
 
@@ -36,6 +36,36 @@ const ProductStyle = styled.div`
         margin : 15px 0;
     }
 
+/* part : PRODUCT PRICE */
+    .productPrice {
+        text-align : right;
+        margin : 10px ;
+        font-size : ${(props) => props.theme.fontSize.title.h1};
+        font-weight: ${(props) => props.theme.fontWeight.bold};
+    }
+    .productPrice span {
+        color: ${(props) => props.theme.colors.secondary};
+    }
+
+/* part : COLOR */
+    .color {
+        display : flex;
+        align-items: center;
+    }
+    .color > div {
+        margin-left : 5px;
+        min-width : 25px;
+        height: 25px;
+        padding : 4px;
+        border-radius : 5px;
+    }
+    .color > div .productColor {
+        max-width : 100%;
+        height: 100%;
+        border-radius : 2px;
+        
+    }
+
 /* part : REVIEW */
     .review {
         display: flex;
@@ -43,6 +73,7 @@ const ProductStyle = styled.div`
         margin : 20px 0;
     }
     .review .stars {
+        display: flex;
         margin-right : 15px;
     }
 
@@ -86,33 +117,14 @@ const ProductStyle = styled.div`
         background-color: ${(props) => props.theme.colors.secondary};
     }
 
-/* part : COLOR */
-    .color {
-        margin : 15px
-    }
-    .color > div {
-        margin-left : 5px;
-        max-width : 25px;
-        height: 25px;
-        padding : 4px;
-        border-radius : 5px;
-    }
-    .color > div .productColor {
-        max-width : 100%;
-        height: 100%;
-        border-radius : 2px;
-        
-    }
+
 
 /* part : CART */
     .cart {
         display : flex;
-        justify-content: space-between;
-        align-items: center;
+        justify-content : flex-end;
     }
-    .cart > p {
-        font-weight: ${(props) => props.theme.fontWeight.bold};
-    }
+
 
     
 
