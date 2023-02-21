@@ -8,13 +8,31 @@ const bcrypt = require('bcrypt');
 
 const passwordHashRound = 10;
 
+const sendUserInfos = (data, res) => {
+
+    let userInfos = {
+
+        email: data.email,
+        firstName : data.firstName,
+        lastName : data.lastName,
+        address : data.address,
+        city : data.city,
+        insert_date : data.insert_date,
+        token : data.token
+    }
+    
+
+    res.json({connection : true , userInfos })
+
+}
+
 /* Connection to a account */
 router.post('/signUp', async function(req, res, next) {
 
     const userInfos = req.body
 
     /* Look if the user is already in the database : true || false */
-    let databaseAccountsList = await userModel.findOne({ email: userInfos.email });
+    const databaseAccountsList = await userModel.findOne({ email: userInfos.email });
 
     /* hash the password : string of 32 characters */
     const hash = bcrypt.hashSync(userInfos.password, passwordHashRound);
@@ -39,27 +57,15 @@ router.post('/signUp', async function(req, res, next) {
         await newUser.save()
 
         /* send back only not sensitive informatiosn */
-        let saveduserInfos = {
-            email: newUser.email,
-            firstName : newUser.firstName,
-            lastName : newUser.lastName,
-            address : newUser.address,
-            city : newUser.city,
-            insert_date : newUser.insert_date,
-            token : newUser.token
-        }
-        console.log(saveduserInfos)
-        res.json({userSaved : true, saveduserInfos })
+        sendUserInfos(newUser, res)
         
     }
     /* if the account is found in the database */
     else if (databaseAccountsList) {
-        
         res.json({hasAnAccount : true })
     }
     /* if a typo were find */
     else {
-
         res.json({error : true })
     }
     
@@ -70,24 +76,30 @@ router.post('/signUp', async function(req, res, next) {
 /* Create a account */
 router.post('/signIn', async function(req, res, next) {
 
-    const email = req.body.signInEmail
-    const password = req.body.signInPassword
+    const email = req.body.email
+    const password = req.body.password
 
-    async (username, password) => {
-        //... fetch user from a db etc.
-    
-        const match = await bcrypt.compare(password, user.passwordHash);
-    
-        if(match) {
-            //login
-        }
-        else {
 
+    //... fetch user from a db etc.
+    const databaseUser = await userModel.findOne({ email: email})
+
+    if (databaseUser) { // if the email is found in the database
+
+        const passwordMatch = await bcrypt.compare(password, databaseUser.password);
+
+        if (passwordMatch) { // the user were found
+            sendUserInfos(databaseUser, res)
         }
-    
-        //...
+        else { // user were found but the password doesn't match
+
+            res.json({error: 'password'})
+        }
+
     }
-    
+    else { // the user wasn't found
+        res.json({error: 'email'})
+    }
+
 });
 
 module.exports = router;
