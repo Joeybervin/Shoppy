@@ -45,7 +45,6 @@ export default function Authentification() {
     useEffect(() => {}, [firstNameErrorMessage,passwordConfirmation, password])
 
 
-
     const handleSubmit = async (e) => {
 
         e.preventDefault();
