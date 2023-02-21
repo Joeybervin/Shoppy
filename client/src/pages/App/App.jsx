@@ -1,17 +1,15 @@
 import { Route, Routes, useLocation } from "react-router-dom";
 import { useEffect } from "react";
+
 /* Style */
 import './App.css';
 import { ThemeProvider } from 'styled-components'
 import { GlobalStyles } from '../../assets/styles/Global'
 import { theme } from '../../assets/styles/Theme'
-
 /* Layouts */
 import NavBar from '../../components/layouts/Navbar/NavBar';
 import Footer from '../../components/layouts/Footer/Footer';
-
 /* Components */
-import PrivatRoute from '../../components/PrivateRoute';
 
 /* Pages */
 import About from "../About/About";
@@ -28,6 +26,8 @@ import Authentification from "../Auth/Authentification";
 
 
 function App() {
+
+
 
   const  ScrollToTop= () => {
 
@@ -68,9 +68,11 @@ function App() {
           <Route path="/cart" element={< Cart />} />
           {/* Authentification */}
           <Route path="/authentification" element={< Authentification />} />
-          {/* Securised routes */}
+        
           {/* profile */}
-          <PrivatRoute path="/profile/:username" element={< Profile />} />
+   
+          <Route path="/profile/:username" element={< Profile />} />
+
             
 
           <Route path="*" element={< Home />}/>
