@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 /* redux */
 import { useDispatch } from 'react-redux'
-/* reducer */
+/* slice */
 import { save } from '../../store/slices/userSlice';
 /* utils */
 import { capitalizeFirst } from '../../utils/capitalizeFirst'

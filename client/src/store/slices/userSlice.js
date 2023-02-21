@@ -2,7 +2,6 @@ import { createSlice } from '@reduxjs/toolkit';
 
 /* if I found data in my local storage */
 const persistedState = localStorage.getItem('persist:root');
-console.log("persistedState : " , JSON.parse(persistedState))
 
 /* new user */
 const newUser = {
@@ -25,15 +24,16 @@ const userSlice = createSlice({
     name : "user",
     initialState,
     reducers : {
-        save(state, action) {
+        save(state, action) { // save the user in the state object and localStorage
             
             Object.assign(state, action.payload)
             
-
-            
         },
-        logOut(state, action) {
-            // erase everything
+        logOut(state) {
+            console.log("NEWUSER : ", newUser)
+            Object.assign(state, newUser)
+            console.log("persistedState : " , JSON.parse(persistedState))
+
         },
         upgradeProfile(state, action) {},
 
