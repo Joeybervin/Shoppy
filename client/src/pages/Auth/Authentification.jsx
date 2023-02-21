@@ -5,9 +5,10 @@ import { useDispatch } from 'react-redux'
 import { save } from '../../store/slices/userSlice';
 /* utils */
 import { capitalizeFirst } from '../../utils/capitalizeFirst'
+import { whiteSpace } from '../../utils/whiteSpace'
 /* icons */
 import { RiEyeLine, RiEyeOffLine } from "react-icons/ri";
-import { Navigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 /* component */
 import {BigButton} from '../../components/ui/Button'
 /* style */
@@ -20,6 +21,7 @@ export default function Authentification() {
     const [hasAnAccount, setHasAnAccount] = useState(false);
     const [error, setError] = useState(false);
     const dispatch = useDispatch();
+    const navigate = useNavigate()
 
 
     /* input */
@@ -43,26 +45,32 @@ export default function Authentification() {
     useEffect(() => {}, [firstNameErrorMessage,passwordConfirmation, password])
 
 
-    const handleSubmit = async (event) => {
 
-    event.preventDefault();
+    const handleSubmit = async (e) => {
 
-        if (hasAnAccount) {
-            console.log("MEMBRE")
-        }
-        else {
-            console.log("PAS MEMBRE")
-        }
-
-    }
-
-    const handdleSubmit = async (e) => {
-
+        e.preventDefault();
         setErrorMessage("") // clear error message
 
         /* sign-in method */
         if (hasAnAccount && email !== "" && password !== ""  && !error) {
-            console.log("on envoie")
+            const rawResponse = await fetch('/signIn', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({email: email, password: password})
+            })
+            let response = await rawResponse.json()
+            let userInfos = response.userInfos
+            if (response.connection) {
+                dispatch(save(userInfos)) // send database data to my reducer
+                navigate(`/profile/${capitalizeFirst(userInfos.firstName)}${capitalizeFirst(userInfos.lastName)}`)
+                e.target.reset() // reset all input
+            }
+            else if (response.error === 'password') {
+                setErrorMessage("le mot de passe ne correspond pas")
+            }
+            else {
+                setErrorMessage("le compte n'existe pas")
+            }
         }
         /* sign-up method */
         else if (!hasAnAccount && email !== "" && password !== "" && passwordConfirmation !== "" && firstName !== "" && lastName !== "" && !error) {
@@ -80,78 +88,54 @@ export default function Authentification() {
                 body: JSON.stringify(userInfos),
             })
             let response = await rawResponse.json()
-
-            if (response.userSaved) {
-                console.log("backend data : ",response.saveduserInfos)
-                // ! A REVOIR 
-                /*
-                if (l'utilisateur à déjà un panier) {
-                    navigate('/cart')
-                }
-                */
-                dispatch(save(response.saveduserInfos)) // send database data to my reducer
-                Navigate(`/profile/${capitalizeFirst(response.saveduserInfos.firstName)}${capitalizeFirst(response.saveduserInfos.lastName)}`)
-                
-
+            let userInfosSaved = response.userInfos
+            if (response.connection) {
+                dispatch(save(userInfosSaved)) // send database data to my reducer
+                navigate(`/profile/${capitalizeFirst(userInfosSaved.firstName)}${capitalizeFirst(userInfosSaved.lastName)}`)
+                e.target.reset() // reset all input
             }
             else if (response.hasAnAccount) {
-                setErrorMessage("L'adresse e-mail existe déjà")
+                setErrorMessage("L'adresse e-mail existe déjà dans notre base de données")
                 e.target.reset() // reset all input
                 setHasAnAccount(true) // change of form
             }
-            else if (error.true) {
-                setErrorMessage("Une erreur est apparue lors de la création de ton compte. Vérifie qu'il n'y ai pas d'erreur(s).")
+            else if (error) {
+                setErrorMessage("Assure toi que tous les champs obligatoires soient bien remplis")
 
             }
         }
         else {
-            setErrorMessage("Une erreur est apparue lors de la création de ton compte. Vérifie qu'il n'y ai pas d'erreur(s).")
+            setErrorMessage("Assure-toi que tous les champs soient bien remplis")
         }
-
-
-        /* Assure-toi que ton adresse e-mail et ton mot de passe sont corrects */
-        
-
     }
 
-    /* find white space in the input */
-    function hasWhiteSpace(s) {
-        return (/\s/).test(s);
-    }
 
     /* pre submit validator */
     const handleInputChange = (e, setValue, setErrorMessage, label) => {
         
         setValue(e.target.value)
         setErrorMessage("") // Clear error message
+        const invalid = whiteSpace(e.target.value) // Check if any white space was typed
+        setError(false) // clear the status of the form => no errors waiting for the next submit
 
-        setError(false)
+        if (invalid) {
+            setErrorMessage(`Un espace s'est infiltrer`)
+            setError(true)
+        }
 
         if (!hasAnAccount) {
-            if (label !== "passwordConfirmation") {
 
-                if (label === "password") {
-                    setPasswordConfirmationErrorMessage("les mots de passe ne sont pas identiques")
-                    if (e.target.value === passwordConfirmation) setPasswordConfirmationErrorMessage("")
-
-                }
-                const invalid = hasWhiteSpace(e.target.value) // Validate input
-                if (invalid) {
-                    setErrorMessage(`Une erreur est survenue dans le ${label}`) // Set error message
-                    setError(true)
-                }
-
-            } else {
-                
-                if (e.target.value !== password) {
-                    setError(true)
-                    setPasswordConfirmationErrorMessage("les mots de passe ne sont pas identiques")
-                }
-
+            if (label === "password") {
+                setPasswordConfirmationErrorMessage("les mots de passe ne sont pas identiques")
+                if (e.target.value === passwordConfirmation) setPasswordConfirmationErrorMessage("")
+            }
+            
+            if (label === "passwordVerification" && e.target.value !== password) {
+                setError(true)
+                setPasswordConfirmationErrorMessage("les mots de passe ne sont pas identiques")
             }
 
         }
-        
         
     }
 
@@ -162,7 +146,7 @@ export default function Authentification() {
         <StyledAuthentification >
             <div>
                 <p>{!hasAnAccount ? "Créer un compte" : "Connexion"}</p>
-                <form onSubmit={(e) => {handleSubmit(e)}}>
+                <form method="POST" noValidate onSubmit={(e) => {handleSubmit(e)}}>
 
                     {/* server error message*/}
                     {errorMessage}
@@ -176,7 +160,7 @@ export default function Authentification() {
                         name="firstName"
                         type="text"
                         value={firstName}
-                        onChange={(e) => handleInputChange(e, setFirstName, setFirstNameErrorMessage, "prénom")}/>
+                        onChange={(e) => handleInputChange(e, setFirstName, setFirstNameErrorMessage, "firstName")}/>
                     <p>{firstNameErrorMessage}</p>
 
                     {/* LASTNAME */}
@@ -187,22 +171,24 @@ export default function Authentification() {
                         name="lastName"
                         type="text"
                         value={lastName}
-                        onChange={(e) => handleInputChange(e, setLastName, setLastNameErrorMessage, "nom")}/>
+                        onChange={(e) => handleInputChange(e, setLastName, setLastNameErrorMessage, "lastName")}/>
                     <p>{lastNameErrorMessage}</p>
 
                     {/* EMAIL */}
                     <input 
                     required
+                    autoComplete="username"
                         placeholder="E-mail"
                         name="email"
                         type="email"
                         value={email}
-                        onChange={(e) => handleInputChange(e, setEmail, setEmailErrorMessage, "mail")}/>
+                        onChange={(e) => handleInputChange(e, setEmail, setEmailErrorMessage, "email")}/>
                     <p>{emailErrorMessage}</p>
 
                     {/* PASSWORD */}
                     <input 
                     required
+                    autoComplete="new-password"
                         placeholder="Mot de passe"
                         name="password"
                         type="password"
@@ -214,12 +200,13 @@ export default function Authentification() {
                     {/* PASSWORD CONFIRMATION */}
                     <input
                     required
+                    autoComplete="new-password"
                         className={!hasAnAccount ? "" : "member"}
                         placeholder="Confirmer le mot de passe"
                         name="passwordConfirmation"
                         type="password"
                         value={passwordConfirmation}
-                        onChange={(e) => handleInputChange(e, setPasswordConfirmation, setPasswordConfirmationErrorMessage, "passwordConfirmation")}/>
+                        onChange={(e) => handleInputChange(e, setPasswordConfirmation, setPasswordConfirmationErrorMessage, "passwordVerification")}/>
                     <p>{passwordConfirmationErrorMessage}</p>
 
                     {/* ADDRESS */}
@@ -242,7 +229,7 @@ export default function Authentification() {
 
                     
                     
-                    <BigButton onClick={() => {handdleSubmit()}}>Connexion</BigButton>
+                    <BigButton type="submit">Connexion</BigButton>
 
                     <p
                     onClick={() => setHasAnAccount(!hasAnAccount)}>{hasAnAccount ? "Pas encore membre ? Créer un compte" : "Déjà membre ? cliquer ici"}</p>
