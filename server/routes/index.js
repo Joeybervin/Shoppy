@@ -26,7 +26,7 @@ const sendUserInfos = (data, res) => {
 
 }
 
-/* Connection to a account */
+/* Connection to an account */
 router.post('/signUp', async function(req, res, next) {
 
     const userInfos = req.body
@@ -73,7 +73,7 @@ router.post('/signUp', async function(req, res, next) {
 
 });
 
-/* Create a account */
+/* Create an account */
 router.post('/signIn', async function(req, res, next) {
 
     const email = req.body.email
@@ -99,6 +99,30 @@ router.post('/signIn', async function(req, res, next) {
     else { // the user wasn't found
         res.json({error: 'email'})
     }
+
+});
+
+/* update an account */
+router.put('/updateProfile', async function(req, res, next) {
+    const userUpdatedData = req.body.formData ;
+    const userEmail = req.body.userEmail
+
+    await userModel.updateOne({ email: userEmail},
+        { $set : {
+            firstName : userUpdatedData.firstName,
+            lastName : userUpdatedData.lastName,
+            email : userUpdatedData.email,
+            address : userUpdatedData.address,
+            city : userUpdatedData.city
+        } }
+        )
+
+    const updatedUser = await userModel.findOne({email: userUpdatedData.email})
+
+    console.log("userUpdated : ", updatedUser);
+
+    sendUserInfos(updatedUser, res)
+
 
 });
 

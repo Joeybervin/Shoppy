@@ -3,7 +3,9 @@ import React, {useEffect, useState} from 'react'
 import { useSelector, useDispatch } from "react-redux"
 import { useNavigate } from "react-router-dom";
 /* slice */
-import { logOut} from '../../store/slices/userSlice'
+import { logOut, save} from '../../store/slices/userSlice'
+/* utils */
+import { whiteSpace } from '../../utils/whiteSpace'
 /* components */
 import  BadWay  from '../../components/BadWay' ;
 import { BigButton } from '../../components/ui/Button';
@@ -29,10 +31,7 @@ export default function Profile() {
 
 
   const [isActive, setIsActive] = useState(false);
-  /* input */
   const [formData, setFormData] = useState({...userInitialInfos});
-
-  /* errors messages */
   const [errorMessage, setErrorMessage] = useState("")
 
 
@@ -41,10 +40,17 @@ export default function Profile() {
       navigate("/authentification")
     }
   })
+  useEffect(() => {}, [formData.firstName,formData.lastName, formData.email])
 
 
   const handleInputChange = (event) => {
+
+    const invalidWhitespace = whiteSpace(event.target.value) // Check if any white space was typed
+    
     const { name, value } = event.target;
+    if ((name === "firstName" || name === "lastName") && invalidWhitespace) {
+      setErrorMessage(`Un espace s'est infiltrer`)
+    }
     setFormData((prevState) => ({
       ...prevState,
       [name]: value,
@@ -52,18 +58,21 @@ export default function Profile() {
   };
 
   const handleSubmit = async (e) => {
-    const rawResponse = fetch('/updateProfile', {
-      method : 'UPDATE',
-      header : 'Content-Type/json',
-      body : JSON.stringify(formData)
+    e.preventDefault();
+
+    const rawResponse = await fetch('/updateProfile', {
+      method : 'PUT',
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({formData , userEmail :user.email}),
     })
+    const response = await rawResponse.json()
+    dispatch(save(response.userInfos))
 
   }
 
   const handleSubmitCancel = () => {
-    
-      setFormData({...userInitialInfos}); // change the inputs values for initil values
-      setIsActive(!isActive) // close the update section
+    setFormData({...userInitialInfos}); // change the inputs values for initil values
+    setIsActive(!isActive) // close the update section
   }
 
   
@@ -94,9 +103,10 @@ export default function Profile() {
         {/*  FORP  => update user profile + order */}
         <div>
 
+        {/* Form to update the user profile */}
         <section className="update">
 
-        <form onSubmit={(e) => {handleSubmit(e)}}>
+        <form method="PUT" noValidate onSubmit={(e) => {handleSubmit(e)}}>
 
         {/* server error message*/}
         {errorMessage}
@@ -152,14 +162,47 @@ export default function Profile() {
 
         </form>
 
-        <div onClick={() => {setIsActive(!isActive)}} className={`${ !isActive ? 'isActive' : null} showAllUpdateSection`}><HiChevronDown /></div>
+        <div onClick={() => {setIsActive(!isActive)}} className={`${ isActive ? 'isActive' : null} showAllUpdateSection`}><HiChevronDown /></div>
 
+        </section>
+
+        <section className="wishlist">
+          <p>Wishlist</p>
+          {user.wishlist.length === 0 ? 
+          <div className='emptyList'>
+            <p>Vous n'avez encore rien mis dans votre wishlist</p>
+          </div>
           
-
+          :
+          <div>
+            {user.wishlist.map((product, index) => {
+              return (
+                <div>
+                  produit
+                </div>
+              )
+            })}
+          </div>}
           
         </section>
 
         <section className="order">
+          <p>Tous vos achats</p>
+          {user.orders.length === 0 ? 
+          <div className='emptyList'>
+            <p>Vous n'avez encore effectué aucune commande</p>
+          </div>
+          
+          :
+          <div>
+            {user.orders.map((order, index) => {
+              return (
+                <div>
+                  commande
+                </div>
+              )
+            })}
+          </div>}
 
         </section>
 

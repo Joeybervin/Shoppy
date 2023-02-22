@@ -114,10 +114,10 @@ export default function Authentification() {
         
         setValue(e.target.value)
         setErrorMessage("") // Clear error message
-        const invalid = whiteSpace(e.target.value) // Check if any white space was typed
+        const invalidWhitespace = whiteSpace(e.target.value) // Check if any white space was typed
         setError(false) // clear the status of the form => no errors waiting for the next submit
 
-        if (invalid) {
+        if (invalidWhitespace) {
             setErrorMessage(`Un espace s'est infiltrer`)
             setError(true)
         }
