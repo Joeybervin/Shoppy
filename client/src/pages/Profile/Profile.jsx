@@ -178,7 +178,7 @@ export default function Profile() {
             {user.wishlist.map((product, index) => {
               return (
                 <div>
-                  produit
+                  {product}
                 </div>
               )
             })}

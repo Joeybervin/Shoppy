@@ -25,25 +25,24 @@ const userSlice = createSlice({
     initialState,
     reducers : {
         save(state, action) { // save the user in the state object and localStorage
-            
             Object.assign(state, action.payload)
-            
         },
         logOut(state) {
-            console.log("NEWUSER : ", newUser)
             Object.assign(state, newUser)
-            console.log("persistedState : " , JSON.parse(persistedState))
-
         },
-        upgradeProfile(state, action) {},
-
-        addProductToWishlist(state, action){},
-        removeProducFromWishlist(state){},
+        addProductToWishlist(state, action){
+            console.log(action.payload)
+            state.wishlist.push(action.payload)
+            console.log(state.wishlist)
+        },
+        removeProducFromWishlist(state, action){
+            state.wishlist = state.wishlist.filter(productRef => productRef !== action.payload)
+        },
 
         orderProduct(state, action) {},
     }
 })
 
-export const {save, logOut, upgradeProfile, addProductToWishlist, removeProducFromWishlist, orderProduct} = userSlice.actions;
+export const {save, logOut, addProductToWishlist, removeProducFromWishlist, orderProduct} = userSlice.actions;
 
 export default userSlice.reducer

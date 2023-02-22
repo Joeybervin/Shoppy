@@ -1,6 +1,12 @@
 /* hooks */
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+
+import { useSelector, useDispatch } from "react-redux";
+/* slice */
+import { addProductToWishlist, removeProducFromWishlist } from '../../store/slices/userSlice';
+/* hooks */
+import  fetchData  from '../../utils/fetchData'
 
 /* component */
 import { BigButton, SmallButton } from "../../components/ui/Button";
@@ -21,24 +27,30 @@ import ProductStyle from "./product.style";
 export default function Product() {
     /* hooks */
     const { refProduct } = useParams();
+    const dispatch = useDispatch();
+
 
     /* variables */
     let data = productData;
     let product = data.find((product) => product.ref === refProduct);
+    let user = useSelector(state => state.user);
     let starsList = [];
     let productSizesList = []
+    let inUserWishList = user.wishlist.includes(refProduct);
+
 
     /* states */
     const [like, setLike] = useState(false); /* Change if the product is in the user wishlist */
     const [detailSelected, setDetailSelected] = useState("description");
     const [sizeSelected, setSizeSelected] = useState(null);
-    console.log(sizeSelected)
+
+    useEffect(() => {}, [user])
 
     /* -------------------------------------------------------------------------------------------------------------------------------------- */
     /* ----------  FUNCTIONS */
     /* -------------------------------------------------------------------------------------------------------------------------------------- */
 
-    let productSizes = (category) => {
+    const productSizes = (category) => {
         if (category === "shoes") {
             productSizesList = ["36", "37", "38", "39", "40", "41", "42", "43"];
         }
@@ -51,7 +63,7 @@ export default function Product() {
         return productSizesList
     }
     /* calculate the number of stars to put "full", "half", "empty" */
-    let stars = (note) => {
+    const stars = (note) => {
         let minimum = Math.floor(Number(note));
  
         for (let i = 0; i < 5; i++) {
@@ -73,6 +85,28 @@ export default function Product() {
         }
         return starsList;
     };
+
+    const addToWishList = async () => {
+        if (user.token !== "" && !inUserWishList) {
+            const response = await  fetchData('/addToWishlist', {email : user.email, productref : refProduct}, 'PUT')
+            if (response.status === "success") {
+                setLike(!like)
+                dispatch(addProductToWishlist(refProduct))
+                console.log("ADDING : ", user.wishlist)
+            }
+
+        }
+        else if (user.token !== "" && inUserWishList) {
+            const response = await  fetchData('/removeFromWishlist', {email : user.email, productref : refProduct}, 'PUT')
+            if (response.status === "success") {
+                setLike(false)
+                dispatch(removeProducFromWishlist(refProduct))
+                console.log("REMOVING : ",user.wishlist)
+            }
+        }
+    }
+
+
 
 
 
@@ -100,18 +134,16 @@ export default function Product() {
                     </div>
 
                     {/* WISHLIST */}
-                    <div className="like">
-                        {like === true ? (
+                    <div onClick={() => addToWishList()} className="like">
+                        {like || inUserWishList ? (
                             <BsHeartFill
                                 size="1.9rem"
                                 style={{ color: "red" }}
-                                onClick={() => setLike(false)}
                             />
                         ) : (
                             <BsHeart
                                 size="1.5rem"
                                 style={{ color: "red" }}
-                                onClick={() => setLike(!like)}
                             />
                         )}
                     </div>

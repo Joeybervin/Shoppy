@@ -126,4 +126,44 @@ router.put('/updateProfile', async function(req, res, next) {
 
 });
 
+router.put('/addToWishlist', async function(req, res, next) {
+    let prductRef = req.body.productref
+    let userEmail = req.body.email
+
+    const updateWishlist = await userModel.updateOne({ email: userEmail},
+        { $addToSet : {
+            wishlist: prductRef
+        } }
+        )
+
+    if (updateWishlist.modifiedCount === 1) {
+        res.json({status : "success"})
+    }
+    else {
+        res.json({status : "fail"})
+    }
+
+})
+
+router.put('/removeFromWishlist', async function(req, res, next) {
+    let prductRef = req.body.productref
+    let userEmail = req.body.email
+
+    const updateWishlist = await userModel.updateOne({ email: userEmail},
+        { $pull : {
+            wishlist: prductRef
+        } }
+        )
+
+    if (updateWishlist.modifiedCount === 1) {
+        res.json({status : "success"})
+    }
+    else {
+        res.json({status : "fail"})
+    }
+
+})
+
+
+
 module.exports = router;
