@@ -1,14 +1,13 @@
 /* Data */
 import productsData from "../../data/products.json";
 /* Hooks */
-import { useState, useEffect, useMemo} from "react";
+import { useState} from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { UseDispatch, useSelector} from 'react-redux'
 /* utils */
 import shuffle from '../../utils/shuffle';
 /* components */
 import { ShopPageProductCard as ProductCard } from "../../components/ui/ProductCard";
-import Select from "../../components/ui/Select";
+import {Select} from "../../components/ui/Select";
 /* icons */
 import { HiOutlineChevronDown, HiOutlineFilter } from "react-icons/hi";
 /* style */
@@ -36,11 +35,6 @@ export default function Shop() {
     const [productsSortFilter, setProductSortFilter] = useState() // Filter 2 => organising products list
     const [productsPriceFilter, setProductsPriceFilter] = useState() // filter 3  => price
     const [productsList, setProductsList] = useState(category === "Tout" ? shuffleData : data.filter((data) => data.category === category));
-
-
-
-
-
 
     /* -------------------------------------------------------------------------------------------------------------------------------------- */
     /* ----------  FUNCTIONS */

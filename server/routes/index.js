@@ -10,6 +10,22 @@ const passwordHashRound = 10;
 
 const sendUserInfos = (data, res) => {
 
+    let userMessages = data.messages
+    let userMessagesInfos = [];
+
+    userMessages.map((message) => {
+        userMessagesInfos.push({
+            order_id : message.order_id,
+            subject : message.subject,
+            title: message.title,
+            message: message.message,
+            insert_date : message.insert_date,
+            message_id: message.message_id
+        })
+    })
+    console.log("userMessagesInfos : ", userMessagesInfos)
+
+
     let userInfos = {
 
         email: data.email,
@@ -20,6 +36,7 @@ const sendUserInfos = (data, res) => {
         wishlist : data.wishlist,
         orders : data.orders,
         insert_date : data.insert_date,
+        messages : userMessagesInfos,
         token : data.token
     }
     
@@ -42,7 +59,7 @@ router.post('/signUp', async function(req, res, next) {
     /* backend check if any typos get is way thought here */
     if (!databaseAccountsList && userInfos.email !== "" && userInfos.password !== "" && userInfos.firstName !== "" && userInfos.lastName !== "") {
         
-        var newUser = new userModel({
+        let newUser = new userModel({
             email: userInfos.email,
             password: hash,
             firstName : userInfos.firstName,
@@ -83,13 +100,16 @@ router.post('/signIn', async function(req, res, next) {
 
 
     //... fetch user from a db etc.
-    const databaseUser = await userModel.findOne({ email: email})
+    const databaseUser = await userModel.findOne({ email: email}).populate("messages")
+
+    console.log(databaseUser)
 
     if (databaseUser) { // if the email is found in the database
 
         const passwordMatch = await bcrypt.compare(password, databaseUser.password);
 
         if (passwordMatch) { // the user were found
+
             sendUserInfos(databaseUser, res)
         }
         else { // user were found but the password doesn't match

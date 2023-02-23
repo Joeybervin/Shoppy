@@ -11,9 +11,8 @@ import { whiteSpace } from '../../utils/whiteSpace'
 /* components */
 import  BadWay  from '../../components/BadWay' ;
 import { BigButton } from '../../components/ui/Button';
-
 /* icons */
-import { HiOutlineLocationMarker, HiChevronDown } from "react-icons/hi";
+import { HiOutlineLocationMarker, HiChevronDown, HiOutlineChatAlt } from "react-icons/hi";
 /* style */
 import StyledProfile from './profile.style';
 
@@ -37,12 +36,12 @@ export default function Profile() {
   const [errorMessage, setErrorMessage] = useState("")
 
 
-  useEffect(() => {
+  useEffect(() => { // redirect of the user is not connected
     if (!user.token) {
       navigate("/authentification")
     }
   })
-  useEffect(() => { // charge yhe user wishlist infos
+  useEffect(() => { // charge the user wishlist infos
     let wishlistData = api.filter(product => user.wishlist.includes(product.ref))
     setUserWishlist(wishlistData)
   }, [user.wishlist])
@@ -97,10 +96,16 @@ export default function Profile() {
           <p>{user.firstName} {user.lastName}</p>
 
           {/* ADRESS */}
-          <div>
+          <div className='address'>
             <p><HiOutlineLocationMarker /> Adresse de livraison :</p>
             <p>{user.address ||" non renseigné"}</p>
             <p>{user.city || "non renseigné"}</p>
+          </div>
+
+          <div className="messsages">
+            <HiOutlineChatAlt />
+            <p>Nos échanges</p>
+            <p>{user.messages.length}</p>
           </div>
 
         </section>

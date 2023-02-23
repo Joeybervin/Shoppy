@@ -5,6 +5,7 @@ export const StyledFooter = styled.footer `
 
 width: 100vw;
 background-color : ${(props) => props.theme.colors.primaryAlpha};
+margin-top : 100px;
 
 > div {
     margin : 0 auto;

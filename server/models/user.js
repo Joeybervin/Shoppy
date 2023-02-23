@@ -11,6 +11,7 @@ var usersSchema = mongoose.Schema({
     orders : Array ,
     insert_date : Date,
     token: String,
+    messages : [{type : mongoose.Schema.Types.ObjectId, ref: 'messages'}]
 
 })
 

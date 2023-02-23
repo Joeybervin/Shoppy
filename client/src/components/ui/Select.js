@@ -18,33 +18,30 @@ const StyleSelect = styled.div`
         text-align : center
     }
 
-
-
-
 `
 
-const Select = ({name, label,optionsList, value , ...props} ) => {
+const Select = ({ name, label, optionsList, value, ...props }) => {
     return (
-        <StyleSelect>
-           
+        <StyleSelect className={props.className}>
+
             <label htmlFor={name}>{label}</label>
             <select name={name} id={name} value={value} onChange={props.onChange}>
-            {props.empty ? <option value="">--Choisissez...-</option> : null }
-            {optionsList.map((option, index) => {
-                if (option === props.category) {
-                    return <option key={index} value={option} selected >{option}</option>
-                }
-                else {
-                    return (
-                        <option key={index} value={option} >{option}</option>
-                            )
-                }
-                
-            })}
+                {props.empty ? <option value="">--Choisissez...-</option> : null}
+                {optionsList.map((option, index) => {
+                    if (option === props.category) {
+                        return <option key={index} value={option} selected >{option}</option>
+                    }
+                    else {
+                        return (
+                            <option key={index} value={option} >{option}</option>
+                        )
+                    }
+
+                })}
             </select>
 
         </StyleSelect>
     )
 };
 
-export default Select
+export { Select }

@@ -15,6 +15,7 @@ const newUser = {
         orders : [] ,
         insert_date : "",
         token: "",
+        messages: [],
     
 }
 
@@ -38,11 +39,16 @@ const userSlice = createSlice({
         removeProducFromWishlist(state, action){
             state.wishlist = state.wishlist.filter(productRef => productRef !== action.payload)
         },
+        saveMessage(state, action) {
+            const messageToSave = action.payload
+            
+            state.messages.push(messageToSave)
+        },
 
         orderProduct(state, action) {},
     }
 })
 
-export const {save, logOut, addProductToWishlist, removeProducFromWishlist, orderProduct} = userSlice.actions;
+export const {save, logOut, addProductToWishlist, removeProducFromWishlist, saveMessage, orderProduct} = userSlice.actions;
 
 export default userSlice.reducer
