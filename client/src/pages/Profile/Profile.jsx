@@ -1,5 +1,7 @@
+/* API */
+import api from '../../data/products.json';
 import React, {useEffect, useState} from 'react'
-
+/* librairies */
 import { useSelector, useDispatch } from "react-redux"
 import { useNavigate } from "react-router-dom";
 /* slice */
@@ -12,7 +14,6 @@ import { BigButton } from '../../components/ui/Button';
 
 /* icons */
 import { HiOutlineLocationMarker, HiChevronDown } from "react-icons/hi";
-
 /* style */
 import StyledProfile from './profile.style';
 
@@ -27,7 +28,8 @@ export default function Profile() {
     email: `${user.email || ''}`,
     address : `${user.address || ''}`,
     city: `${user.city || ''}`,
-  }
+  };
+  let [userWishlist, setUserWishlist] = useState([])
 
 
   const [isActive, setIsActive] = useState(false);
@@ -40,7 +42,10 @@ export default function Profile() {
       navigate("/authentification")
     }
   })
-  useEffect(() => {}, [formData.firstName,formData.lastName, formData.email])
+  useEffect(() => { // charge yhe user wishlist infos
+    let wishlistData = api.filter(product => user.wishlist.includes(product.ref))
+    setUserWishlist(wishlistData)
+  }, [user.wishlist])
 
 
   const handleInputChange = (event) => {
@@ -94,8 +99,8 @@ export default function Profile() {
           {/* ADRESS */}
           <div>
             <p><HiOutlineLocationMarker /> Adresse de livraison :</p>
-            <p>{user.address}</p>
-            <p>{user.city}</p>
+            <p>{user.address ||" non renseigné"}</p>
+            <p>{user.city || "non renseigné"}</p>
           </div>
 
         </section>
@@ -168,17 +173,17 @@ export default function Profile() {
 
         <section className="wishlist">
           <p>Wishlist</p>
-          {user.wishlist.length === 0 ? 
+          {userWishlist.length === 0 ? 
           <div className='emptyList'>
             <p>Vous n'avez encore rien mis dans votre wishlist</p>
           </div>
           
           :
           <div>
-            {user.wishlist.map((product, index) => {
+            {userWishlist.map((product, index) => {
               return (
-                <div>
-                  {product}
+                <div key={index}>
+                  {product.productName}
                 </div>
               )
             })}
@@ -197,7 +202,7 @@ export default function Profile() {
           <div>
             {user.orders.map((order, index) => {
               return (
-                <div>
+                <div key={index}>
                   commande
                 </div>
               )

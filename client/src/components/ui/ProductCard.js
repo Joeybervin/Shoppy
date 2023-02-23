@@ -56,11 +56,12 @@ const HomePageProductCard = ({ imgSrc, imgAlt, productName, productPrice, ...pro
 /* _________ SHOP PAGE */
 const ShopPageProductCardStyle = styled.div`
 
-    border-radius: 5%;
-    width: clamp(135px, 25vw, 350px);
+    border-radius: 15px;
+    width: clamp(140px, 40vw, 197px);
+    min-height: 350px;
     display: flex;
     flex-direction : column;
-    margin : 15px 12px;
+    margin : 10px auto ;
     background-color: #FFFFFF;
 
     &:hover {
@@ -75,7 +76,7 @@ const ShopPageProductCardStyle = styled.div`
         height: 100%;
         width : 100%;
         object-fit: fit;
-        border-radius : 5% 5% 0 0;
+        border-radius : 15px 15px 0 0;
         border-bottom : 0.5px solid black;
     }
 
@@ -103,12 +104,16 @@ const ShopPageProductCardStyle = styled.div`
     .productDetails > div div {
         width : 100%;
         display: flex;
-        justify-content: space-around;
+        justify-content: space-evenly;
         align-items: center;
         margin : 5px 0;
     }
 
     @media screen and (min-width : 768px) {
+
+    
+        width: clamp(180px, 25vw, 295px);
+
         .productDetails > p {
             font-size: ${(props) => props.theme.fontSize.paragraphe.regular};
     
@@ -131,7 +136,7 @@ const ShopPageProductCardStyle = styled.div`
 
 const ShopPageProductCard = ({ imgSrc, imgAlt, productName, productPrice, ...props }) => {
     return (
-        <ShopPageProductCardStyle onClick={props.onClick} >
+        <ShopPageProductCardStyle className={props.className} onClick={props.onClick} >
 
             {/* product image */}
             <div className="productImage">
@@ -146,7 +151,7 @@ const ShopPageProductCard = ({ imgSrc, imgAlt, productName, productPrice, ...pro
                         <img src="https://cdn-icons-png.flaticon.com/512/522/522210.png" alt="euro" />
                         <p>{productPrice}</p>
                     </div>
-                    <BigButton primary>Acheter</BigButton>
+                    <BigButton onClick={props.onClick} primary>Acheter</BigButton>
                 </div>
             </div>
 

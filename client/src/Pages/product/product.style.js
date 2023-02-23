@@ -78,8 +78,8 @@ const ProductStyle = styled.div`
     }
 
 /* part : DETAILS */
-    .details .radioInputGroup {
-        max-width : 500px;
+    .details .radioButtonGroup {
+        
         display: flex;
     }
     .detailInput:checked + .detailLabel {
@@ -90,7 +90,7 @@ const ProductStyle = styled.div`
         color : ${(props) => props.theme.colors.secondaryTextColor};
         font-size : ${(props) => props.theme.fontSize.paragraphe.small};
     }
-    .details .radioInputGroup + div {
+    .details .radioButtonGroup + div {
         max-width : 500px;
         margin : 15px 0;
         min-height : 100px;
@@ -99,7 +99,7 @@ const ProductStyle = styled.div`
         -ms-overflow-style: none;  /* IE and Edge */
         scrollbar-width: none;  /* Firefox */
     }
-    .details .radioInputGroup + div::-webkit-scrollbar {
+    .details .radioButtonGroup + div::-webkit-scrollbar {
         display: none; /* Hide scrollbar for Chrome, Safari and Opera */
     }
 
@@ -113,6 +113,30 @@ const ProductStyle = styled.div`
     .orderDetails .size {
         margin : 15px 0;
     }
+    .size .radioButtonGroup {
+        max-width : 430px;
+        display:  flex;
+        flex-wrap : wrap;
+        box-sizing : border-box;
+        gap : 5px;
+        margin-bottom : 45px;
+    }
+    .sizeButton + .sizeLabel {
+        background-color: ${(props) => props.theme.colors.primary};
+        color : ${(props) => props.theme.colors.white};
+        font-weight: ${(props) => props.theme.fontWeight.bold};
+        border-radius: 12px;
+    }
+    .sizeButton:checked + .sizeLabel {
+        background-color: ${(props) => props.theme.colors.primaryAlpha};
+    }
+    .sizeLabel {
+        
+    }
+
+
+
+
     .sizeButton:focus, .sizeButton:active   {
         background-color: ${(props) => props.theme.colors.secondary};
     }
@@ -149,6 +173,7 @@ const ProductStyle = styled.div`
         .productDetails  {
             padding-left : 25px;
             max-width : 562px;
+           
         }
 
     }

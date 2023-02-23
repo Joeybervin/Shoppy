@@ -1,16 +1,17 @@
 /* hooks */
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 
 import { useSelector, useDispatch } from "react-redux";
+import  { addToCart }  from '../../store/slices/cartSlice' ;
 /* slice */
 import { addProductToWishlist, removeProducFromWishlist } from '../../store/slices/userSlice';
 /* hooks */
 import  fetchData  from '../../utils/fetchData'
 
 /* component */
-import { BigButton, SmallButton } from "../../components/ui/Button";
-import { RadioInput, RadioLabel } from "../../components/ui/Input";
+import { BigButton as Button } from "../../components/ui/Button";
+import { RadioInput as Radio, RadioLabel } from "../../components/ui/Input";
 import Badge from "../../components/ui/Badge";
 import { ThumbsGalleryLoopPart } from "../../components/Swiper";
 
@@ -28,6 +29,7 @@ export default function Product() {
     /* hooks */
     const { refProduct } = useParams();
     const dispatch = useDispatch();
+    const navigate = useNavigate();
 
 
     /* variables */
@@ -43,6 +45,8 @@ export default function Product() {
     const [like, setLike] = useState(false); /* Change if the product is in the user wishlist */
     const [detailSelected, setDetailSelected] = useState("description");
     const [sizeSelected, setSizeSelected] = useState(null);
+
+
 
     useEffect(() => {}, [user])
 
@@ -104,11 +108,27 @@ export default function Product() {
                 console.log("REMOVING : ",user.wishlist)
             }
         }
-    }
+    };
 
+    const addProductToCart = (event) => {
 
+        const productInfos = {
+            ref : product.ref ,
+            productName : product.productName ,
+            color : product.color ,
+            price : product.price  ,
+            productImage : product.productImage[0] ,
+            productSize : sizeSelected ,
+            quantity : 1,
+        }
 
+        console.log(productInfos)
 
+        dispatch(addToCart(productInfos)) // send to slice the product to add to cart
+        if (event === "buy now") {
+            navigate("/cart") // redirect the user to the cart page
+        }
+    };
 
     return (
         <ProductStyle>
@@ -128,7 +148,7 @@ export default function Product() {
 
                     {/* BADGES */}
                     <div className="badges">
-                        {product.badges.map((badge, index) => {
+                        {product?.badges?.map((badge, index) => {
                             return <Badge key={index}>{badge}</Badge>;
                         })}
                     </div>
@@ -177,11 +197,11 @@ export default function Product() {
 
                 {/* details */}
                 <div className="details">
-                    <div className="radioInputGroup">
+                    <div className="radioButtonGroup">
                         {["Description","Marque","Infos+"].map((el, index) => {
                                 return (
                                     <div key={index}>
-                                        <RadioInput
+                                        <Radio
                                             checked={detailSelected === el.toLowerCase()}
                                             onChange={(e) => setDetailSelected(e.target.value)}
                                             className="detailInput"
@@ -211,20 +231,22 @@ export default function Product() {
                     {/* size */}
                     <div className="size">
                         <p>Taille : <span>Sélectionner  une taille</span></p>
-                        <div>
+                        <div className="radioButtonGroup">
                             {productSizes(product.category).map((size, index) => {
                                 return (
-                                    <SmallButton 
-                                    primary
-                                    className="sizeButton"
-                                        key={index}
+                                    <div key={index}>
+                                    <Radio
                                         checked={sizeSelected === size}
-                                        onClick={(e) => setSizeSelected(e.target.value)}
+                                        onChange={(e) => setSizeSelected(e.target.value)}
+                                        className="sizeButton"
                                         value={size}
                                         name="size"
-                                    >
-                                    {size}
-                                    </SmallButton>
+                                        id={"size"+index}
+                                    />
+                                    <RadioLabel key={index} htmlFor={"size"+index} className="sizeLabel">
+                                        {size}
+                                    </RadioLabel>
+                                </div>
                                 )
                             })}
                         </div>
@@ -233,8 +255,8 @@ export default function Product() {
 
                 <div className="cart">
                     
-                        <BigButton> Acheter </BigButton>
-                        <BigButton primary> Ajouter <BsCartPlus /></BigButton>
+                        <Button disabled={sizeSelected === null} onClick={() => addProductToCart("buy now")}> Acheter </Button>
+                        <Button disabled={sizeSelected === null} primary onClick={() => addProductToCart("add to cart")}> Ajouter <BsCartPlus /></Button>
                     
                 </div>
             </div>

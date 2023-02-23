@@ -22,6 +22,8 @@ export const theme = {
             normal: '#7777FF',
             hover : '#EC8C97' ,
             active: "#E07987",
+            disabledDark : "#777777",
+            disabledLight : "#C7C7C7",
             focus: ""
         },
         /* notifications */

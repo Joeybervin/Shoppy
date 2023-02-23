@@ -24,10 +24,13 @@ const SmallButton = styled.button`
   &:active {
     background-color: ${(props) => props.theme.colors.buttonsStateColors.active};
   }
+  &:disabled {
+    background-color: ${(props) => props.primary ? props.theme.colors.buttonsStateColors.disabledDark : props.theme.colors.buttonsStateColors.disabledLight};
+  }
 `;
 
 const BigButton = styled(SmallButton)`
-  padding: 9px 16px;
+  padding: 8px 15px;
 `;
 
 export {SmallButton, BigButton};

@@ -12,16 +12,45 @@ const cartSlice = createSlice({
     initialState,
     reducers : {
         addToCart(state, action) {
-            //add product to the cart
+
+            const productToAdd = action.payload
+            const alreadyInTheCart = state.find(product => product.ref === productToAdd.ref && product.productSize === productToAdd.productSize)
+
+            if (alreadyInTheCart !== undefined) {
+                state.map( product => {
+
+                    if(product.ref === productToAdd.ref && product.productSize === productToAdd.productSize) {
+                        product.quantity += 1
+                    }
+                    return product
+                })
+            }
+            else {
+                state.push(action.payload)
+            }
+            
         },
         removeFromCart(state, action) {
-            // erase everything
+            state.splice(action.payload, 1)
         },
-        clearCart(state, action) {
-            // erase everything
+        clearCart(state) {
+            state.splice(0, state.length)
         },
         updateCart(state, action) {
-            // update the cart
+            const index = action.payload.index;
+            const event = action.payload.event;
+            const productQuantity = action.payload.productQuantity;
+
+            if (event === "plus") {
+                state[index].quantity += 1
+            }
+            else if (productQuantity === 1) {
+                state.splice(index, 1)
+            }
+            else {
+                state[index].quantity -= 1
+                
+            }
         },
     }
 })

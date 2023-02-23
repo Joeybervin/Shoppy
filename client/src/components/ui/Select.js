@@ -31,9 +31,15 @@ const Select = ({name, label,optionsList, value , ...props} ) => {
             <select name={name} id={name} value={value} onChange={props.onChange}>
             {props.empty ? <option value="">--Choisissez...-</option> : null }
             {optionsList.map((option, index) => {
-                return (
-                    <option key={index} value={option}>{option}</option>
-                        )
+                if (option === props.category) {
+                    return <option key={index} value={option} selected >{option}</option>
+                }
+                else {
+                    return (
+                        <option key={index} value={option} >{option}</option>
+                            )
+                }
+                
             })}
             </select>
 

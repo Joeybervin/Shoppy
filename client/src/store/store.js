@@ -8,19 +8,17 @@ import { configureStore, getDefaultMiddleware  } from '@reduxjs/toolkit'
 /* reducers */
 import userSlice from './slices/userSlice'
 import cartSlice from './slices/cartSlice'
-import wishlistSlice from './slices/wishlistSlice'
 
 const persistConfig = {
   key: 'root',
   storage,
-  whitelist: ['user', 'cart', 'wishlist'],
+  whitelist: ['user', 'cart'],
 };
 
 
 const rootReducer = combineReducers({
   user: userSlice,
   cart: cartSlice,
-  wishlist: wishlistSlice,
 });
 
 const persistedRootReducer = persistReducer(persistConfig, rootReducer);

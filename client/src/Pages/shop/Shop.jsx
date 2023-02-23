@@ -1,37 +1,44 @@
+/* Data */
+import productsData from "../../data/products.json";
 /* Hooks */
-import { useState} from "react";
+import { useState, useEffect, useMemo} from "react";
 import { useParams, useNavigate } from "react-router-dom";
-
+import { UseDispatch, useSelector} from 'react-redux'
+/* utils */
+import shuffle from '../../utils/shuffle';
 /* components */
-import { ShopPageProductCard } from "../../components/ui/ProductCard";
+import { ShopPageProductCard as ProductCard } from "../../components/ui/ProductCard";
 import Select from "../../components/ui/Select";
-
+/* icons */
+import { HiOutlineChevronDown, HiOutlineFilter } from "react-icons/hi";
 /* style */
 import "./shop.css";
 
-/* icons */
-import { HiOutlineChevronDown, HiOutlineFilter } from "react-icons/hi";
-
-/* Data */
-import productsData from "../../data/products.json";
 
 export default function Shop() {
     /* hooks */
-    const { category } = useParams();
+    
     const navigate = useNavigate();
-
     /* variables */
-    let data = [...productsData] /* copy of the data */
-    let productsCategoryList = data.filter((data) => data.category === category) /* filtered data with the params => category choose */
-    let categoriesList = []; /* regroup all the categories in the data */
+
+    const data = [...productsData];
+    const shuffleData = shuffle(data)
+
+   
+    /* filtered data with the params => category choose */
+ 
     let pricesList = ["tous les prix" ,"0 - 10", "10 - 50", "50 - 100", "100 - 300", "300 - 500+"]; /* slice of price */
-    let sortList = ["pertinence", "prix croissant", "prix décroissant"]
+    let sortList = ["pertinence", "prix croissant", "prix décroissant"] // sorting of products
 
     /* states */
-    const [filterIsClosed, setFilterIsClosed] = useState(false)
-    const [productsSortFilter, setProductSortFilter] = useState()
-    const [productsPriceFilter, setProductsPriceFilter] = useState() /* slice of price choose by the user */
-    const [productsList, setProductsList] = useState([...productsCategoryList]) 
+    const [filterIsClosed, setFilterIsClosed] = useState(false) // close and open the filters choices list
+    const [category, setCategory ] = useState(useParams().category); // filter 1 => get the products list category
+    const [productsSortFilter, setProductSortFilter] = useState() // Filter 2 => organising products list
+    const [productsPriceFilter, setProductsPriceFilter] = useState() // filter 3  => price
+    const [productsList, setProductsList] = useState(category === "Tout" ? shuffleData : data.filter((data) => data.category === category));
+
+
+
 
 
 
@@ -39,57 +46,46 @@ export default function Shop() {
     /* ----------  FUNCTIONS */
     /* -------------------------------------------------------------------------------------------------------------------------------------- */
 
-    /* Create an array of the caracteristic of the product(s) */
-    const productCaracteristic = (data, caracteristicsList) => {
-        data.forEach((product) => {
-            if (product.category === category) {
-                caracteristicsList.unshift(product.category);
-            } else {
-                caracteristicsList.push(product.category);
-            }
-        });
-        caracteristicsList = [...new Set(caracteristicsList)];
-        return caracteristicsList;
-    };
-    
     /* Filter part */
     /* pertinence */
     const handdlePertinenceChange = (e) => {
         if (e.target.value === "prix croissant" ) {
-            setProductsList(productsCategoryList.sort((a, b) => a.price - b.price))
+            setProductsList(productsList.sort((a, b) => a.price - b.price))
         }
         else if (e.target.value === "prix décroissant" ) {
-            setProductsList(productsCategoryList.sort((a, b) => b.price - a.price))
+            setProductsList(productsList.sort((a, b) => b.price - a.price))
         }
         else {
-            setProductsList(productsCategoryList)
+            setProductsList(productsList)
         }
         setProductSortFilter(e.target.value)
     }
     /* category */
     const handdleCategoryChange = (e) => {
-        setProductsList(data.filter((data) => data.category === e.target.value))
-        navigate(`/shop/${e.target.value}`);
+        const newCategory = e.target.value;
+        setCategory(newCategory);
+        setProductsList( data.filter((data) => newCategory === 'Tout' ||  data.category === newCategory))
+        navigate(`/shop/${newCategory}`);
     };
     /* price */
     const handdlePriceChange = (e) => {
         if (e.target.value === "0 - 10") {
-            setProductsList(productsCategoryList.filter((data) => Number(data.price) <= 10))
+            setProductsList(productsList.filter((data) => Number(data.price) <= 10))
         }
         else if (e.target.value === "10 - 50") {
-            setProductsList(productsCategoryList.filter((data) => Number(data.price) >= 10  && data.price <= 50))
+            setProductsList(productsList.filter((data) => Number(data.price) >= 10  && data.price <= 50))
         }
         else if (e.target.value === "50 - 100") {
-            setProductsList(productsCategoryList.filter((data) => Number(data.price) >= 50  && data.price <= 100))
+            setProductsList(productsList.filter((data) => Number(data.price) >= 50  && data.price <= 100))
         }
         else if (e.target.value === "100 - 300") {
-            setProductsList(productsCategoryList.filter((data) => Number(data.price) >= 100  && data.price <= 300))
+            setProductsList(productsList.filter((data) => Number(data.price) >= 100  && data.price <= 300))
         }
         else if (e.target.value === "300 - 500+") {
-            setProductsList(productsCategoryList.filter((data) => Number(data.price) >= 300 ))
+            setProductsList(productsList.filter((data) => Number(data.price) >= 300 ))
         }
         else {
-            setProductsList(productsCategoryList.filter((data) => Number(data.price) >= 0 ))
+            setProductsList(productsList.filter((data) => Number(data.price) >= 0 ))
         }
         setProductsPriceFilter(e.target.value)
     };
@@ -112,7 +108,7 @@ export default function Shop() {
                         onChange={handdleCategoryChange}
                         name={"categories"}
                         label={"Catégories"}
-                        optionsList={productCaracteristic(productsData, categoriesList)}
+                        optionsList={["Tout", ...new Set(data.map (product => product.category))]}
                     />
                     {/* prix */}
                     <Select
@@ -140,7 +136,8 @@ export default function Shop() {
                     <p>Vide</p> : 
                     productsList.map((product, index) => {
                         return (
-                            <ShopPageProductCard
+                            <ProductCard
+                                className="productCard"
                                 key={index}
                                 imgSrc={product.productImage[0]}
                                 imgAlt={product.productName}

@@ -22,6 +22,7 @@ export default function NavBar() {
 
   const navigate = useNavigate()
   const user = useSelector((state) => state.user)
+  const cart = useSelector((state) => state.cart)
 
 
 
@@ -55,13 +56,12 @@ export default function NavBar() {
 
         <NavLink to="/"><img className="logo" src={logo} alt="shoppy logo" /></NavLink>
 
-       
-        
+      
       {/* navigation */}
       <div onClick={handleToggle} className={`navNavigation ${!navigationSidebarOpen ? "hideSidebarNavigation" : "showSidebarNavigation"}`}>
         <ul>
           <li onClick={handleToggle}><NavLink to="/">Accueil</NavLink></li>
-          <li onClick={handleToggle}><NavLink to="/shopping">Shopping</NavLink></li>
+          <li onClick={handleToggle}><NavLink to="/shop/Tout">Shopping</NavLink></li>
           <li onClick={handleToggle}><NavLink to="/about">À propos</NavLink></li>
           <li onClick={handleToggle}><NavLink to="/contact">Contact</NavLink></li>
         </ul>
@@ -83,12 +83,9 @@ export default function NavBar() {
 
         {/* cart */}
         <NavLink to="/cart">
-            <StyledCart >0</StyledCart>
+            <StyledCart>{cart.length}</StyledCart>
         </NavLink>
-          
-        
             
-        
           {/* navigation: burgermenu */}
           <div className='burgerMenuContainer'>
           {navigationSidebarOpen ? < RxCross1 className="burgerMenuClose" size="1.5rem" onClick={handleToggle}/> : <RxHamburgerMenu className="burgerMenu" size="1.5rem" onClick={handleToggle}/>}

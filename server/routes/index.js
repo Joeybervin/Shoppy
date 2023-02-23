@@ -17,6 +17,8 @@ const sendUserInfos = (data, res) => {
         lastName : data.lastName,
         address : data.address,
         city : data.city,
+        wishlist : data.wishlist,
+        orders : data.orders,
         insert_date : data.insert_date,
         token : data.token
     }
