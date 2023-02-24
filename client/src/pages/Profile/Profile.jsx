@@ -64,7 +64,7 @@ export default function Profile() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const rawResponse = await fetch('/updateProfile', {
+    const rawResponse = await fetch('/user/updateProfile', {
       method : 'PUT',
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({formData , userEmail :user.email}),

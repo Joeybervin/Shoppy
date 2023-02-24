@@ -92,7 +92,7 @@ export default function Product() {
 
     const addToWishList = async () => {
         if (user.token !== "" && !inUserWishList) {
-            const response = await  fetchData('/addToWishlist', {email : user.email, productref : refProduct}, 'PUT')
+            const response = await  fetchData('/user/addToWishlist', {email : user.email, productref : refProduct}, 'PUT')
             if (response.status === "success") {
                 setLike(!like)
                 dispatch(addProductToWishlist(refProduct))
@@ -101,7 +101,7 @@ export default function Product() {
 
         }
         else if (user.token !== "" && inUserWishList) {
-            const response = await  fetchData('/removeFromWishlist', {email : user.email, productref : refProduct}, 'PUT')
+            const response = await  fetchData('/user/removeFromWishlist', {email : user.email, productref : refProduct}, 'PUT')
             if (response.status === "success") {
                 setLike(false)
                 dispatch(removeProducFromWishlist(refProduct))

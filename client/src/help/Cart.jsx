@@ -5,15 +5,14 @@ import { removeFromCart, clearCart, updateCart } from '../../store/slices/cartSl
 import { RxCrossCircled, RxValueNone } from "react-icons/rx";
 
 
+
+
 export default function Cart() {
 
- 
     const cartList = useSelector(state => state.cart)
-    const user = useSelector(state => state.user)
     const dispatch = useDispatch();
 
     const  [total, setTotal] = useState(0)
-
 
     useEffect(() => {
 
@@ -58,15 +57,13 @@ export default function Cart() {
                             <button onClick={()=>updateCartProduct(index, "minus", product.quantity)} type="button"> - </button>
                         <input style={{WebkitAppearance: "none" ,margin: "0", textAlign : "center"}} type="number"  name="quantity" min="0" readOnly value={product.quantity}/>
                             <button onClick={()=>updateCartProduct(index, "plus", product.quantity)} type="button"> + </button>
-                        
-                        
                         </div>
                         
                     </div>
                 )
             })}
 
-
+            
         </div>
     );
 }

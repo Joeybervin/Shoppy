@@ -12,7 +12,7 @@ import TitleHighlight from '../../components/TitleHighlight';
 import CategoryBox from '../../components/ui/CategoryCard' ;
 import ServiceContainer from '../../components/ServiceCard';
 import {HomePageProductCard} from '../../components/ui/ProductCard'; 
-import {StyledCarousel , responsiveMultiItems as responsive} from '../../components/Carousel';
+
 
 /* Data */
 import productsData from "../../data/products.json";
@@ -140,26 +140,7 @@ export default function Home() {
             {/* section : products */}
             <section className='productsSection'>
                 <h2>Nos produits</h2>
-                <StyledCarousel
-                    responsive={responsive}
-                    infinite
-                    centerMode
-                >
-                    {data.map((product, index) => {
-                        return (
-
-                            <HomePageProductCard
-                                key={`hpp${index}`}
-                                imgSrc={product.productImage}
-                                imgAlt={product.productName}
-                                productName={product.productName}
-                                productPrice={product.price}
-                                onClick={() => navigate(`/shop/${product.category}/product/${product.ref}`)}
-                            />
-
-                        )
-                    })}
-                </StyledCarousel>
+               
         
             </section>
 
