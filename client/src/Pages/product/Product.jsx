@@ -13,7 +13,7 @@ import  fetchData  from '../../utils/fetchData'
 import { BigButton as Button } from "../../components/ui/Button";
 import { RadioInput as Radio, RadioLabel } from "../../components/ui/Input";
 import Badge from "../../components/ui/Badge";
-import { ThumbsGalleryLoopPart } from "../../components/Swiper";
+import { ThumbsGalleryLoop } from "../../components/ThumbsGalleryLoop/ThumbsGalleryLoop";
 
 /* Icons */
 import {
@@ -136,7 +136,7 @@ export default function Product() {
             <div className="productImages">
                 {/* swiper */}
                 <div className="ThumbsGallery">
-                    <ThumbsGalleryLoopPart img={product.productImage} />
+                    <ThumbsGalleryLoop img={product.productImage} />
                 </div>
             </div>
 

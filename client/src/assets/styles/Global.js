@@ -23,7 +23,13 @@ html, body, div, span, h1, h2, h3, p, a,img,ol, ul, li, form, label, legend, art
 html, body {
 	overflow-x: hidden;
 	max-width: 100vw;
+	-ms-overflow-style: none; /* for Internet Explorer, Edge */
+    scrollbar-width: none; /* for Firefox */
+    
 	
+}
+body::-webkit-scrollbar {
+    display: none; /* for Chrome, Safari, and Opera */
 }
 body {
 	line-height: 1;
@@ -55,29 +61,30 @@ font: inherit;
 
 /* https://matthewjamestaylor.com/responsive-font-size */
 body{
-	font-size: calc(${(props) => props.theme.fontSize.paragraphe.regular } + 0.390625vw);
-	line-height: calc(${(props) => props.theme.fontSize.paragraphe.regular} + 1.5vw);
+	font-size: ${(props) => props.theme.fontSize.paragraphe.regular } ;
+	
 	font-family: ${(props) => props.theme.fonts.primaryFont || props.theme.fonts.secondaryFont};
 	color: ${(props) => props.theme.colors.primaryTextColor};
 }
 a, p , li, h1, h2, h3 {
 padding: ${(props) => props.theme.paddings.textPadding}px;
 color : ${(props) => props.theme.colors.primaryTextColor};
+line-height : 1.5rem;
 }
 h1, h2, h3 {
 font-weight: ${(props) => props.theme.fontWeight.bold};
 }
 h1 { 
-	font-size: calc(${(props) => props.theme.fontSize.title.h1 } + 0.390625vw);
+	font-size: ${(props) => props.theme.fontSize.title.h1 } ;
 	line-height: calc(${(props) => props.theme.fontSize.title.h1 } + 1vw);
 }
 h2 { 
-	font-size: calc(${(props) => props.theme.fontSize.title.h2 } + 0.390625vw);
-	line-height: calc(${(props) => props.theme.fontSize.title.h2 } + 1vw);
-	margin-bottom : 35px;
+	font-size: ${(props) => props.theme.fontSize.title.h2 };
+	line-height: calc(${(props) => props.theme.fontSize.title.h1 } + 1vw);
+	margin-bottom : 15px;
 }
 h3 {
-	font-size: calc(${(props) => props.theme.fontSize.title.h3 } + 0.390625vw);
+	font-size: ${(props) => props.theme.fontSize.title.h3 };
 	line-height: calc(${(props) => props.theme.fontSize.title.h3 } + 1vw);
 }
 

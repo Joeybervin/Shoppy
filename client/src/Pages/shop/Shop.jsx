@@ -1,133 +1,213 @@
 /* Data */
 import productsData from "../../data/products.json";
 /* Hooks */
-import { useState} from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useState, useEffect, useMemo} from "react";
+import { useParams, useNavigate, useLocation } from "react-router-dom";
 /* utils */
-import shuffle from '../../utils/shuffle';
+import { sortByPriceAscending, sortByPriceDescending, sortByAZ, filterByPriceRange } from '../../utils/filters';
 /* components */
 import { ShopPageProductCard as ProductCard } from "../../components/ui/ProductCard";
 import {Select} from "../../components/ui/Select";
+import {Empty} from "../../components/Empty";
 /* icons */
 import { HiOutlineChevronDown, HiOutlineFilter } from "react-icons/hi";
+import { BsGenderAmbiguous, BsGenderFemale, BsGenderMale } from "react-icons/bs";
 /* style */
-import "./shop.css";
-
+import {StyledHome} from "./shop.style.js";
 
 export default function Shop() {
-    /* hooks */
-    
+
+
+    /*======= HOOKS =======*/
     const navigate = useNavigate();
-    /* variables */
+    const location = useLocation();
 
-    const data = [...productsData];
-    const shuffleData = shuffle(data)
+    /*======= VARIABLES =======*/
+    const data = useMemo(() => [...productsData], []); // --> the data
+    const dataColorsList = Object.values([...new Set(data.map(product => product.color))]);
+    let pricesList = ["Tous les prix" ,"0 - 10", "10 - 50", "50 - 100", "100 - 300", "300 - 500+"]; // --> slice of price 
+    let sortList = ["Pertinence","Prix croissants", "Prix décroissants", "A - Z"]; //--> sorting of products
 
-   
-    /* filtered data with the params => category choose */
- 
-    let pricesList = ["tous les prix" ,"0 - 10", "10 - 50", "50 - 100", "100 - 300", "300 - 500+"]; /* slice of price */
-    let sortList = ["pertinence", "prix croissant", "prix décroissant"] // sorting of products
-
-    /* states */
+    /*======= STATES =======*/
     const [filterIsClosed, setFilterIsClosed] = useState(false) // close and open the filters choices list
+    const [gender, setGender ] = useState(useParams().gender); // filter 1 => get the products list category
     const [category, setCategory ] = useState(useParams().category); // filter 1 => get the products list category
-    const [productsSortFilter, setProductSortFilter] = useState() // Filter 2 => organising products list
-    const [productsPriceFilter, setProductsPriceFilter] = useState() // filter 3  => price
-    const [productsList, setProductsList] = useState(category === "Tout" ? shuffleData : data.filter((data) => data.category === category));
+    const [productsSortFilter, setProductsSortFilter] = useState("") // Filter 2 => organising products list
+    const [productsPriceFilter, setProductsPriceFilter] = useState("") // filter 3  => price
+    const [productColorFilter, setProductColorFilter] = useState("")
+    const [productsList, setProductsList] = useState([]);
 
-    /* -------------------------------------------------------------------------------------------------------------------------------------- */
-    /* ----------  FUNCTIONS */
-    /* -------------------------------------------------------------------------------------------------------------------------------------- */
+    /*======= USEEFFECT =======*/
+    useEffect(() => { // get the click on the navbar to change the resukt
+        const categoryName = location.pathname.split("/").pop();
+        setCategory(categoryName);
+    }, [location]);
 
-    /* Filter part */
-    /* pertinence */
-    const handdlePertinenceChange = (e) => {
-        if (e.target.value === "prix croissant" ) {
-            setProductsList(productsList.sort((a, b) => a.price - b.price))
+    useEffect(()=> { // filter the data first with the URL and next with the customer preferencies
+        const applyParams = (pertinenceFilter, priceFilter)  => {
+
+            let filteredData = [...data];
+
+            // --------> gender filter
+            if (gender === "Uni") {
+                filteredData = [...data]
+            }
+            else {
+                filteredData = filteredData.filter((data) => data.gender === gender.charAt(0))
+            };
+            // --------> category filter
+            if (category !== "Tout") {
+                filteredData = filteredData.filter((data) => data.category === category)
+            };
+
+            
+            // --------> pertinence filter
+            if (pertinenceFilter === "A - Z") {
+                filteredData = sortByAZ(filteredData);
+            } 
+            else if (pertinenceFilter === "Prix croissants" ) {
+                filteredData = sortByPriceAscending(filteredData);
+            }
+            else if (pertinenceFilter === "Prix décroissants" ) {
+                filteredData = sortByPriceDescending(filteredData);
+            }
+            else if (pertinenceFilter === "" || pertinenceFilter === "Pertinence") {
+                filteredData = [...filteredData]
+            };
+    
+            // --------> price filter
+            if (priceFilter === "0 - 10") {
+                filteredData = filterByPriceRange(filteredData, 0, 10);
+            }
+            else if (priceFilter === "10 - 50") {
+                filteredData = filterByPriceRange(filteredData, 10, 50);
+            }
+            else if (priceFilter === "50 - 100") {
+                filteredData = filterByPriceRange(filteredData, 50, 100);
+            }
+            else if (priceFilter === "100 - 300") {
+                filteredData = filterByPriceRange(filteredData, 100, 300);
+            }
+            else if (priceFilter === "300 - 500+") {
+                filteredData = filterByPriceRange(filteredData, 300, Infinity);
+            }
+            else {
+                filteredData = filteredData.filter((data) => Number(data.price) >= 0 )
+            };
+            // --------> color filter
+            if (productColorFilter !== "" && productColorFilter !== "multi") {
+                filteredData = filteredData.filter((data) => data.color === productColorFilter);
+            }
+            else if (productColorFilter === "multi") {
+                filteredData = [...filteredData]
+            };
+            
+        
+            return filteredData;
         }
-        else if (e.target.value === "prix décroissant" ) {
-            setProductsList(productsList.sort((a, b) => b.price - a.price))
-        }
-        else {
-            setProductsList(productsList)
-        }
-        setProductSortFilter(e.target.value)
-    }
-    /* category */
-    const handdleCategoryChange = (e) => {
+        
+        setProductsList(applyParams(productsSortFilter, productsPriceFilter))
+    }, [data, location, gender, category, productsSortFilter, productsPriceFilter, productColorFilter])
+
+
+    /*======= FUNCTIONS =======*/
+
+    // --------> filter data by category
+    const handleCategoryChange = (e) => {
         const newCategory = e.target.value;
         setCategory(newCategory);
-        setProductsList( data.filter((data) => newCategory === 'Tout' ||  data.category === newCategory))
-        navigate(`/shop/${newCategory}`);
+        navigate(`/shop/${gender}/${newCategory}`);
     };
-    /* price */
-    const handdlePriceChange = (e) => {
-        if (e.target.value === "0 - 10") {
-            setProductsList(productsList.filter((data) => Number(data.price) <= 10))
+
+    // --------> filter data by pertinence + pricerange + gender
+    const handleDataFilter = (e, filter) => {
+        if (filter === "pertinence") setProductsSortFilter(e.target.value)
+        if (filter === "price") setProductsPriceFilter(e.target.value)
+        if (filter === "Femme" || filter === "Homme" || filter === "Uni") {
+            setGender(filter)
+            navigate(`/shop/${filter}/${category}`)
         }
-        else if (e.target.value === "10 - 50") {
-            setProductsList(productsList.filter((data) => Number(data.price) >= 10  && data.price <= 50))
-        }
-        else if (e.target.value === "50 - 100") {
-            setProductsList(productsList.filter((data) => Number(data.price) >= 50  && data.price <= 100))
-        }
-        else if (e.target.value === "100 - 300") {
-            setProductsList(productsList.filter((data) => Number(data.price) >= 100  && data.price <= 300))
-        }
-        else if (e.target.value === "300 - 500+") {
-            setProductsList(productsList.filter((data) => Number(data.price) >= 300 ))
-        }
-        else {
-            setProductsList(productsList.filter((data) => Number(data.price) >= 0 ))
-        }
-        setProductsPriceFilter(e.target.value)
-    };
+    }
+
+    // --------> clean all the filter
+    const handleFiltersClean = () => {
+        setProductsPriceFilter("Tous les prix")
+        setProductColorFilter("multi")
+        setProductsSortFilter("Pertinence")
+    }
 
     return (
-        <div className="shop">
-            {/* FILTRES */}
-            <div>
+        <StyledHome>
 
-                <div onClick={() => setFilterIsClosed(!filterIsClosed)}>
+            {/* FILTRES : gender, cat, price range, pertinence, color, clean */}
+            <div>
+                <div className="gender">
+                    <p  className={gender === "Femme" ? "selected" : null} onClick={(e) => handleDataFilter(e,"Femme")}><BsGenderFemale/> Femme</p>
+                    <p className={gender === "Uni" ? "selected" : null}  onClick={(e) => handleDataFilter(e,"Uni")}><BsGenderAmbiguous /> UNIgender</p>
+                    <p className={gender === "Homme" ? "selected" : null}  onClick={(e) => handleDataFilter(e,"Homme")}><BsGenderMale /> Homme</p>
+                </div>
+                <div  className="filtersToogle" onClick={() => setFilterIsClosed(!filterIsClosed)}>
                     <HiOutlineFilter />
                     <p>Filter </p>
                     <HiOutlineChevronDown />
                 </div>
-                
-                <div className={`filtre ${filterIsClosed ? "filterIsOpen" : "filterIsClosed"}`}>
-                    {/* catégories */}
+                <div className={`filters ${filterIsClosed ? "filterIsOpen" : "filterIsClosed"}`}>
+                    {/* categories */}
                     <Select
                         value={category}
-                        onChange={handdleCategoryChange}
+                        onChange={handleCategoryChange}
                         name={"categories"}
-                        label={"Catégories"}
+                        label={"Type de produit"}
                         optionsList={["Tout", ...new Set(data.map (product => product.category))]}
                     />
-                    {/* prix */}
+                    {/* price */}
                     <Select
                         empty
                         value={productsPriceFilter}
-                        onChange={handdlePriceChange}
+                        onChange={(e) => handleDataFilter(e, "price") }
                         name={"price"}
-                        label={"Prix"}
+                        label={"Gamme de prix"}
                         optionsList={pricesList}
                     />
-                    {/* prix */}
+                    {/* pertinence */}
                     <Select
                         empty
                         value={productsSortFilter}
-                        onChange={handdlePertinenceChange}
+                        onChange={(e) => handleDataFilter(e, "pertinence") }
                         name={"sort"}
                         label={"Trier"}
                         optionsList={sortList}
                     />
+                    {/* color */}
+                    <div className="colorFilter">
+                        <p>Couleur</p>
+                        <div className="colorsList">
+                            {dataColorsList.map((color, index) => {
+                                return (
+                                    <div onClick={() => {setProductColorFilter(color)}} className="productColor" key={"color"+index} style={{border : `1px solid ${color}`}}>
+                                        <div style={{backgroundColor : `${color}`}} ></div>
+                                    </div>
+                                )
+                            })}
+                            <div onClick={() => {setProductColorFilter("multi")}} className="multi" key={"color"+dataColorsList.lenght + 1} >
+                                <div></div>
+                            </div>
+                            
+
+                        </div>
+
+                    </div>
+                    {/* filters clean */}
+                    <p onClick={()=> {handleFiltersClean()}}>annuler tous les filtres</p>
                 </div>
             </div>
-            
+
+            {/* PRODUCTLIST */}
             <div className="productsList">
                 { productsList.length === 0 ?
-                    <p>Vide</p> : 
+                    <Empty 
+                    messageTitle="0 style trouvé"
+                    message="Peut-être un pe trop stylé à notre goût !"/> : 
                     productsList.map((product, index) => {
                         return (
                             <ProductCard
@@ -140,8 +220,10 @@ export default function Shop() {
                                 onClick={() => navigate(`/shop/${product.category}/product/${product.ref}`)}
                             />
                         );
-                    })}
+                    })
+                    
+                    }
             </div>
-        </div>
+        </StyledHome>
     );
 }

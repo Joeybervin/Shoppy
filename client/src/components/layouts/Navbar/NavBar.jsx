@@ -1,10 +1,9 @@
 /* Hooks */
-import { useState, useEffect } from 'react';
+import { useState} from 'react';
 
 /* librairies : redux , react router */
 import { useSelector } from 'react-redux'
-import { NavLink, useNavigate } from 'react-router-dom';
-
+import { NavLink, useNavigate} from 'react-router-dom';
 /* utils */
 import { capitalizeFirst } from '../../../utils/capitalizeFirst';
 
@@ -24,13 +23,7 @@ export default function NavBar() {
   const user = useSelector((state) => state.user)
   const cart = useSelector((state) => state.cart)
 
-
-
   const [navigationSidebarOpen, setNavigationSidebarOpen] = useState(false)
-
-  useEffect(() => {}, [user])
-
-
 
   /* open the siddebar navigation on small devices */
   const handleToggle = () => {
@@ -60,10 +53,11 @@ export default function NavBar() {
       {/* navigation */}
       <div onClick={handleToggle} className={`navNavigation ${!navigationSidebarOpen ? "hideSidebarNavigation" : "showSidebarNavigation"}`}>
         <ul>
-          <li onClick={handleToggle}><NavLink to="/">Accueil</NavLink></li>
-          <li onClick={handleToggle}><NavLink to="/shop/Tout">Shopping</NavLink></li>
-          <li onClick={handleToggle}><NavLink to="/about">À propos</NavLink></li>
-          <li onClick={handleToggle}><NavLink to="/contact">Contact</NavLink></li>
+          <li onClick={handleToggle}><NavLink to="/shop/Uni/vetements">Vêtements</NavLink></li>
+          <li onClick={handleToggle}><NavLink to="/shop/Uni/chaussures">Chaussures</NavLink></li>
+          <li onClick={handleToggle}><NavLink to="/shop/Uni/accessoires">Accessoires</NavLink></li>
+          <li onClick={handleToggle}><NavLink to="/shop/Uni/sacs">sacs</NavLink></li>
+          <li onClick={handleToggle}><NavLink to="/shop/Uni/beauté">Beauté</NavLink></li>
         </ul>
       </div>
 

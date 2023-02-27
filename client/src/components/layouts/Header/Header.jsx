@@ -1,26 +1,36 @@
+/* Components */
+import { BigButton as Button } from "../../ui/Button";
+/* icons */
+import { BsChevronDown } from "react-icons/bs";
 /* style */
 import { StyledHeader } from "./header.style";
-/* Components */
-import { BigButton } from "../../ui/Button";
-/* Assets */
-import heroImage from "../../../assets/hero/candid.jpg"
-
 
 export default function Header() {
     return (
-        <StyledHeader >
+        <StyledHeader>
+            <div className="headerImageContainer">
+                <img
+                    className="headerImg"
+                    src="https://images.unsplash.com/photo-1623892866965-a832c7a46c0a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
+                    alt=""
+                />
+            </div>
+
             {/* text */}
-            <div>
-                <h1>Où ailleurs que
-                    <br/>
+            <div className="headerTextContainer">
+                <h1>
+                    Sans aucune limite
+                    <br />
                     <span>Shoppy !</span>
                 </h1>
-                <p>Chez Shoppy, vous pouvez acheter toutes vos marques de beauté préférées, des vêtements, des produits tech et plus encore et tout cela réunis à un seul endroit.</p>
-                <BigButton primary shadow>Découvrir Shoppy</BigButton>
-            </div>
-            {/* Image */}
-            <div className="heroImage">
-                <img src={heroImage} alt="candid from unsplash" />
+
+                <Button primary shadow>
+                    Nouvelle collection
+                </Button>
+
+                <a href=".collaborationSection">
+                    <BsChevronDown color="white" size="1.5rem" />
+                </a>
             </div>
         </StyledHeader>
     );

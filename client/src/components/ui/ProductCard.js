@@ -3,14 +3,15 @@
 import styled from "styled-components";
 
 /* components */
-import { BigButton } from "./Button"
+import { BigButton } from "./Button";
+import { ResizableText } from '../ResizableText';
 
 /* _________ HOMEPAGE */
 const HomePageProductCardStyle = styled.div`
 
     text-align : left;
     height : 100%;
-    width: clamp(200px, 20vw, 230px );
+    width: 100%;
     &:hover {
         cursor : pointer;
     }
@@ -24,16 +25,23 @@ const HomePageProductCardStyle = styled.div`
         object-fit: fit;
         border-radius : 15px;
     }
+    > div:nth-child(2){
+        display: flex;
+        flex-direction : column;
+        justify-content : space-between;
+        height: 40%;
+    }
     > div p:first-of-type {
-        font-weight : ${(props) => props.theme.fontWeight.extraBold};
+        font-weight : ${(props) => props.theme.fontWeight.bold};
         
     }
     > div p:last-of-type {
         display: inline;
+        width: fit-content;
         font-size : ${(props) => props.theme.fontSize.paragraphe.small};
         background-color : ${(props) => props.theme.colors.primaryAlpha};
         border-radius : 20px;
-        padding : 5px 10px ;
+        padding : 5px 15px ;
     }
 
 `
@@ -57,67 +65,74 @@ const HomePageProductCard = ({ imgSrc, imgAlt, productName, productPrice, ...pro
 const ShopPageProductCardStyle = styled.div`
 
     border-radius: 15px;
-    width: clamp(140px, 40vw, 197px);
-    min-height: 350px;
+    width: clamp(260px, 20vw, 305px);
+    height: clamp(390px, 20vw, 410px);
     display: flex;
     flex-direction : column;
-    margin : 10px auto ;
+    margin : 15px 10px ;
     background-color: #FFFFFF;
-
+    border : 0.5px solid black;
     &:hover {
         cursor : pointer;
+        border : 2.5px solid blue;
+
     }
 
-    .productImage {
-        flex-grow: 1;
-        flex-basis: 60%;
-    }
-    .productImage img {
-        height: 100%;
+.productImage {
+    flex-grow: 1;
+    
+    img {
+        min-height: 100%;
+        height: 187px;;
         width : 100%;
-        object-fit: fit;
         border-radius : 15px 15px 0 0;
         border-bottom : 0.5px solid black;
+        
     }
 
-    div > div > img {
-        max-width: 20px;
-        max-height: 20px;
-    }
+}
 
-    .productDetails > div  {
+
+
+.productDetails {
+
+    display: flex;
+    justify-content : space-between;
+    align-items: center;
+    padding : 15px 15px;
+    p {
+        font-size: ${(props) => props.theme.fontSize.paragraphe.small};
+    }
+    
+    div  {
         display : flex;
         justify-content: space-between;
         flex-wrap: wrap;
         align-items: center;
         justify-content: center;
-        padding : 10px 10px;
         
+        
+        img {
+            max-width: 20px;
+            max-height: 20px;
+        }
+        p:last-of-type {
+            font-weight: ${(props) => props.theme.fontWeight.bold};
+        }
     }
-
-    .productDetails > p {
-        font-size: ${(props) => props.theme.fontSize.paragraphe.small};
-        font-weight: ${(props) => props.theme.fontWeight.bold};
-        padding: 10px 10px 0 10px;
-    }  
-
-    .productDetails > div div {
-        width : 100%;
-        display: flex;
-        justify-content: space-evenly;
-        align-items: center;
-        margin : 5px 0;
-    }
+}
+    
 
     @media screen and (min-width : 768px) {
 
     
-        width: clamp(180px, 25vw, 295px);
-
-        .productDetails > p {
-            font-size: ${(props) => props.theme.fontSize.paragraphe.regular};
     
-        }  
+
+        .productImage img {
+        min-height: 100%;
+       
+    }
+
 
         .productDetails > div  {
         flex-wrap: nowrap;
@@ -147,11 +162,8 @@ const ShopPageProductCard = ({ imgSrc, imgAlt, productName, productPrice, ...pro
             <div className="productDetails">
                 <p>{productName}</p>
                 <div>
-                    <div>
-                        <img src="https://cdn-icons-png.flaticon.com/512/522/522210.png" alt="euro" />
-                        <p>{productPrice}</p>
-                    </div>
-                    <BigButton onClick={props.onClick} primary>Acheter</BigButton>
+                    <img src="https://cdn-icons-png.flaticon.com/512/522/522210.png" alt="euro" />
+                    <p>{productPrice}</p>
                 </div>
             </div>
 

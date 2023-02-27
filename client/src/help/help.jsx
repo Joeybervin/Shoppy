@@ -1,4 +1,6 @@
-
+import { useState, useEffect } from "react";
+/* redux */
+import { useDispatch } from 'react-redux'
 
 /* import {StyledCarousel , responsiveMultiItems as responsive} from '../../components/Carousel'; */
 
@@ -28,6 +30,10 @@ export default function Help() {
 
 }
 
+useEffect(() => {
+    const categoryName = location.pathname.split("/").pop();
+    setCategory(categoryName);
+  }, [location]);
 
 
 

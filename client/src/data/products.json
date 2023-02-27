@@ -3,7 +3,7 @@
         {
             "ref" : "bagmunchkingrey",
             "productName" : "munchkin",
-            "category" : "bag",
+            "category" : "sacs",
             "gender" : "F",
             "type" : "crossBody Bag",
             "color" : "grey",
@@ -24,7 +24,7 @@
         {
             "ref" : "baggoldeneyesred",
             "productName" : "Golden Eyes",
-            "category" : "bag",
+            "category" : "sacs",
             "gender" : "F",
             "type" : "crossBody Bag",
             "color" : "red",
@@ -46,7 +46,7 @@
         {
             "ref" : "backpackexplorerlight",
             "productName" : "Explorer Light Backpack Plus",
-            "category" : "bag",
+            "category" : "sacs",
             "gender" : "M",
             "type" : "backpack",
             "color" : "black",
@@ -70,7 +70,7 @@
         {
             "ref" : "topclassictshirtwhite",
             "productName" : "Classic T-shirt",
-            "category" : "fashion",
+            "category" : "vetements",
             "gender" : "UNI",
             "type" : "top",
             "color" : "white",
@@ -92,7 +92,7 @@
         {
             "ref" : "sweatshirtfitsweatshirtblack",
             "productName" : "Fit Sweatshirt",
-            "category" : "fashion",
+            "category" : "vetements",
             "gender" : "M",
             "type" : "sweatshirt",
             "color" : "black",
@@ -111,12 +111,12 @@
 
 
         {
-            "ref" : "shoesairforceonemulti",
+            "ref" : "chaussuresairforceonemulti",
             "productName" : "Air Force 1 Shadow sneakers",
-            "category" : "shoes",
+            "category" : "chaussures",
             "gender" : "F",
             "type" : "sneackers",
-            "color" : "black",
+            "color" : "white",
             "price" : "330.95" ,
             "stock" : "120",
             "creator" : "",
@@ -133,10 +133,10 @@
         
         },
         {
-            "ref" : "shoesairjordanonemidlightsmokegrey",
+            "ref" : "chaussuresairjordanonemidlightsmokegrey",
             "productName" : "Air Jordan One Mid light Smoke Grey",
-            "category" : "shoes",
-            "gender" : "M",
+            "category" : "chaussures",
+            "gender" : "H",
             "type" : "sneackers",
             "color" : "grey",
             "price" : "251." ,
@@ -153,29 +153,8 @@
                 },
             "productImage" : ["https://laced.imgix.net/products/2a5e2a26-4e80-49c6-a26b-d3e170dbe1e3.jpg?auto=format&fit=crop&w=1200","https://laced.imgix.net/products/e6ff01f6-9718-4365-a9a8-bf280491fa99.jpg?auto=format&fit=crop&w=1200","http://cdn.shopify.com/s/files/1/1471/7880/products/image_e35e9e9c-d5d5-49d4-965e-e8d0cb9cb13e_1200x1200.jpg?v=1663238912"]
         
-        },
-
-
-        {
-                "ref" : "phoneiphonepurple",
-                "productName" : "Iphone",
-                "category" : "tech",
-                "gender" : "UNI",
-                "type" : "phone",
-                "color" : "violet",
-                "price" : "1005" ,
-                "stock" : "100",
-                "creator" : "Apple",
-                "brand" : "Apple",
-                "reviews" : "132",
-                "note" : "4.7",
-                "badges" : ["Nouveauté"],
-                "description" : 
-                    {
-                        "productDescription" : "The iPhone 14 display has rounded corners that follow a beautiful curved design, and these corners are within a standard rectangle. When measured as a standard rectangular shape, the screen is 6.06 inches diagonally (actual viewable area is less).",
-                        "productEntretien" : ""
-                    },
-                "productImage" : ["https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/iphone-14-storage-select-202209-6-7inch-purple?wid=2560&hei=1440&fmt=p-jpg&qlt=80&.v=1660691794379", "https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/iphone-14-finish-select-202209-6-7inch-purple_AV1_GEO_EMEA?wid=2560&hei=1440&fmt=p-jpg&qlt=80&.v=1661027854395", "https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/iphone-14-finish-select-202209-6-7inch-purple_AV2?wid=2560&hei=1440&fmt=p-jpg&qlt=80&.v=1661028261503"]
         }
+
+
 
 ]

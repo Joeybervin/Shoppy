@@ -2,10 +2,18 @@
 
 export const theme = {
     colors: {
+        green : '#62FBD4',
+        darkGreen : '#00C29D',
+        lightgreen : '#C1DEE0',
+        bleu : '#001281',
+        violet : '#F3E6FF',
+        jaune : '#FEFEDF',
+        yellow2: '#F9F871',
+        orange : '#FFCA5E',
         /* general */
         primary : '#7777FF',
         primaryAlpha : '#7777FF40',
-        secondary : '#EC8C97 ',
+        secondary : '#FF6EA8 ',
         tertiary: '#303030',
         black: '#000000',
         white: '#ffffff',
@@ -19,9 +27,8 @@ export const theme = {
         darkGrayText: '#303030',
         /* buttons */
         buttonsStateColors : {
-            normal: '#7777FF',
-            hover : '#EC8C97' ,
-            active: "#E07987",
+            hover : '#BFB6ED' ,
+            active: "#FF6EA8",
             disabledDark : "#777777",
             disabledLight : "#C7C7C7",
             focus: ""
@@ -37,15 +44,15 @@ export const theme = {
     },
     fontSize : {
         paragraphe : {
-            small : '0.7rem', /* 11.2px */
-            regular : '0.8rem', /* 12.8px */
-            medium : '0.9rem', /* 14.4px */
+            small : 'clamp(0.75rem, 0.7321rem + 0.0893vw, 0.8125rem);', /* min: 12px | max: 13px */
+            regular : 'clamp(0.9375rem, 0.8839rem + 0.2679vw, 1.125rem);;', /* min: 15px | max: 16px */
+            medium : 'clamp(1rem, 0.9643rem + 0.1786vw, 1.125rem);', /* min: 16px | max: 18px */
             large : '1rem', /* 16px */
         },
         title : {
-            h1 : '1.563rem', /* 25px */
-            h2 : '1.125rem', /* 18px */
-            h3 : '1rem', /* 16px */
+            h1 : 'clamp(1.8125rem, 1.5rem + 1.6667vw, 3rem)', /* min: 16px | max: 18px */
+            h2 : 'clamp(1.125rem, 1.0536rem + 0.3571vw, 1.375rem);', /* min: 16px | max: 18px */
+            h3 : 'clamp(0.875rem, 0.8393rem + 0.1786vw, 1rem);', /* min: 16px | max: 18px */
             
 
         }

@@ -5,7 +5,7 @@ const StyleSelect = styled.div`
     display: flex ;
     flex-direction: column;
     align-items: center;
-    margin : 10px 0;
+    margin : 10px ;
 
     > label {
         margin-bottom : 5px;

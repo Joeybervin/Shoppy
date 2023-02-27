@@ -21,7 +21,7 @@ const SmallButton = styled.button`
   }
 
   /* active */
-  &:active {
+  &:focus {
     background-color: ${(props) => props.theme.colors.buttonsStateColors.active};
   }
   &:disabled {
@@ -30,7 +30,7 @@ const SmallButton = styled.button`
 `;
 
 const BigButton = styled(SmallButton)`
-  padding: 8px 15px;
+  padding: 10px 18px;
 `;
 
 export {SmallButton, BigButton};

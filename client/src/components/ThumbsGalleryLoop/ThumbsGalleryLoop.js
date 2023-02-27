@@ -10,17 +10,17 @@ import "swiper/css/free-mode";
 import "swiper/css/navigation";
 import "swiper/css/thumbs";
 
-import './swiper.style.css'
+import './thumbsGalleryLoop.style.css'
 
 // import required modules
 import { FreeMode, Navigation, Thumbs } from "swiper";
 
-const ThumbsGalleryLoopPart = ({img }) => {
+const ThumbsGalleryLoop = ({img }) => {
 
     const [thumbsSwiper, setThumbsSwiper] = useState(null);
 
     return (
-        <div className='swiperContainer'>
+        <div className='thumbsGalleryLoop'>
             <Swiper
             style={{
                 "--swiper-navigation-color": "transparent",
@@ -31,13 +31,13 @@ const ThumbsGalleryLoopPart = ({img }) => {
             navigation={true}
             thumbs={{ swiper: thumbsSwiper && !thumbsSwiper.destroyed ? thumbsSwiper : null }}
             modules={[FreeMode, Navigation, Thumbs]}
-            className="mySwiper1"
+            className="thumbsGalleryLoopPart1"
             >
                 {img.map((el, index) => {
                     return (
                         <SwiperSlide 
                             key={index}
-                            className="mySwiperImages1"
+                            className="thumbsGalleryLoopPart1-image"
                         >
                             <img
                                 src={el}
@@ -55,13 +55,13 @@ const ThumbsGalleryLoopPart = ({img }) => {
         freeMode={true}
         watchSlidesProgress={true}
         modules={[FreeMode, Navigation, Thumbs]}
-        className="mySwiper2"
+        className="thumbsGalleryLoopPart2"
     >
         {img.map((el, index) => {
             return (
                 <SwiperSlide
                     key={index}
-                    className="mySwiperImages2"
+                    className="thumbsGalleryLoopPart2-images"
                 >
                     <img
                         src={el}
@@ -77,4 +77,4 @@ const ThumbsGalleryLoopPart = ({img }) => {
 
 
 
-export {ThumbsGalleryLoopPart}
+export {ThumbsGalleryLoop}

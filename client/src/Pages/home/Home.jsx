@@ -1,151 +1,139 @@
 /* hooks */
 import { useNavigate } from "react-router-dom";
 
-/* assets */
-import {catFashion, catShoes, catTech, catBag, catBeauty} from '../../assets/index';
 
 /* layouts */
 import Header from "../../components/layouts/Header/Header";
 
 /* components */
-import TitleHighlight from '../../components/TitleHighlight';
-import CategoryBox from '../../components/ui/CategoryCard' ;
-import ServiceContainer from '../../components/ServiceCard';
-import {HomePageProductCard} from '../../components/ui/ProductCard'; 
-
+import { BigButton as Button } from "../../components/ui/Button" ;
+import TitleHighlight from "../../components/TitleHighlight";
+import CategoryCard from "../../components/ui/CategoryCard";
+import ServiceContainer from "../../components/ServiceCard";
+import InfiniteSliderLoop from "../../components/InfiniteSliderLoop/InfiniteSliderLoop";
+import { HomePageProductCard } from "../../components/ui/ProductCard";
+import { SwiperSlide } from "swiper/react";
 
 /* Data */
 import productsData from "../../data/products.json";
+import brandData from "../../data/brands.json";
 import servicesData from "../../data/services.json";
+import categoriesData from "../../data/categories.json";
 
 /* style */
-import './home.css';
+import { StyledHome } from "./home.style";
 
 export default function Home() {
-
     /* hooks */
-    const navigate = useNavigate()
+    const navigate = useNavigate();
 
     /* variables */
-    const services = [...servicesData] 
-    const data = [...productsData]
+    const services = [...servicesData];
 
     return (
-        <div className='home'>
+        <StyledHome>
+            <div className="home">
+                {/* HEADER */}
+                <Header />
 
-            {/* HEADER */}
-            < Header />
+                {/* SECTIONS */}
 
-            {/* SECTIONS */} 
-
-            {/* section : brands collaborations */}
-            <section className="collaborationSection" >
-                <h2>Nous collaborons avec
-                    <br />
-                    <TitleHighlight highlight >plus de 250+</TitleHighlight>
-                    <br />
-                    marques et boutiques en ligne</h2>
-                <div>
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/H%26M-Logo.svg/1064px-H%26M-Logo.svg.png?20130107164928" alt="H&M" />
-                    <img src="https://cdn.shopify.com/s/files/1/0904/1894/t/49/assets/logo-rsvp-768_2x.png" alt="rsvp paris" />
-                    <img src="https://1000logos.net/wp-content/uploads/2021/11/Nike-Logo.png" alt="nike" />
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Apple_logo_black.svg/1667px-Apple_logo_black.svg.png" alt="apple" />
-                    <img src="https://cdn.shopify.com/s/files/1/1301/7071/files/maverickandco-logo_250x.png?v=1646708755" alt="Maverick & Co." />
-                    <img src="https://logos-marques.com/wp-content/uploads/2020/06/Converse-Logo-2011.jpg" alt="converse" />
-                </div>
-            </section>
-
-            {/* section : categories */}
-            <section className='categoriesSection'>
-                <h2>Découvrez toutes nos
-                    <br />
-                    catégories
-                </h2>
-                {/* CATEGORIES CARDS */}
-                <div>
-                    {/* category : fashion and tech */}
-                    <div className='horizontalCat'>
-                    {/* FASHION */}
-                    <CategoryBox 
-                        category="fashion"
-                        productsNumber="10"
-                        src={catFashion}
-                        alt="clothes"
-                        onClick={() => navigate("/shop/fashion")}
-                    />
-
-                    {/* TECH */}
-                    <CategoryBox 
-                        category="Tech"
-                        productsNumber="10"
-                        src={catTech}
-                        alt="a comuter , mac"
-                        onClick={() => navigate("/shop/tech")}
-                    />
-                    </div>
-
-                    {/* category : bag and shoes */}
-                    <div className='verticalCat'>
-                        {/* BAGS */}
-                        <CategoryBox 
-                            category="Bag"
-                            productsNumber="10"
-                            src={catBag}
-                            alt="a tote bag"
-                            onClick={() => navigate("/shop/bag")}
-                        />
-
-                        {/* SHOES */}
-                        <CategoryBox 
-                            category="Shoes"
-                            productsNumber="10"
-                            src={catShoes}
-                            alt="sneackers"
-                            onClick={() => navigate("/shop/shoes")}
-                        />
-                        {/* BEAUTY */}
-                        <CategoryBox 
-                            category="Beauty"
-                            productsNumber="10"
-                            src={catBeauty}
-                            alt="beauty products"
-                            onClick={() => navigate("/shop/beauty")}
-                        />
-                    </div>
-                </div>
-
-            </section>
-
-            {/* section : services */}
-            <section className='servicesSection'>
-                <h2>Pourquoi Sho<TitleHighlight $color >ppy</TitleHighlight> ?</h2>
-                <div>
-                    {
-                        services.map((service, index) =>{
+                {/* section : brands collaborations */}
+                <section className="collaborationSection">
+                    <div>
+                        {brandData.map((brand, index) => {
                             return (
-                                <ServiceContainer 
+                                <img key={"brand" + index} src={brand.img} alt={brand.brand} />
+                            );
+                        })}
+                    </div>
+                </section>
+
+                {/* section : membershipt */}
+                <section className="membershipSection">
+                    <div>
+                        <h2>Envie de -10% ? Devenez membre ⭐</h2>
+                        <p>Abonnez-vous maintenant pour profiter d'offres spéciales, d'événements exclusifs et bien plus encore.</p>
+                        <Button primary shadow>Devenir membre</Button>
+
+                    </div>
+                
+                </section>
+
+                {/* section : categories */}
+                <section className="categoriesSection">
+                    <h2>catégories</h2>
+                    <div className="slideContainer">
+                        <div className="slide">
+                            {categoriesData.map((category, index) => {
+                                return (
+                                    <CategoryCard
+                                    key={"cat"+index}
+                                    category={category.category_name}
+                                    src={category.category_img}
+                                    alt={category.alt}
+                                    onClick={() => navigate(`/shop/${category.gender}/${category.category_id}`)}
+                                />
+                                )
+                            })}
+                        </div>
+                    </div>
+                </section>
+
+                {/* section : products */}
+                <section className="productsSection">
+                    <h2>Nos nouveautés</h2>
+                    <div className="carousel-container">
+                        <InfiniteSliderLoop>
+                            {productsData.map((product, index) => {
+                                return(
+                                    <SwiperSlide 
+                                        onClick={() => navigate(`/shop/fashion/product/${product.ref}`)}
+                                        key={'img'+index}
+                                    >
+                                        <HomePageProductCard
+                                            imgSrc={product.productImage[0]}
+                                            imgAlt={product.type}
+                                            productName={product.productName}
+                                            productPrice={product.price}
+                                        />
+                                    </SwiperSlide>
+                                )
+                            })}
+                        </InfiniteSliderLoop>
+
+                    </div>
+                </section>
+
+                {/* section : services */}
+                <section className="servicesSection">
+                    {services.map((service, index) => {
+                        return (
+                            <ServiceContainer
                                 key={`sc${index}`}
                                 iconSrc={service.icon}
                                 iconAlt={service.service}
                                 service={service.service}
                                 serviceDetail={service.detail}
-                                />
-                            )
-                        })
-                    }
-                    
-                </div>
-            </section>
+                            />
+                        );
+                    })}
+                </section>
 
-            {/* section : products */}
-            <section className='productsSection'>
-                <h2>Nos produits</h2>
-               
-        
-            </section>
+                <section className="clearpayPayment">
+                    <div>
+                        <img src="/icons/clearpay.png" alt="clearpay - facilité de paiement en 3 fois" />
+                        <p>Je l'aime. Je l'achète. Je le paie en 3 fois avec Clearpay.</p>
+                        <p>Conditions gégénrales</p>
+                    </div>
+                </section>
 
-    
-        </div>
+                <section className="newsletter"></section>
+
+                <section className="Sale"></section>
+
+
+            </div>
+        </StyledHome>
     );
 }
-

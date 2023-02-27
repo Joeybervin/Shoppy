@@ -12,13 +12,12 @@ const StyledNavbar = styled.nav`
     align-items: center;
     justify-content: space-between;
     box-sizing : border-box;
-    margin-bottom : 60px;
 
     /* LEFT side => RIGHT side */
 
     /* Logo image */
     img.logo {
-        max-width: 150px;
+        max-width: 130px;
     }
 
 
@@ -27,6 +26,7 @@ const StyledNavbar = styled.nav`
         display: flex;
         justify-content: space-between;
         align-items: center;
+        font-size: clamp(0.875rem, 0.8571rem + 0.0893vw, 0.9375rem);
       
     } 
     .navNavigation ul li a:hover {
@@ -74,7 +74,7 @@ const StyledNavbar = styled.nav`
 
     @media screen and (max-width: 767px) {
 
-        margin-bottom : 30px;
+       
 
         /* Logo */
         img.logo  {

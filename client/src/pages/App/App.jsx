@@ -57,11 +57,11 @@ function App() {
           {/* Home */}
           <Route path="/" element={< Home />}/>
           {/* About */}
-          <Route path="/about" element={< About />} />
+          <Route path="/shoppy" element={< About />} />
           {/* Contact */}
           <Route path="/contact" element={< Contact />} />
           {/* Shop A REVOIR */}
-          <Route path="/shop/:category" element={< Shop />}/>
+          <Route path="/shop/:gender/:category" element={< Shop />}/>
           <Route path="/shop/:category/product/:refProduct" element={< Product />}/>
         
           {/* Cart */}

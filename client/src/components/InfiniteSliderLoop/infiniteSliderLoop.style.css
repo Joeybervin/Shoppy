@@ -1,0 +1,17 @@
+.productsSection .swiper {
+    width: 100%;
+    height: 100%;
+}
+
+.productsSection  div.swiper-slide {
+    width: clamp(170px, 25vw, 210px ) !important;
+    margin : 0 15px;
+    display: flex;
+    justify-content: center;
+    height: clamp(250px, 20vw, 390px);
+}
+
+.productsSection  .swiper-wrapper{
+    overflow-x: unset ;
+    max-width: 100vw;
+}
