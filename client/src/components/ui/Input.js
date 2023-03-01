@@ -36,9 +36,23 @@ const TextInput = styled.input`
     border-radius : 10px ;
     width : 100%;
     padding : 6px 6px 6px 11px;
+    margin : 5px 0;
+
+    &::placeholder { 
+        color: ${props => props.theme.colors.inputPlaceholder};;
+        opacity: 1; 
+    }
+
+    &::-ms-input-placeholder {
+        color: ${props => props.theme.colors.inputPlaceholder};;
+    }
 
     &:focus , &:active{
         border : 2px solid ${props => props.theme.colors.primaryAlpha} ;
+    }
+    &:focus { 
+        outline: none !important;
+        border-color: #719ECE;
     }
 `
 const TextAreaInput = styled.textarea`
@@ -46,6 +60,23 @@ const TextAreaInput = styled.textarea`
     border-radius : 10px ;
     width : 100%;
     padding : 5px 5px 5px 15px;
+    &::placeholder { 
+        font-family: ${(props) => props.theme.fonts.primaryFont || props.theme.fonts.secondaryFont};
+        color: ${props => props.theme.colors.inputPlaceholder};;
+        opacity: 1; 
+    }
+
+    &::-ms-input-placeholder {
+        color: ${props => props.theme.colors.inputPlaceholder};;
+    }
+
+    &:focus , &:active{
+        border : 2px solid ${props => props.theme.colors.primaryAlpha} ;
+    }
+    &:focus { 
+        outline: none !important;
+        border-color: #719ECE;
+    }
 `
 
 export { RadioInput, RadioLabel , TextInput, TextLabel, TextAreaInput }

@@ -3,24 +3,31 @@ import api from '../../data/products.json';
 import React, {useEffect, useState} from 'react'
 /* librairies */
 import { useSelector, useDispatch } from "react-redux"
-import { useNavigate } from "react-router-dom";
+import { useNavigate , Outlet, useLocation } from "react-router-dom";
 /* slice */
 import { logOut, save} from '../../store/slices/userSlice'
 /* utils */
-import { whiteSpace } from '../../utils/whiteSpace'
+import  handleInputChange  from '../../utils/handleInputChange'
+import { capitalizeFirstLetter } from '../../utils/capitalizeFirstLetter';
 /* components */
 import  BadWay  from '../../components/BadWay' ;
-import { BigButton } from '../../components/ui/Button';
+import { TextInput as Input , TextLabel as Label} from '../../components/ui/Input';
+import { BigButton as Button } from '../../components/ui/Button';
 /* icons */
-import { HiOutlineLocationMarker, HiChevronDown, HiOutlineChatAlt } from "react-icons/hi";
+import { HiOutlineLocationMarker, HiOutlineShoppingCart, HiOutlineChatAlt, HiChevronRight, HiHeart, HiOutlineUserCircle } from "react-icons/hi";
+import { RiCustomerService2Line } from "react-icons/ri";
 /* style */
 import StyledProfile from './profile.style';
 
 export default function Profile() {
 
+  /*======= HOOKS =======*/
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const location = useLocation();
   const user = useSelector((state) => state.user);
+
+  /*======= VARIABLES =======*/
   const userInitialInfos = {
     firstName: `${user.firstName || ''}`,
     lastName: `${user.lastName || ''}`,
@@ -28,39 +35,43 @@ export default function Profile() {
     address : `${user.address || ''}`,
     city: `${user.city || ''}`,
   };
-  let [userWishlist, setUserWishlist] = useState([])
+  const userFullName = capitalizeFirstLetter(user.lastName).concat(capitalizeFirstLetter(user.lastName))
 
-
+  /*======= STATES =======*/
+  const [userWishlist, setUserWishlist] = useState([])
   const [isActive, setIsActive] = useState(false);
   const [formData, setFormData] = useState({...userInitialInfos});
   const [errorMessage, setErrorMessage] = useState("")
+  const [profile, setProfile] = useState(true)
 
+  /*======= USEEFFECT =======*/
+  useEffect(() => { 
+    const changeProfileView = () => {
+      const customerParams = location.pathname.split("/").pop();
+      if (customerParams === "messages" || customerParams === "mes-achats") {
+        setProfile(false)
+      }
+      else if ( customerParams === userFullName) {
+        setProfile(true)
+      }
+    }
+    changeProfileView()
 
-  useEffect(() => { // redirect of the user is not connected
+  }, [location, userFullName]);
+  // ----> redirect of the customer is not connected
+  useEffect(() => {
     if (!user.token) {
       navigate("/authentification")
     }
   })
-  useEffect(() => { // charge the user wishlist infos
+  // ----> charge the customer wishlist infos
+  useEffect(() => { 
     let wishlistData = api.filter(product => user.wishlist.includes(product.ref))
     setUserWishlist(wishlistData)
   }, [user.wishlist])
 
 
-  const handleInputChange = (event) => {
-
-    const invalidWhitespace = whiteSpace(event.target.value) // Check if any white space was typed
-    
-    const { name, value } = event.target;
-    if ((name === "firstName" || name === "lastName") && invalidWhitespace) {
-      setErrorMessage(`Un espace s'est infiltrer`)
-    }
-    setFormData((prevState) => ({
-      ...prevState,
-      [name]: value,
-    }));
-  };
-
+/*======= FUNCTIONS =======*/
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -74,110 +85,166 @@ export default function Profile() {
 
   }
 
+  // ----> clean the input and close the form
   const handleSubmitCancel = () => {
+    setErrorMessage("")
     setFormData({...userInitialInfos}); // change the inputs values for initil values
     setIsActive(!isActive) // close the update section
   }
 
-  
+  /*======= REDIRECT =======*/
+  // ----> redirect to home page if the user isn't authentificated
   if (!user.token) {
     return (
       <BadWay />
     )
   }
-    return (
-      <StyledProfile>
+  /*======= RENDER =======*/
+  return (
+    <StyledProfile>
+      {/* SECTION USER  INFOS */}
+      <section className="userSection">
+        {/* USER IMG */}
+        <img src="https://cheaterboss.com/wp-content/uploads/2022/01/kFycsF-UNN4-HD-1024x576.jpg" alt="profile img" />
+        {/* USER NAME */}
+        <p>{capitalizeFirstLetter(user.firstName)} <span>{capitalizeFirstLetter(user.lastName)}</span></p>
 
-        {/* USER */}
-        <section className="user">
-          {/* USER IMG */}
-          <img src="https://t4.ftcdn.net/jpg/05/27/92/75/360_F_527927577_DLrQ9Lkqpy9CjMKiTd1QEWQ87ko1RMYC.jpg" alt="profile img" />
-          {/* USER NAME */}
-          <p>{user.firstName} {user.lastName}</p>
-
-          {/* ADRESS */}
-          <div className='address'>
-            <p><HiOutlineLocationMarker /> Adresse de livraison :</p>
-            <p>{user.address ||" non renseigné"}</p>
-            <p>{user.city || "non renseigné"}</p>
+        {/* ADRESS */}
+        <div className='address'>
+          <div>
+            <HiOutlineLocationMarker />
+            <p>Adresse de livraison :</p>
           </div>
+          <p><span>Votre addresse :</span> {user.address ||" non renseigné"}</p>
+          <p><span>Ville :</span> {user.city || "non renseigné"}</p>
+        </div>
 
-          <div className="messsages">
+        {/* ACCESS TO USER MESSAGES */}
+        <div onClick={() => {navigate(`/profil/${capitalizeFirstLetter(user.firstName)}${capitalizeFirstLetter(user.lastName)}/messages`)}} className="messages">
+          <div>
             <HiOutlineChatAlt />
             <p>Nos échanges</p>
             <p>{user.messages.length}</p>
           </div>
+          <HiChevronRight />
+        </div>
 
-        </section>
+        {/* ACCESS CONTACT PAGE */}
+        <div onClick={() => {navigate('/nous-contactez')}} className="messages">
+          <div>
+            <RiCustomerService2Line />
+            <p>Nous contacter</p>
+          </div>
+          <HiChevronRight />
+        </div>
+      </section>
 
-        {/*  FORP  => update user profile + order */}
-        <div>
+      <div className={!profile ? "noProfile" : null}>
 
         {/* Form to update the user profile */}
-        <section className="update">
+        <section className="updateSection">
+        <div 
+          onClick={() => {setIsActive(!isActive)}} >
+            <div className='sectionTitle'>
+              <HiOutlineUserCircle />
+              <p>Vos nformations personnelles</p>
+            </div>
+              <HiChevronRight className={`${ isActive ? 'isActive' : null} showAllUpdateSection`} />
+          </div>
 
         <form method="PUT" noValidate onSubmit={(e) => {handleSubmit(e)}}>
 
-        {/* server error message*/}
-        {errorMessage}
-
-        {/* FIRSTNAME */}
-        <input 
+        <div>
+          {/* FIRSTNAME */}
+          <div>
+            <Label htmlFor="prénom">Prénom : </Label>
+            <Input 
             placeholder="Prénom"
+            id="prénom"
             name="firstName"
             type="text"
             value={formData.firstName}
-            onChange={handleInputChange}/>
-
-        {/* LASTNAME */}
-        <input 
-            placeholder="Nom"
-            name="lastName"
-            type="text"
-            value={formData.lastName}
-            onChange={handleInputChange}/>
+            onChange={(e) => {handleInputChange(e, true, ["firstName", "lastName"], setFormData, setErrorMessage)}}/>
+          </div>
+          
+          {/* LASTNAME */}
+          <div>
+              <Label htmlFor="nom">Nom</Label>
+              <Input 
+              placeholder="Nom"
+              id="nom"
+              name="lastName"
+              type="text"
+              value={formData.lastName}
+              onChange={(e) => {handleInputChange(e, true, ["firstName", "lastName"], setFormData, setErrorMessage)}}/>
+          </div>
+        </div>
 
         {/* EMAIL */}
-        <input 
-            className={ !isActive ? 'isActive' : null}
+        <div className={ !isActive ? 'isActive' : null}>
+        <Label htmlFor="e-mail">E-mail</Label>
+        <Input 
+          id="e-mail"
+          className={ !isActive ? 'isActive' : null}
             placeholder="E-mail"
             name="email"
             type="email"
             value={formData.email}
-            onChange={handleInputChange}/>
+          onChange={(e) => {handleInputChange(e, false, [], setFormData, setErrorMessage)}}/>
 
-
+        </div>
+        
         {/* ADDRESS */}
-        <input 
-            className={ !isActive ? 'isActive' : null}
-            placeholder="Votre adresse..."
-            name="address"
-            type="text"
-            value={formData.address}
-            onChange={handleInputChange}/>
+        <div className={ !isActive ? 'isActive' : null}>
+          <Label htmlFor="adresse">Votre adresse</Label>
+          <Input 
+              id="adresse"
+              className={ !isActive ? 'isActive' : null}
+              placeholder="Votre adresse..."
+              name="address"
+              type="text"
+              value={formData.address}
+              onChange={(e) => {handleInputChange(e, false, [], setFormData, setErrorMessage)}}/>
+        </div>
+        
 
         {/* CITY */}
-        <input 
-            className={ !isActive ? 'isActive' : null}
-            placeholder="Ville"
-            name="city"
-            type="text"
-            value={formData.city}
-            onChange={handleInputChange}/>
+        <div className={ !isActive ? 'isActive' : null}>
+          <Label htmlFor="ville">Ville</Label>
+          <Input 
+              id="ville"
+              placeholder="Ville"
+              name="city"
+              type="text"
+              value={formData.city}
+              onChange={(e) => {handleInputChange(e, false, [], setFormData, setErrorMessage)}}/>
+        </div>
+        
+       
 
-        <div className={`${ !isActive ? 'isActive' : null} buttonsGroup`}>
-          <BigButton onClick={handleSubmitCancel} type="button">Annuler</BigButton>
-          <BigButton primary type="submit">Mettre à jour</BigButton>
+        <div className={`${ !isActive ? 'isActive' : null} 
+        buttonsGroup`}>
+          {/* server error message*/}
+          <p>{errorMessage}</p>
+          <Button onClick={handleSubmitCancel} type="button">Annuler</Button>
+          <Button primary type="submit">Mettre à jour</Button>
         </div>
 
         </form>
 
-        <div onClick={() => {setIsActive(!isActive)}} className={`${ isActive ? 'isActive' : null} showAllUpdateSection`}><HiChevronDown /></div>
-
         </section>
 
-        <section className="wishlist">
-          <p>Wishlist</p>
+        <section className="wishlistSection">
+
+          <div 
+            onClick={() => {navigate('/favoris')}}>
+            <div className='sectionTitle'>
+              <HiHeart />
+              <p>Wishlist</p>
+            </div>
+              < HiChevronRight />
+          </div>
+
           {userWishlist.length === 0 ? 
           <div className='emptyList'>
             <p>Vous n'avez encore rien mis dans votre wishlist</p>
@@ -196,8 +263,16 @@ export default function Profile() {
           
         </section>
 
-        <section className="order">
-          <p>Tous vos achats</p>
+        <section className="orderSection">
+        <div 
+          onClick={() => {navigate(`/profil/${userFullName}/mes-achats`)}}>
+            <div className='sectionTitle'>
+              <HiOutlineShoppingCart />
+              <p>Tous vos achats</p>
+            </div>
+              < HiChevronRight />
+          </div>
+          
           {user.orders.length === 0 ? 
           <div className='emptyList'>
             <p>Vous n'avez encore effectué aucune commande</p>
@@ -215,19 +290,14 @@ export default function Profile() {
           </div>}
 
         </section>
-
-        </div>
-
         
-        
+        <Button onClick={()=> {dispatch(logOut())}}>se déconnecter</Button>
 
+      </div>
 
-        <BigButton onClick={()=> {dispatch(logOut())}}>se déconnecter</BigButton>
-
-
-
-      </StyledProfile>
-    )
+      <Outlet />
+    </StyledProfile>
+  )
   
   
 }

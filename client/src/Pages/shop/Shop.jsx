@@ -1,8 +1,8 @@
-/* Data */
-import productsData from "../../data/products.json";
 /* Hooks */
 import { useState, useEffect, useMemo} from "react";
 import { useParams, useNavigate, useLocation } from "react-router-dom";
+/* Data */
+import productsData from "../../data/products.json";
 /* utils */
 import { sortByPriceAscending, sortByPriceDescending, sortByAZ, filterByPriceRange } from '../../utils/filters';
 /* components */

@@ -8,6 +8,8 @@ import { StyledHeader } from "./header.style";
 export default function Header() {
     return (
         <StyledHeader>
+
+            {/* BACKGROUND IMAGE */}
             <div className="headerImageContainer">
                 <img
                     className="headerImg"
@@ -16,13 +18,13 @@ export default function Header() {
                 />
             </div>
 
-            {/* text */}
+            {/* SLOGAN */}
             <div className="headerTextContainer">
-                <h1>
-                    Sans aucune limite
-                    <br />
-                    <span>Shoppy !</span>
-                </h1>
+                <div>
+                <h1>Sans aucune limite <span>Shoppy</span></h1>
+
+                </div>
+               
 
                 <Button primary shadow>
                     Nouvelle collection

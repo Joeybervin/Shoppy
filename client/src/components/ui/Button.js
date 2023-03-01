@@ -1,8 +1,9 @@
 import styled from 'styled-components';
 
 const SmallButton = styled.button`
-  /* Adapt the colors based on primary prop */
-  background: ${(props) => props.primary ? props.theme.colors.buttonsStateColors.normal : props.theme.colors.secondary};
+
+// =============> STATE : NORMAL 
+  background: ${(props) => props.primary ? props.theme.colors.primary : props.theme.colors.secondary};
   color: #FFF;
   border: none;
   font-size: 1em;
@@ -11,7 +12,7 @@ const SmallButton = styled.button`
   margin: 5px;
   box-shadow : ${(props) => props.shadow ? `rgba(0, 0, 0, 0.24) 0px 3px 8px` : "0 0 0 0 0"};
 
-  /*  hover */
+  // =============> STATE : HOVER 
   &:hover {
     background-color: ${(props) => props.theme.colors.buttonsStateColors.hover};
     /*   A REVOIR
@@ -20,10 +21,12 @@ const SmallButton = styled.button`
     cursor: pointer;
   }
 
-  /* active */
+  // =============> STATE : FOCUS 
   &:focus {
     background-color: ${(props) => props.theme.colors.buttonsStateColors.active};
   }
+
+  // =============> STATE : DISABLED 
   &:disabled {
     background-color: ${(props) => props.primary ? props.theme.colors.buttonsStateColors.disabledDark : props.theme.colors.buttonsStateColors.disabledLight};
   }

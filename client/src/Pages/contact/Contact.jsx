@@ -15,8 +15,11 @@ import './contact.css'
 
 export default function Contact() {
 
+    /*======= HOOKES =======*/
     const user = useSelector(state => state.user)
     const dispatch = useDispatch()
+
+    /*======= VARIABLES =======*/
     const messageSubjects = ["une commande", "livraison & retours", "nos produits", "Où est ma commande ?"]
     const messageInitielValues = {
         firstName : `${user.token === "" ? "" : user.firstName}`,
@@ -58,11 +61,14 @@ export default function Contact() {
             name : "message"
         }
     ]
-
+    
+    /*======= STATES =======*/
     const [operationSuccess , setOperationSuccess] = useState(false)
     const [message, setMessage] = useState({...messageInitielValues})
     const [messageError, setMessageError] = useState("")
 
+    /*======= FUNCTIONS =======*/
+    // --------> Verify some input required values
     const SendUserMessage = async (e) => {
         e.preventDefault()
         if (message.email === "" || message.message === "") {

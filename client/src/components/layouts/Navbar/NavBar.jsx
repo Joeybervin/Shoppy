@@ -5,14 +5,14 @@ import { useState} from 'react';
 import { useSelector } from 'react-redux'
 import { NavLink, useNavigate} from 'react-router-dom';
 /* utils */
-import { capitalizeFirst } from '../../../utils/capitalizeFirst';
+import { capitalizeFirstLetter } from '../../../utils/capitalizeFirstLetter';
 
 /* Compoments */
 import StyledCart from '../../Cart';
 
 /* Assets & Icons => library : react-icons  */
 import logo from "../../../assets/logo/logo.png";
-import { RxCross1, RxHamburgerMenu, RxFace } from "react-icons/rx";
+import { RxCross1, RxHamburgerMenu, RxPerson, RxHeart, RxHeartFilled } from "react-icons/rx";
 
 /* Style */
 import StyledNavbar from './NavBar.style';
@@ -36,7 +36,7 @@ export default function NavBar() {
       navigate('/authentification')
     }
     else {
-      navigate(`/profile/${capitalizeFirst(user.firstName)}${capitalizeFirst(user.lastName)}`)
+      navigate(`/profil/${capitalizeFirstLetter(user.firstName)}${capitalizeFirstLetter(user.lastName)}`)
     }
 
     setNavigationSidebarOpen(false)
@@ -69,14 +69,22 @@ export default function NavBar() {
         
          {/* sign-in and sign-up pages acess when log-out || user account access */}
           
+          <div onClick={()=>{navigate('/favoris')}} className="user">
+            {user.wishlist.length === 0 ?
+            <RxHeart style={{color : "#FD3838"}} className="userWishlist" size="1.5rem" />
+            :
+            <RxHeartFilled style={{color : "#FD3838"}} className="userWishlist" size="1.7rem" />
+            }
+            
+          </div>
+
           <div onClick={()=>connexion()} className="user">
-            <RxFace style={{color : "gold"}} className="userProfilelogo" size="1.5rem" />
-            {/* user's name if login */}
+            <RxPerson className="userProfilelogo" size="1.5rem" />
             <p>{user.firstName}</p>
           </div>
 
         {/* cart */}
-        <NavLink to="/cart">
+        <NavLink to="/panier">
             <StyledCart>{cart.length}</StyledCart>
         </NavLink>
             

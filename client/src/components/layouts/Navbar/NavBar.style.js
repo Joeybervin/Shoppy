@@ -15,9 +15,13 @@ const StyledNavbar = styled.nav`
 
     /* LEFT side => RIGHT side */
 
+     a:first-of-type {
+        padding-right : 0;
+    }
+
     /* Logo image */
     img.logo {
-        max-width: 130px;
+        max-width: 120px;
     }
 
 
@@ -41,11 +45,10 @@ const StyledNavbar = styled.nav`
     .navbarRightSide {
         display: flex;
         align-items: center;
-        gap : 5px;
     }
 
     .user {
-            margin-right: 2.5vw;
+            margin-right: 1.2vw;
             font-size : 0.8rem;
             display: flex;
             flex-direction : column;
@@ -74,14 +77,10 @@ const StyledNavbar = styled.nav`
 
     @media screen and (max-width: 767px) {
 
-       
-
         /* Logo */
         img.logo  {
             max-width: 110px;
         }
-        
-
 
         /* sidebar navigation */
         .navNavigation {
@@ -108,6 +107,9 @@ const StyledNavbar = styled.nav`
         .navNavigation ul li a:active {
             color: ${(props) => props.theme.colors.white};
         } 
+        .navbarRightSide {
+            gap : 5px;
+        }
         .burgerMenuContainer {
             display: contents;
         }

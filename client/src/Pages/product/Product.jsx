@@ -1,38 +1,32 @@
+/* data */
+import productData from "../../data/products";
 /* hooks */
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-
 import { useSelector, useDispatch } from "react-redux";
-import  { addToCart }  from '../../store/slices/cartSlice' ;
 /* slice */
+import  { addToCart }  from '../../store/slices/cartSlice' ;
 import { addProductToWishlist, removeProducFromWishlist } from '../../store/slices/userSlice';
 /* hooks */
 import  fetchData  from '../../utils/fetchData'
-
 /* component */
 import { BigButton as Button } from "../../components/ui/Button";
 import { RadioInput as Radio, RadioLabel } from "../../components/ui/Input";
 import Badge from "../../components/ui/Badge";
 import { ThumbsGalleryLoop } from "../../components/ThumbsGalleryLoop/ThumbsGalleryLoop";
-
 /* Icons */
 import {
     BsCartPlus, BsStarFill, BsStar, BsStarHalf, BsHeart, BsHeartFill} from "react-icons/bs";
-
-/* data */
-import productData from "../../data/products";
-
 /* style */
 import ProductStyle from "./product.style";
 
 export default function Product() {
-    /* hooks */
+    /*======= HOOKS =======*/
     const { refProduct } = useParams();
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
-
-    /* variables */
+    /*======= VARIABLES =======*/
     let data = productData;
     let product = data.find((product) => product.ref === refProduct);
     let user = useSelector(state => state.user);
@@ -40,20 +34,12 @@ export default function Product() {
     let productSizesList = []
     let inUserWishList = user.wishlist.includes(refProduct);
 
-
-    /* states */
+    /*======= STATES =======*/
     const [like, setLike] = useState(false); /* Change if the product is in the user wishlist */
     const [detailSelected, setDetailSelected] = useState("description");
     const [sizeSelected, setSizeSelected] = useState(null);
 
-
-
-    useEffect(() => {}, [user])
-
-    /* -------------------------------------------------------------------------------------------------------------------------------------- */
-    /* ----------  FUNCTIONS */
-    /* -------------------------------------------------------------------------------------------------------------------------------------- */
-
+    /*======= FUNCTIONS =======*/
     const productSizes = (category) => {
         if (category === "shoes") {
             productSizesList = ["36", "37", "38", "39", "40", "41", "42", "43"];
@@ -121,12 +107,9 @@ export default function Product() {
             productSize : sizeSelected ,
             quantity : 1,
         }
-
-        console.log(productInfos)
-
         dispatch(addToCart(productInfos)) // send to slice the product to add to cart
         if (event === "buy now") {
-            navigate("/cart") // redirect the user to the cart page
+            navigate("/panier") // redirect the user to the cart page
         }
     };
 

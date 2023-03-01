@@ -1,19 +1,20 @@
 
 
 export const theme = {
+
+    
     colors: {
         green : '#62FBD4',
         darkGreen : '#00C29D',
-        lightgreen : '#C1DEE0',
-        bleu : '#001281',
-        violet : '#F3E6FF',
-        jaune : '#FEFEDF',
-        yellow2: '#F9F871',
+        blue : '#001281',
+        lightPurple : '#F3E6FF',
+        purple : '#5C38FC',
+        yellow: '#F9F871',
         orange : '#FFCA5E',
         /* general */
         primary : '#7777FF',
         primaryAlpha : '#7777FF40',
-        secondary : '#FF6EA8 ',
+        secondary : '#FF2B80 ',
         tertiary: '#303030',
         black: '#000000',
         white: '#ffffff',
@@ -23,31 +24,32 @@ export const theme = {
         primaryTextColor: '#000000',
         secondaryTextColor: '#777777',
         tertiaryTextColor: '#6666CC', 
-        inputPlaceholder: '#C7C7C7',
+        inputPlaceholder: '#C2C2C2',
         darkGrayText: '#303030',
         /* buttons */
         buttonsStateColors : {
-            hover : '#BFB6ED' ,
-            active: "#FF6EA8",
+            hover : '#5C38FC' ,
+            active: "#FF2B80",
             disabledDark : "#777777",
             disabledLight : "#C7C7C7",
             focus: ""
         },
         /* notifications */
-        danger: '',
-        warning : '',
-        success: '#66A15A',
+        danger: '#FD3838',
+        warning : '#FFA115',
+        success: '#00644F',
     },
     fonts: {
         primaryFont: 'Poppins',
         secondaryFont: 'sans-serif',
+        titleFonth1 : '',
     },
     fontSize : {
         paragraphe : {
             small : 'clamp(0.75rem, 0.7321rem + 0.0893vw, 0.8125rem);', /* min: 12px | max: 13px */
             regular : 'clamp(0.9375rem, 0.8839rem + 0.2679vw, 1.125rem);;', /* min: 15px | max: 16px */
             medium : 'clamp(1rem, 0.9643rem + 0.1786vw, 1.125rem);', /* min: 16px | max: 18px */
-            large : '1rem', /* 16px */
+            large : 'clamp(1.125rem, 1.0536rem + 0.3571vw, 1.375rem);', /* 16px */
         },
         title : {
             h1 : 'clamp(1.8125rem, 1.5rem + 1.6667vw, 3rem)', /* min: 16px | max: 18px */

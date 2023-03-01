@@ -24,6 +24,7 @@ const handleInputChange = (event, whiteSpaceCheck , fieldsToCheck, setFormData, 
         ...prevState,
         [name]: value,
     }));
+
 };
 
 export default handleInputChange

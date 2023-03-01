@@ -19,6 +19,9 @@ import Product from "../Product/Product";
 import Cart from "../Cart/Cart";
 import Contact from "../Contact/Contact";
 import Profile from "../Profile/Profile";
+import Wishlist from "../Wishlist/Wishlist";
+import OrdersList from '../Profile/OrdersList/OrdersList';
+import Messages from "../Profile/Messages/Messages";
 /* Auth */
 import Authentification from "../Auth/Authentification";
 
@@ -59,19 +62,22 @@ function App() {
           {/* About */}
           <Route path="/shoppy" element={< About />} />
           {/* Contact */}
-          <Route path="/contact" element={< Contact />} />
+          <Route path="/nous-contactez" element={< Contact />} />
           {/* Shop A REVOIR */}
           <Route path="/shop/:gender/:category" element={< Shop />}/>
           <Route path="/shop/:category/product/:refProduct" element={< Product />}/>
         
           {/* Cart */}
-          <Route path="/cart" element={< Cart />} />
+          <Route path="/panier" element={< Cart />} />
+          <Route path="/favoris" element={< Wishlist />} />
           {/* Authentification */}
           <Route path="/authentification" element={< Authentification />} />
         
           {/* profile */}
-   
-          <Route path="/profile/:username" element={< Profile />} />
+          <Route path="/profil/:username" element={< Profile />}>
+            <Route path="messages" element={< Messages />} />
+            <Route path="mes-achats" element={< OrdersList />} />
+          </Route>
 
             
 

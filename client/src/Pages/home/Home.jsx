@@ -1,38 +1,59 @@
 /* hooks */
+import { useState } from 'react';
 import { useNavigate } from "react-router-dom";
-
-
-/* layouts */
-import Header from "../../components/layouts/Header/Header";
-
-/* components */
-import { BigButton as Button } from "../../components/ui/Button" ;
-import TitleHighlight from "../../components/TitleHighlight";
-import CategoryCard from "../../components/ui/CategoryCard";
-import ServiceContainer from "../../components/ServiceCard";
-import InfiniteSliderLoop from "../../components/InfiniteSliderLoop/InfiniteSliderLoop";
-import { HomePageProductCard } from "../../components/ui/ProductCard";
-import { SwiperSlide } from "swiper/react";
-
 /* Data */
 import productsData from "../../data/products.json";
 import brandData from "../../data/brands.json";
 import servicesData from "../../data/services.json";
 import categoriesData from "../../data/categories.json";
-
+/* layouts */
+import Header from "../../components/layouts/Header/Header";
+/* components */
+import { BigButton as Button } from "../../components/ui/Button";
+import TitleHighlight from "../../components/TitleHighlight"; 
+import CategoryCard from "../../components/ui/CategoryCard";
+import ServiceContainer from "../../components/ServiceCard";
+import InfiniteSliderLoop from "../../components/InfiniteSliderLoop/InfiniteSliderLoop";
+import { HomePageProductCard } from "../../components/ui/ProductCard";
+import { SwiperSlide } from "swiper/react";
+/* icons */
+import { BiCrown, BiMailSend} from "react-icons/bi";
+import { ImHeart } from "react-icons/im";
 /* style */
 import { StyledHome } from "./home.style";
 
 export default function Home() {
-    /* hooks */
+
+    /*======= HOOKS =======*/
     const navigate = useNavigate();
 
-    /* variables */
-    const services = [...servicesData];
+    /*======= STATES =======*/
+    const [newsletterSuscriber, setNewsletterSuscriber] = useState(false)
+
+    /*======= FUNCTIONS =======*/
+
+    // --------> create a raay with the word and length of your choice
+    const CreateABigArray = (arraySize, arrayContent) => { 
+        let index = 0;
+        let array = [];
+        while (index < arraySize ) {
+            array.push(arrayContent)
+            index++
+        }
+        return array;
+    }
+
+    // --------> display a message when the customer suscribe to the newsletter
+    const handlenewsletterSubmit = (e) => { 
+        e.preventDefault()
+        setNewsletterSuscriber(!newsletterSuscriber)
+    }
+
 
     return (
         <StyledHome>
             <div className="home">
+
                 {/* HEADER */}
                 <Header />
 
@@ -105,9 +126,72 @@ export default function Home() {
                     </div>
                 </section>
 
+                {/* section : clearpay */}
+                <section className="clearpaySection">
+                    <div>
+                        <img src="/icons/clearpay.png" alt="clearpay - facilité de paiement en 3 fois" />
+                        <p>Je l'aime. Je l'achète. Je le paie en 3 fois avec Clearpay.</p>
+                        <p>Conditions gégénrales*</p>
+                    </div>
+                </section>
+
+                {/* section : shoppy premier */}
+                <section className="shoppyPremierSection">
+                    <div>
+                        <p>Shoppy premier <BiCrown size="0.6em" className="crown"/></p>
+                        <p>Livraison 24h gratuire illimitée pendant une année entière pour 15€</p>
+                        <p>Montant d'achat minimum et Conditions générales s'appliquent*</p>
+                    </div>
+                </section>
+
+                {/* section :shoppy */}
+                <section className="shoppySection">
+                    <div>
+                         {/* first streamer */}
+                    <div>
+                        <div>
+                            {CreateABigArray(60,"Shoppy").map((el, index) => {
+                                return (
+                                    <p key={"1shoppy"+index}>{el}</p>
+                                )
+                            })}
+                        </div>
+                    </div>
+                    {/* second streamer */}
+                    <div>
+                        <div>
+                            {CreateABigArray(60,"Shoppy").map((el, index) => {
+                                return (
+                                    <p key={"2shoppy"+index}>{el}</p>
+                                )
+                            })}
+                        </div>
+                    </div>
+
+                    </div>
+                </section>
+            
+                {/* section : newsletter */}
+                <section className="newsletterSection">
+                    <div>
+                        <p>Toujours au contact de la mode</p>
+                        <p>En vous abonnant à notre newsletter, ne manquez rien des dernières tendances !</p>
+                    </div>
+                    <form method="POST" onSubmit={handlenewsletterSubmit}>
+                        { !newsletterSuscriber ?
+                        <div>
+                            <input placeholder='E-mail' type="text" />
+                            <button><BiMailSend /></button>
+                        </div>
+                        :
+                        <p>Merci et à bientôt <ImHeart size="1.5em" color="#FF2B80" /></p>
+                        }
+                    </form>
+                </section>
+
                 {/* section : services */}
                 <section className="servicesSection">
-                    {services.map((service, index) => {
+                    {servicesData.map((service, index) => {
                         return (
                             <ServiceContainer
                                 key={`sc${index}`}
@@ -119,18 +203,6 @@ export default function Home() {
                         );
                     })}
                 </section>
-
-                <section className="clearpayPayment">
-                    <div>
-                        <img src="/icons/clearpay.png" alt="clearpay - facilité de paiement en 3 fois" />
-                        <p>Je l'aime. Je l'achète. Je le paie en 3 fois avec Clearpay.</p>
-                        <p>Conditions gégénrales</p>
-                    </div>
-                </section>
-
-                <section className="newsletter"></section>
-
-                <section className="Sale"></section>
 
 
             </div>

@@ -1,5 +1,7 @@
 var express = require('express');
 var router = express.Router();
+/* model */
+let userModel = require('../models/user')
 
 /* update an account */
 router.put('/updateProfile', async function(req, res, next) {

@@ -6,7 +6,7 @@ import styled from "styled-components";
 import { BigButton } from "./Button";
 import { ResizableText } from '../ResizableText';
 
-/* _________ HOMEPAGE */
+// ===========> HOME PAGE
 const HomePageProductCardStyle = styled.div`
 
     text-align : left;
@@ -18,18 +18,19 @@ const HomePageProductCardStyle = styled.div`
     .productImage {
         flex-grow: 1;
         height: 60%;
+        margin-bottom : 10px;
     }
     .productImage img {
         height: 100%;
         width : 100%;
-        object-fit: fit;
-        border-radius : 15px;
+        object-fit: fill;
+        border-radius : 10px;
     }
     > div:nth-child(2){
         display: flex;
         flex-direction : column;
         justify-content : space-between;
-        height: 40%;
+        height: 35%;
     }
     > div p:first-of-type {
         font-weight : ${(props) => props.theme.fontWeight.bold};
@@ -52,16 +53,18 @@ const HomePageProductCard = ({ imgSrc, imgAlt, productName, productPrice, ...pro
                 <img src={imgSrc} alt={imgAlt} />
             </div>
             <div>
-                <p>{productName}</p>
+            <ResizableText 
+                text={productName}
+                maxChars={25}/>
                 <p>{productPrice} €</p>
             </div>
         </HomePageProductCardStyle>
     )
 }
 
-/* --------------------------------------------------------------------------------------------------------- */
+/* ============================================================================================================= */
 
-/* _________ SHOP PAGE */
+// ===========> SHOP PAGE
 const ShopPageProductCardStyle = styled.div`
 
     border-radius: 15px;
@@ -75,81 +78,58 @@ const ShopPageProductCardStyle = styled.div`
     &:hover {
         cursor : pointer;
         border : 2.5px solid blue;
-
     }
 
-.productImage {
-    flex-grow: 1;
-    
-    img {
-        min-height: 100%;
-        height: 187px;;
-        width : 100%;
-        border-radius : 15px 15px 0 0;
-        border-bottom : 0.5px solid black;
-        
-    }
-
-}
-
-
-
-.productDetails {
-
-    display: flex;
-    justify-content : space-between;
-    align-items: center;
-    padding : 15px 15px;
-    p {
-        font-size: ${(props) => props.theme.fontSize.paragraphe.small};
-    }
-    
-    div  {
-        display : flex;
-        justify-content: space-between;
-        flex-wrap: wrap;
-        align-items: center;
-        justify-content: center;
-        
-        
+    .productImage {
+        flex-grow: 1;
         img {
-            max-width: 20px;
-            max-height: 20px;
-        }
-        p:last-of-type {
-            font-weight: ${(props) => props.theme.fontWeight.bold};
+            min-height: 100%;
+            height: 187px;;
+            width : 100%;
+            border-radius : 15px 15px 0 0;
+            border-bottom : 0.5px solid black;
         }
     }
-}
-    
 
+    .productDetails {
+        display: flex;
+        justify-content : space-between;
+        align-items: center;
+        padding : 15px 15px;
+        p {
+            font-size: ${(props) => props.theme.fontSize.paragraphe.small};
+        }
+        div  {
+            display : flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+            img {
+                max-width: 20px;
+                max-height: 20px;
+            }
+                p:last-of-type {
+            }
+        }
+    }
+    
     @media screen and (min-width : 768px) {
-
-    
-    
-
         .productImage img {
-        min-height: 100%;
-       
-    }
-
-
+            min-height: 100%;
+        }
         .productDetails > div  {
-        flex-wrap: nowrap;
-    }
-
+            flex-wrap: nowrap;
+        }
         .productDetails > div div {
-        justify-content: center;
+            justify-content: center;
+        }
     }
-
-        
-    }
-
-
 
 `
 
 const ShopPageProductCard = ({ imgSrc, imgAlt, productName, productPrice, ...props }) => {
+    
     return (
         <ShopPageProductCardStyle className={props.className} onClick={props.onClick} >
 
