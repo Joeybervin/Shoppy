@@ -109,7 +109,7 @@ export default function Home() {
                             {productsData.map((product, index) => {
                                 return(
                                     <SwiperSlide 
-                                        onClick={() => navigate(`/shop/fashion/product/${product.ref}`)}
+                                        onClick={() => navigate(`/shop/${product.category}/ref/${product.ref}`)}
                                         key={'img'+index}
                                     >
                                         <HomePageProductCard

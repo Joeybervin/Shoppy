@@ -5,9 +5,12 @@ import React, {useEffect, useState} from 'react'
 /* librairies */
 import { useSelector, useDispatch } from "react-redux"
 import { useNavigate } from "react-router-dom";
+/* slice */
+import { removeProducFromWishlist } from "../../store/slices/userSlice"
+/* utils */
+import fetchData from '../../utils/fetchData';
 /* components */
 import {BigCard as Card } from '../../components/WishlistCards'
-import { BigButton as Button } from "../../components/ui/Button";
 /* style */
 import { StyledWishlist } from "./wishlist.style";
 
@@ -16,6 +19,8 @@ function Wishlist() {
 
   /*======= HOOKS =======*/
   const user = useSelector( state => state.user)
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   /*======= VARIABLES =======*/
 
@@ -30,8 +35,19 @@ function Wishlist() {
     }, [user.wishlist])
 
   /*======= FUNCTIONS =======*/
+  const addToCart = (refProduct, catProduct) => {
+    navigate(`/shop/${catProduct}/ref/${refProduct}`)
+  }
 
-
+  const DeleteFromWishlist = async (refProduct) => {
+    const response = await  fetchData('/user/removeFromWishlist', {email : user.email, productref : refProduct}, 'PUT')
+            if (response.status === "success") {
+                dispatch(removeProducFromWishlist(refProduct))
+            }
+            else {
+              console.log("Une erreur")
+            }
+  }
 
   return (
     <StyledWishlist>
@@ -44,7 +60,7 @@ function Wishlist() {
           </div>
           
           :
-          <div>
+          <>
             {userWishlist.map((product, index) => {
               return (
                 <div key={index}>
@@ -53,11 +69,13 @@ function Wishlist() {
                   imgAlt={product.productName}
                   productName={product.productName}
                   productPrice={product.price}
-                                    />
+                  handleAddToCart={() => addToCart(product.ref, product.category)}
+                  handleRemoveFromWishlist={() => DeleteFromWishlist(product.ref)}
+                  />
                 </div>
               )
             })}
-          </div>
+          </>
           }
         </div>
     </StyledWishlist>

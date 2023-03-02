@@ -7,7 +7,7 @@ const SmallButton = styled.button`
   color: #FFF;
   border: none;
   font-size: 1em;
-  padding: 1px 10px;
+  padding:  10px 4px;
   border-radius: 7px;
   margin: 5px;
   box-shadow : ${(props) => props.shadow ? `rgba(0, 0, 0, 0.24) 0px 3px 8px` : "0 0 0 0 0"};

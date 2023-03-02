@@ -26,7 +26,7 @@ const Select = ({ name, label, optionsList, value, ...props }) => {
 
             <label htmlFor={name}>{label}</label>
             <select name={name} id={name} value={value} onChange={props.onChange}>
-                {props.empty ? <option value="">--Choisissez...-</option> : null}
+                {props.empty ? <option value="">{props.firstOption ? props.firstOption : "--Choisissez...--"}</option> : null}
                 {optionsList.map((option, index) => {
                     if (option === props.category) {
                         return <option key={index} value={option} selected >{option}</option>

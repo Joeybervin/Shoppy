@@ -9,9 +9,10 @@ import fetchData from '../../utils/fetchData';
 import { TextInput as Input , TextAreaInput as TextArea,  TextLabel as Label } from '../../components/ui/Input'
 import { Select } from '../../components/ui/Select'
 import { BigButton as Button } from '../../components/ui/Button'
-
+/* icons */
+import { AiOutlineSend } from "react-icons/ai";
 /* style */
-import './contact.css'
+import {StyledContact} from './contact.style.js'
 
 export default function Contact() {
 
@@ -20,7 +21,7 @@ export default function Contact() {
     const dispatch = useDispatch()
 
     /*======= VARIABLES =======*/
-    const messageSubjects = ["une commande", "livraison & retours", "nos produits", "Où est ma commande ?"]
+    const messageSubjects = ["Une commande", "Livraison & retours", "Nos produits", "Où est ma commande ?", "Autre"]
     const messageInitielValues = {
         firstName : `${user.token === "" ? "" : user.firstName}`,
         lastName : `${user.token === "" ? "" : user.lastName}`,
@@ -72,7 +73,7 @@ export default function Contact() {
     const SendUserMessage = async (e) => {
         e.preventDefault()
         if (message.email === "" || message.message === "") {
-            setMessageError("L'e-mail et me message sont obligatoires !")
+            setMessageError("L'e-mail et le message sont obligatoires !")
         }
         else {
             setMessageError("")
@@ -95,64 +96,73 @@ export default function Contact() {
     }
 
 
-
     return (
-        <div >
-            <h1>Contact page</h1>
-            {messageError}
+        <StyledContact>
+            <div>
+            <p>Contactez nous :</p>
+            <div>
+                
+                < form method="POST" onSubmit={SendUserMessage}>
 
-            < form method="POST" onSubmit={SendUserMessage}>
+                    {messageError === "" ? null : <p >{messageError}</p>}
+                    
 
-            {messageFields.map((field, index) => {
-                if (field.name === "subject") {
-                    return (
-                        <div key={index }>
-                        <Label>{field.label}</Label>
-                        <Select
-                        className="select-field"
-                        empty
-                        value={message[field.name]}
-                        onChange={(e) => handleInputChange(e, false , [], setMessage, setMessageError)}
-                        name={"subject"}
-                        label={""}
-                        optionsList={messageSubjects}
-                    />
-                        </div>
-                    )
-                }
-                if (field.name === "message") {
-                    return (
-                        <div key={index }>
-                        <Label>{field.label}</Label>
-                        <TextArea
-                        placeholder={field.label}
-                        name={field.name}
-                        value={message[field.name]}
-                        onChange={(e) => handleInputChange(e, false , [], setMessage, setMessageError)}
-                        />
-                        </div>
-                    )
-                }
-                return (
-                    <div key={index }>
-                    <Label>{field.label}</Label>
-                    <Input
-                    disabled={messageInitielValues[field.name] }
-                    placeholder={field.label}
-                    name={field.name}
-                    type="text"
-                    value={message[field.name]}
-                    onChange={(e) => handleInputChange(e, true , ["firstName", "lastName", "email"], setMessage, setMessageError)}
-                    />
-                    </div>
-                )
-            })}
+                    {messageFields.map((field, index) => {
+                        if (field.name === "subject") {
+                            return (
+                                <div key={index }>
+                                <Label htmlFor={field.name} >{field.label} *</Label>
+                                <Select
+                                id={field.name}
+                                className="select-field"
+                                empty
+                                firstOption="-- Choisissez le sujet de votre message --"
+                                value={message[field.name]}
+                                onChange={(e) => handleInputChange(e, false , [], setMessage, setMessageError)}
+                                name={"subject"}
+                                label={""}
+                                optionsList={messageSubjects}
+                            />
+                                </div>
+                            )
+                        }
+                        if (field.name === "message") {
+                            return (
+                                <div key={index }>
+                                <Label htmlFor={field.name} >{field.label} *</Label>
+                                <TextArea
+                                id={field.name}
+                                placeholder={field.label}
+                                name={field.name}
+                                value={message[field.name]}
+                                onChange={(e) => handleInputChange(e, false , [], setMessage, setMessageError)}
+                                />
+                                </div>
+                            )
+                        }
+                        return (
+                            <div key={index }>
+                            <Label htmlFor={field.name} >{field.label} {field.name !== "order_id" ? " *" : null}</Label>
+                            <Input
+                            id={field.name}
+                            disabled={messageInitielValues[field.name] }
+                            placeholder={field.label}
+                            name={field.name}
+                            type="text"
+                            value={message[field.name]}
+                            onChange={(e) => handleInputChange(e, true , ["firstName", "lastName", "email"], setMessage, setMessageError)}
+                            />
+                            </div>
+                        )
+                    })}
+                    
+                    <Button primary type="submit">Envoyer <AiOutlineSend /></Button>
 
-            <Button primary type="submit">envoyer</Button>
+                </form>
 
-            </form>
+            </div>
 
-
-        </div>
+            </div>
+        </StyledContact>
     );
 }

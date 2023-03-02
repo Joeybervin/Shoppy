@@ -3,7 +3,7 @@ import React from "react";
 import { useSelector, useDispatch } from "react-redux"
 import { useNavigate } from "react-router-dom";
 /* components */
-
+import { MessageCard } from "../../../components/MessageCard"
 /* style */
 import { StyledMessages } from "./messages.style";
 /* icons */
@@ -15,6 +15,8 @@ function Messages() {
   const navigate = useNavigate();
 
     /*======= HOOKS =======*/
+    const user = useSelector(state => state.user)
+    const userMessagesList = user.messages
 
   /*======= VARIABLES =======*/
 
@@ -24,19 +26,41 @@ function Messages() {
 
   /*======= FUNCTIONS =======*/
 
+  console.log(userMessagesList)
 
   return (
     <StyledMessages>
+
       <div onClick={() => navigate(-1)}>
         <BsArrowLeft />
         <p>retour</p>
       </div>
+
         <div>
             <BsEnvelope />
-            <p>Vos Échanges</p>
+            <p>Messages</p>
         </div>
         
-        <div></div>
+        <div>
+          {userMessagesList.map((message, index) => {
+            return (
+              <>
+                <MessageCard 
+                  key={"message"+index}
+                  date={message.insert_date}
+                  message={message.message}
+                  message_id={message.message_id}
+                  order_id={message.order_id}
+                  subject={message.subject}
+                  title={message.title}
+              />
+              <hr></hr>
+             </>
+            )
+          })}
+
+
+        </div>
     </StyledMessages>
   );
 }

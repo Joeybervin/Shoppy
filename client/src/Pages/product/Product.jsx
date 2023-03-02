@@ -41,10 +41,10 @@ export default function Product() {
 
     /*======= FUNCTIONS =======*/
     const productSizes = (category) => {
-        if (category === "shoes") {
+        if (category === "chaussures") {
             productSizesList = ["36", "37", "38", "39", "40", "41", "42", "43"];
         }
-        else if (category === "fashion") {
+        else if (category === "vetements") {
             productSizesList = ["XS", "S", "M", "L", "XL", "XXL"];
         }
         else {
@@ -82,7 +82,6 @@ export default function Product() {
             if (response.status === "success") {
                 setLike(!like)
                 dispatch(addProductToWishlist(refProduct))
-                console.log("ADDING : ", user.wishlist)
             }
 
         }
@@ -91,7 +90,6 @@ export default function Product() {
             if (response.status === "success") {
                 setLike(false)
                 dispatch(removeProducFromWishlist(refProduct))
-                console.log("REMOVING : ",user.wishlist)
             }
         }
     };

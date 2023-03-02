@@ -26,6 +26,7 @@ export const theme = {
         tertiaryTextColor: '#6666CC', 
         inputPlaceholder: '#C2C2C2',
         darkGrayText: '#303030',
+        
         /* buttons */
         buttonsStateColors : {
             hover : '#5C38FC' ,

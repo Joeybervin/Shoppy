@@ -134,8 +134,19 @@ const StyledProfile = styled.div`
 
     // =============> SECTION : WISHLIST
     section.wishlistSection{
+        max-width : 100%;
         
-      
+        >div:last-of-type {
+            width : inherit ;
+            max-height : 350px;
+            overflow-x : hidden;
+            overflow-y : scroll;
+            -ms-overflow-style: none;  /* IE and Edge */
+            scrollbar-width: none;  /* Firefox */
+        }
+        > div:last-of-type::-webkit-scrollbar {
+            display: none;
+        }
     }
 
     // =============> SECTION : ORDER
@@ -159,6 +170,11 @@ const StyledProfile = styled.div`
             border : 3px solid #92AFFF;
         }
 
+        // =============> PART : RIGHT <============= //
+        
+        section.updateSection {
+            margin-top : 0;
+        }
         > div {
         
             margin-right: auto;

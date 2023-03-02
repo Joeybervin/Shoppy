@@ -64,8 +64,8 @@ function App() {
           {/* Contact */}
           <Route path="/nous-contactez" element={< Contact />} />
           {/* Shop A REVOIR */}
-          <Route path="/shop/:gender/:category" element={< Shop />}/>
-          <Route path="/shop/:category/product/:refProduct" element={< Product />}/>
+          <Route path="/shop/:gender/:ProductCategory" element={< Shop />}/>
+          <Route path="/shop/:category/ref/:refProduct" element={< Product />}/>
         
           {/* Cart */}
           <Route path="/panier" element={< Cart />} />

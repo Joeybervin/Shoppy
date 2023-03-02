@@ -17,7 +17,6 @@ import {StyledHome} from "./shop.style.js";
 
 export default function Shop() {
 
-
     /*======= HOOKS =======*/
     const navigate = useNavigate();
     const location = useLocation();
@@ -31,7 +30,7 @@ export default function Shop() {
     /*======= STATES =======*/
     const [filterIsClosed, setFilterIsClosed] = useState(false) // close and open the filters choices list
     const [gender, setGender ] = useState(useParams().gender); // filter 1 => get the products list category
-    const [category, setCategory ] = useState(useParams().category); // filter 1 => get the products list category
+    const [category, setCategory ] = useState(useParams().ProductCategory); // filter 1 => get the products list category
     const [productsSortFilter, setProductsSortFilter] = useState("") // Filter 2 => organising products list
     const [productsPriceFilter, setProductsPriceFilter] = useState("") // filter 3  => price
     const [productColorFilter, setProductColorFilter] = useState("")
@@ -136,6 +135,8 @@ export default function Shop() {
         setProductsSortFilter("Pertinence")
     }
 
+    console.log(productsData)
+
     return (
         <StyledHome>
 
@@ -217,7 +218,7 @@ export default function Shop() {
                                 imgAlt={product.productName}
                                 productName={product.productName.length > 18 ? product.productName.substring(0, 18) + "...": product.productName}
                                 productPrice={product.price}
-                                onClick={() => navigate(`/shop/${product.category}/product/${product.ref}`)}
+                                onClick={() => navigate(`/shop/${product.category}/ref/${product.ref}`)}
                             />
                         );
                     })

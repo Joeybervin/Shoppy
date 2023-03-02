@@ -35,7 +35,7 @@ const TextInput = styled.input`
     border : 2px solid black ;
     border-radius : 10px ;
     width : 100%;
-    padding : 6px 6px 6px 11px;
+    padding : 6px 6px 6px 12px;
     margin : 5px 0;
 
     &::placeholder { 
@@ -54,12 +54,20 @@ const TextInput = styled.input`
         outline: none !important;
         border-color: #719ECE;
     }
+
+    &:disabled { 
+        outline: none !important;
+        background-color : ${props => props.theme.colors.buttonsStateColors.disabledLight};
+        border-color: ${props => props.theme.colors.buttonsStateColors.disabledDark};
+        color: ${props => props.theme.colors.buttonsStateColors.disabledDark}
+    }
 `
 const TextAreaInput = styled.textarea`
     border : 2px solid black ;
     border-radius : 10px ;
-    width : 100%;
-    padding : 5px 5px 5px 15px;
+    max-width : 100%;
+    padding : 12px;
+    min-height: 150px;
     &::placeholder { 
         font-family: ${(props) => props.theme.fonts.primaryFont || props.theme.fonts.secondaryFont};
         color: ${props => props.theme.colors.inputPlaceholder};;

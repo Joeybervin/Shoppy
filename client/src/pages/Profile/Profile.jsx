@@ -5,14 +5,16 @@ import React, {useEffect, useState} from 'react'
 import { useSelector, useDispatch } from "react-redux"
 import { useNavigate , Outlet, useLocation } from "react-router-dom";
 /* slice */
-import { logOut, save} from '../../store/slices/userSlice'
+import { logOut, save, removeProducFromWishlist} from '../../store/slices/userSlice'
 /* utils */
+import fetchData from '../../utils/fetchData';
 import  handleInputChange  from '../../utils/handleInputChange'
 import { capitalizeFirstLetter } from '../../utils/capitalizeFirstLetter';
 /* components */
 import  BadWay  from '../../components/BadWay' ;
 import { TextInput as Input , TextLabel as Label} from '../../components/ui/Input';
 import { BigButton as Button } from '../../components/ui/Button';
+import { SmallCard as WishListCard } from '../../components/WishlistCards';
 /* icons */
 import { HiOutlineLocationMarker, HiOutlineShoppingCart, HiOutlineChatAlt, HiChevronRight, HiHeart, HiOutlineUserCircle } from "react-icons/hi";
 import { RiCustomerService2Line } from "react-icons/ri";
@@ -90,6 +92,20 @@ export default function Profile() {
     setErrorMessage("")
     setFormData({...userInitialInfos}); // change the inputs values for initil values
     setIsActive(!isActive) // close the update section
+  }
+
+  const addToCart = (refProduct, catProduct) => {
+    navigate(`/shop/${catProduct}/ref/${refProduct}`)
+  }
+
+  const DeleteFromWishlist = async (refProduct) => {
+    const response = await  fetchData('/user/removeFromWishlist', {email : user.email, productref : refProduct}, 'PUT')
+            if (response.status === "success") {
+                dispatch(removeProducFromWishlist(refProduct))
+            }
+            else {
+              console.log("Une erreur")
+            }
   }
 
   /*======= REDIRECT =======*/
@@ -255,7 +271,15 @@ export default function Profile() {
             {userWishlist.map((product, index) => {
               return (
                 <div key={index}>
-                  {product.productName}
+                  <WishListCard 
+                    imgSrc={product.productImage[0]}
+                    imgAlt={product.productName}
+                    productRef={product.ref}
+                    productName={product.productName}
+                    productPrice={product.price}
+                    handleAddToCart={() => addToCart(product.ref, product.category)}
+                    handleRemoveFromWishlist={() => DeleteFromWishlist(product.ref)}
+                  />
                 </div>
               )
             })}

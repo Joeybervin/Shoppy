@@ -8,9 +8,50 @@ export const StyledMessages = styled.div`
     padding : 10px;
     margin-top : 30px;
 
-    .userSection {
+    > div:first-child {
+        display : flex;
+        align-items: center;
+        padding : 3px 8px;
+        border : 1px solid black;
+        border-radius: 5px;
+        margin-bottom : 15px;
+        width : fit-content;
+        font-size :${props => props.theme.fontSize.paragraphe.small};
+
+        &:hover {
+            background-color: #000000;
+            color: #ffffff;
+            cursor: pointer;
+            p {
+                color: #ffffff;
+            }
+            
+        }
+    }
+    > div:nth-child(2) {
+        display: flex;
+        justify-content : center;
+        align-items: center;
+        font-size :${props => props.theme.fontSize.paragraphe.large};
+        font-weight :${props => props.theme.fontWeight.bold};
+        margin-bottom : 25px;
+    }
+    > div:nth-child(3) {
+        max-height : 450px;
+        overflow-y: scroll;
+        -ms-overflow-style: none;  
+        scrollbar-width: none; 
+    }
+    > div:nth-child(3)::-webkit-scrollbar {
         display: none;
     }
+
+    @media screen and (min-width: 768px) {
+
+        margin-top : 0;
+        
+    }
+
 
 
 `;
