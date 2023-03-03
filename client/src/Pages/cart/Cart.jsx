@@ -1,9 +1,16 @@
+/* hooks */
 import { useEffect, useState } from 'react';
-
 import { useDispatch, useSelector} from 'react-redux';
+import { Outlet } from 'react-router-dom'
+/* slice */
+import { removeProducFromWishlist, addProductToWishlist } from '../../store/slices/userSlice';
 import { removeFromCart, clearCart, updateCart } from '../../store/slices/cartSlice' ;
-import { RxCrossCircled, RxValueNone } from "react-icons/rx";
-
+/* utils */
+import fetchData from '../../utils/fetchData'
+/* components */
+import { CartCard } from '../../components/CartCard';
+/* style */
+import { StyledCart } from './cart.style';
 
 export default function Cart() {
 
@@ -16,7 +23,7 @@ export default function Cart() {
 
 
     useEffect(() => {
-
+        console.log(cartList)
         const cartTotal = () => {
             let cartTotal = 0 ;
             for (let i = 0 ; i < cartList.length ; i++) {
@@ -41,32 +48,76 @@ export default function Cart() {
         dispatch(clearCart())
     }
 
+    const productSubTotal = (productPrice, productQuantity) => {
+        return productPrice * productQuantity
+    }
+    const interactionWishList = async (productRef) => {
+
+        let inUserWishList = user.wishlist.includes(productRef);
+
+        if (user.token !== "" && !inUserWishList) {
+            const response = await  fetchData('/user/addToWishlist', {email : user.email, productref : productRef}, 'PUT')
+            if (response.status === "success") {
+                /* setLike(!like) */
+                dispatch(addProductToWishlist(productRef))
+            }
+
+        }
+        else if (user.token !== "" && inUserWishList) {
+            const response = await  fetchData('/user/removeFromWishlist', {email : user.email, productref : productRef}, 'PUT')
+            if (response.status === "success") {
+                /* setLike(false) */
+                dispatch(removeProducFromWishlist(productRef))
+            }
+        }
+
+    }
+
+  
 
     return (
-        <div >
-            <h1>Cart page <RxValueNone  onClick={()=> cartClear()} /></h1>
-            <h2 style={{textAlign : "right"}}>TOTAL : {total} €</h2>
-            {cartList.map((product, index) => {
-                return(
-                    <div key={index} style={{margin : "15px", border : "1px solid black", padding : "10px" , minWidth : "550px"}}>
-                        <div>
-                            <p>° produit : {product.productName} <RxCrossCircled size="1.5rem" onClick={()=>removeProductFromCart(index)} color="red"/></p>
-                            <p>Taille : {product.productSize} | qt : {product.quantity} | prix : {product.price} €</p>
-                        </div>
+        <StyledCart >
+            <p>Mon panier </p>
+            <div>
+                {/* LEFT PART : cart list product */}
+                <div className='cartList'>
+                    <div>
+                        {cartList.map((product, index) => {
+                            return(
+                                <>
+                                <CartCard 
+                                key={"product"+index}
+                                imgSrc={product.productImage}
+                                imgAlt={product.productName}
+                                productName={product.productName}
+                                productPrice={product.price}
+                                productRef={product.ref}
+                                productSize={product.productSize}
+                                productColor={product.color}
+                                addProduct={() => {updateCartProduct(index, "minus", 1)}}
+                                productSubTotal={productSubTotal(product.price, product.quantity)}
+                                handleAddToWishlist={() => {interactionWishList(product.ref)}}
+                                productQuantity={product.quantity}
+                                removeProduct={() => {updateCartProduct(index, "minus", 1)}}
+                                handleDeleteFromCart={() => {removeProductFromCart(index)}}
 
-                        <div style={{display : "flex"}}>
-                            <button onClick={()=>updateCartProduct(index, "minus", product.quantity)} type="button"> - </button>
-                        <input style={{WebkitAppearance: "none" ,margin: "0", textAlign : "center"}} type="number"  name="quantity" min="0" readOnly value={product.quantity}/>
-                            <button onClick={()=>updateCartProduct(index, "plus", product.quantity)} type="button"> + </button>
-                        
-                        
-                        </div>
-                        
+                                />
+                                <hr />
+                                </>
+                            )
+                        })}
+
                     </div>
-                )
-            })}
+                </div>
 
+                {/* RIGHT PART : check out part */}
+                <div className='checkout'>
+                        <p>checkout</p>
+                </div>
+            </div>
+            
 
-        </div>
+            <Outlet />
+        </StyledCart>
     );
 }

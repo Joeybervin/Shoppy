@@ -104,17 +104,6 @@ export const StyledHome= styled.div`
         position: relative;
         border-left : 1px solid white;
         border-right : 1px solid white;
-            
-        &::before {
-            content : '';
-            position: absolute;
-            left : -2px;
-            width : 65px;
-            height: 100%;
-            z-index: 2;
-            background: rgb(255,255,255);
-            background:linear-gradient(90deg, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0) 100%);
-        }
 
         .slide {
             width: 100%;
@@ -126,7 +115,7 @@ export const StyledHome= styled.div`
             &::before {
                 content : '';
                 position: absolute;
-                right : -2px;
+                right : -5px;
                 width : 25px;
                 height: 100%;
                 z-index: 2;
@@ -362,6 +351,37 @@ export const StyledHome= styled.div`
     // =============> SECTION : COLLABORATIONS
     .collaborationSection img {
         max-width: 100px;
+    }
+
+    .categoriesSection {
+        // -------> slider
+        .slideContainer {
+    
+            &::before {
+                content : '';
+                position: absolute;
+                left : -2px;
+                width : 65px;
+                height: 100%;
+                z-index: 2;
+                background: rgb(255,255,255);
+                background:linear-gradient(90deg, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0) 100%);
+            }
+
+            .slide {
+
+                &::before {
+                    content : '';
+                    position: absolute;
+                    right : -2px;
+                    width : 25px;
+                    height: 100%;
+                    z-index: 2;
+                    background: rgb(255,255,255);
+                    background:linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 100%);
+                }
+            }
+        }
     }
 
     // =============> SECTION : SERVICES 

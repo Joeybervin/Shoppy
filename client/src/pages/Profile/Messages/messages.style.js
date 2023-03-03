@@ -7,6 +7,8 @@ export const StyledMessages = styled.div`
     border-radius : 8px;
     padding : 10px;
     margin-top : 30px;
+    border : 5px solid #7C44FF;
+    filter: drop-shadow(3px 3px 7px #858585);
 
     > div:first-child {
         display : flex;

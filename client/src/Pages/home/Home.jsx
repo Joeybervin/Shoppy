@@ -10,7 +10,6 @@ import categoriesData from "../../data/categories.json";
 import Header from "../../components/layouts/Header/Header";
 /* components */
 import { BigButton as Button } from "../../components/ui/Button";
-import TitleHighlight from "../../components/TitleHighlight"; 
 import CategoryCard from "../../components/ui/CategoryCard";
 import ServiceContainer from "../../components/ServiceCard";
 import InfiniteSliderLoop from "../../components/InfiniteSliderLoop/InfiniteSliderLoop";

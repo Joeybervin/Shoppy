@@ -6,13 +6,17 @@ const StyledProfile = styled.div`
     display : flex;
     flex-direction : column;
     padding: 35px 0;
-    background-color: ${props => props.theme.colors.blue};
+    background-color: #ffffff;
+    opacity: 0.8;
+    background-image:  linear-gradient(#505050 0.8px, transparent 0.8px), linear-gradient(to right, #505050 0.8px, #ffffff 0.8px);
+    background-size: 23px 23px;
 
     // =============> PART : LEFT <============= //
     // =============> SECTION : USERSECTION
     section {
         background-color: #ffffff;
         padding : 10px;
+        filter: drop-shadow(3px 3px 7px #858585);
     }
 
     // =============> PART : RIGHT <============= //
@@ -167,18 +171,30 @@ const StyledProfile = styled.div`
         section.userSection{
             width : max-content;
             margin-left : auto;
-            border : 3px solid #92AFFF;
+            border : 5px solid #92AFFF;
         }
 
         // =============> PART : RIGHT <============= //
         
+        // =============> SECTION : UPDATE
         section.updateSection {
             margin-top : 0;
+            border : 5px solid #FF44FF;
         }
         > div {
         
             margin-right: auto;
             width : max-content;
+        }
+
+        // =============> SECTION : USER
+        section.wishlistSection{
+            border : 5px solid #AEFF44;
+        }
+
+        // =============> SECTION : ORDER
+        section.orderSection{
+            border : 5px solid #FF7944;
         }
         
 

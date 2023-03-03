@@ -1,6 +1,6 @@
 import React from "react";
 /* hooks */
-import { useSelector, useDispatch } from "react-redux"
+import { useSelector } from "react-redux"
 import { useNavigate } from "react-router-dom";
 /* components */
 import { MessageCard } from "../../../components/MessageCard"
@@ -25,8 +25,6 @@ function Messages() {
   /*======= USEEFFECT =======*/
 
   /*======= FUNCTIONS =======*/
-
-  console.log(userMessagesList)
 
   return (
     <StyledMessages>

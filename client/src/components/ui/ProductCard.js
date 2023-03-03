@@ -2,10 +2,6 @@
 /* libraries */
 import styled from "styled-components";
 
-/* components */
-import { BigButton } from "./Button";
-import { ResizableText } from '../ResizableText';
-
 // ===========> HOME PAGE
 const HomePageProductCardStyle = styled.div`
 
@@ -33,7 +29,10 @@ const HomePageProductCardStyle = styled.div`
         height: 35%;
     }
     > div p:first-of-type {
-        font-weight : ${(props) => props.theme.fontWeight.bold};
+        font-size : ${(props) => props.theme.fontSize.paragraphe.small};
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
         
     }
     > div p:last-of-type {
@@ -53,9 +52,7 @@ const HomePageProductCard = ({ imgSrc, imgAlt, productName, productPrice, ...pro
                 <img src={imgSrc} alt={imgAlt} />
             </div>
             <div>
-            <ResizableText 
-                text={productName}
-                maxChars={25}/>
+                <p>{productName}</p>
                 <p>{productPrice} €</p>
             </div>
         </HomePageProductCardStyle>
@@ -108,8 +105,6 @@ const ShopPageProductCardStyle = styled.div`
             img {
                 max-width: 20px;
                 max-height: 20px;
-            }
-                p:last-of-type {
             }
         }
     }

@@ -4,7 +4,7 @@ const ProductStyle = styled.div`
 
     display: flex;
     flex-wrap: wrap;
-    margin : 10px 0 75px 0;
+    margin : 40px 0;
     justify-content: space-between;
 
 
@@ -33,6 +33,7 @@ const ProductStyle = styled.div`
     .productName {
         font-size : ${(props) => props.theme.fontSize.title.h1};
         font-weight : ${(props) => props.theme.fontWeight.bold};
+        line-height : 1em;
         margin : 15px 0;
     }
 
@@ -40,11 +41,13 @@ const ProductStyle = styled.div`
     .productPrice {
         text-align : right;
         margin : 10px ;
-        font-size : ${(props) => props.theme.fontSize.title.h1};
+        font-size: clamp(1.375rem, 1.1964rem + 0.8929vw, 2rem);
         font-weight: ${(props) => props.theme.fontWeight.bold};
     }
     .productPrice span {
+        
         color: ${(props) => props.theme.colors.secondary};
+        font-weight: ${(props) => props.theme.fontWeight.bold};
     }
 
 /* part : COLOR */
@@ -93,8 +96,7 @@ const ProductStyle = styled.div`
     .details .radioButtonGroup + div {
         max-width : 500px;
         margin : 15px 0;
-        min-height : 100px;
-        max-height : 350px;
+        height : 210px;
         overflow-y : scroll;
         -ms-overflow-style: none;  /* IE and Edge */
         scrollbar-width: none;  /* Firefox */

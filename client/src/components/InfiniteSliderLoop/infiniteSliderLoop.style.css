@@ -8,7 +8,7 @@
 }
 
 .productsSection  div.swiper-slide {
-    width: clamp(140px, 25vw, 180px ) !important;
+    width: clamp(140px, 15vw, 180px ) !important;
     margin : 0 15px;
     display: flex;
     justify-content: center;
