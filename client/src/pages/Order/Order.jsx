@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
-import { useNavigate, useParams} from 'react-router-dom';
-import { useDispatch, useSelector} from 'react-redux';
-
+import { useParams} from 'react-router-dom';
+import { useSelector} from 'react-redux';
 /* utils */
 import applyDiscount from '../../utils/applyDiscount';
 /* components */
@@ -10,17 +9,18 @@ import  Payment from './Payment/Payment' ;
 import  OrderConfirmation  from './OrderConfirmation/OrderConfirmation' ;
 /* Data */
 import coupons from '../../data/coupons.json';
+
+
 export default function Order() {
 
 /*======= HOOKS =======*/
-const navigate = useNavigate();
 const { step } = useParams();
-const couponsList = [...coupons]
+const cartList = useSelector(state => state.cart);
 
 /*======= VARIABLES =======*/
+const couponsList = [...coupons]
 
 /*======= STATE =======*/
-const cartList = useSelector(state => state.cart)
 const [subTotal, setSubTotal] = useState(0);
 const [deliveryFee, setDeliveryFee] = useState(4.99)
 const [total, setTotal] = useState(0);
@@ -93,6 +93,5 @@ const handleSaleCodeSubmit = (e) => {
             <OrderConfirmation />
         )
     }
-  
-    
+
 };

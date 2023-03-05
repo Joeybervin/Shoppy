@@ -1,5 +1,4 @@
 /* hooks */
-import { useEffect, useState } from 'react';
 import { useDispatch, useSelector} from 'react-redux';
 import { useNavigate } from 'react-router-dom'
 /* slice */
@@ -21,7 +20,6 @@ export default function Cart(props) {
     const cartList = useSelector(state => state.cart)
     const user = useSelector(state => state.user)
     const dispatch = useDispatch();
-    
     const navigate = useNavigate();
 
     /*======= VARIABLES =======*/
@@ -53,18 +51,6 @@ export default function Cart(props) {
     ]
 
     /*======= STATES =======*/
-
-
-    
-
-
-    
-
-
-    /*======= USEEFFECT =======*/
-
-
-    /*======= FUNCTIONS =======*/
 
     const removeProductFromCart = (index) => {
         dispatch(removeFromCart(index))
