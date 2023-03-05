@@ -84,7 +84,7 @@ export default function NavBar() {
           </div>
 
         {/* cart */}
-        <NavLink to="/panier">
+        <NavLink to="/commande/panier">
             <StyledCart>{cart.length}</StyledCart>
         </NavLink>
             

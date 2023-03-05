@@ -13,7 +13,7 @@ import {Empty} from "../../components/Empty";
 import { HiOutlineChevronDown, HiOutlineFilter } from "react-icons/hi";
 import { BsGenderAmbiguous, BsGenderFemale, BsGenderMale } from "react-icons/bs";
 /* style */
-import {StyledHome} from "./shop.style.js";
+import {StyledShop} from "./shop.style.js";
 
 export default function Shop() {
 
@@ -138,7 +138,7 @@ export default function Shop() {
     console.log(productsData)
 
     return (
-        <StyledHome>
+        <StyledShop>
 
             {/* FILTRES : gender, cat, price range, pertinence, color, clean */}
             <div>
@@ -225,6 +225,6 @@ export default function Shop() {
                     
                     }
             </div>
-        </StyledHome>
+        </StyledShop>
     );
 }

@@ -7,33 +7,38 @@ import { useSelector} from 'react-redux';
 import { BsTrash, BsHeart, BsHeartFill } from "react-icons/bs";
 
 const StyledCartCard = styled.div`
+
     max-width: 100%;
-    padding: 10px;
+    padding: 8px;
 
     > div {
         display : flex;
         justify-content: space-between;
+        max-width: 100%;
     }
 
-    // ------> PART LEFT : all the infos of the product
+    // =======> PART LEFT : all the infos of the product
     .infos {
         display : flex;
-        gap : 10px;
+        gap : 20px;
+        max-width: 100%;
 
         // ---> product image
         .productImage {
-            max-height: 140px;
-
+            position: relative;
+            min-width: 100px;
+            max-height : 140px;
             img {
                 width: 100%;
                 height: 100%;
-                object-fit : fill;
+                object-fit :  fill;
                 border-radius : 8px;
             }
         }
 
         // ---> product informations
         .productInfos {
+            max-width: 100%;
             min-width: 100px;
             p {
                 padding: 0;
@@ -42,7 +47,6 @@ const StyledCartCard = styled.div`
                 text-overflow : ellipsis;
             }
             > div:nth-child(1) {
-                background-color : goldenrod;
                 p {
                     
                     font-weight : ${props => props.theme.fontWeight.bold};
@@ -53,7 +57,6 @@ const StyledCartCard = styled.div`
                 flex-wrap : wrap;
                 gap : 10px;
                 margin-bottom : 25px;
-                background-color : lavenderblush;
                 
                 p {
                     margin-left : 5px;
@@ -66,7 +69,6 @@ const StyledCartCard = styled.div`
                 }
                 > div:first-of-type  {
                     max-width: 100%;
-                    background-color: lightgoldenrodyellow;
                 }
             }
             > div:nth-child(3) {
@@ -113,21 +115,23 @@ const StyledCartCard = styled.div`
 
     }
 
-    // ------> PART RIGHT : delete the product from the cart
+    // ======> PART RIGHT : delete the product from the cart
     .delete {
-        margin-left : 10px;
-
+        position: absolute;
+        width : 18px;
+        top : 10px;
+        right: 5px;
+        color : #B8B8B8;
+        &:hover {
+            cursor: pointer;
+        }
     }
 
     @media screen and (min-width: 768px) {
 
-       /*  .productInfos {
-            > div:nth-child(2) {
-                width : max-content;
-            }
-        
+        .infos  .productImage {
+            max-width: 120px; 
         }
-         */
     }
 
 
@@ -145,6 +149,10 @@ const CartCard = ({imgSrc, imgAlt, productName, productPrice, productRef, produc
                 <div className='infos'>
                     <div className='productImage'>
                         <img src={imgSrc} alt={imgAlt} />
+                        <div className='delete' onClick={handleDeleteFromCart}>
+                            < BsTrash size="0.8em"/>
+                        </div>
+
                     </div>
                     
                     <div className="productInfos">
@@ -182,19 +190,19 @@ const CartCard = ({imgSrc, imgAlt, productName, productPrice, productRef, produc
                             </div>
                             {/* update quantity */}
                             <div className='quantity'>
-                                <button onClick={addProduct} type="button"> - </button>
+                                <button onClick={removeProduct} type="button"> - </button>
                                 <input style={{WebkitAppearance: "none" ,margin: "0", textAlign : "center"}} type="number"  name="quantity" min="0" readOnly value={productQuantity}/>
-                                <button onClick={removeProduct} type="button"> + </button>
+                                <button onClick={addProduct} type="button"> + </button>
                             </div>
                         </div>
                     
                     </div>
                 </div>
                 {/* delete from cart */}
-                <div className='delete' onClick={handleDeleteFromCart}>
+               {/*  <div className='delete' onClick={handleDeleteFromCart}>
                 < BsTrash />
                 </div>
-
+ */}
             </div>
            
         </StyledCartCard>

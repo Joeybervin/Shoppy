@@ -10,7 +10,6 @@ export const StyledContact = styled.div`
     background-image:  linear-gradient(#505050 0.8px, transparent 0.8px), linear-gradient(to right, #505050 0.8px, #ffffff 0.8px);
     background-size: 16px 16px;
     > div {
-        
         max-width: 450px;
         margin : 40px auto;
     }

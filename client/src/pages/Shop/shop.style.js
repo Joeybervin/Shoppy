@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const StyledHome = styled.div`
+export const StyledShop = styled.div`
 
 
 width : 100%;

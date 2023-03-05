@@ -1,5 +1,7 @@
 var mongoose = require('mongoose');
 
+mongoose.set("strictQuery", true);
+
 var options = {
     connectTimeoutMS: 5000,
     useUnifiedTopology : true,

@@ -9,27 +9,26 @@ import { theme } from '../../assets/styles/Theme'
 /* Layouts */
 import NavBar from '../../components/layouts/Navbar/NavBar';
 import Footer from '../../components/layouts/Footer/Footer';
-/* Components */
-
 /* Pages */
 import About from "../About/About";
 import Home from "../Home/Home";
 import Shop from "../Shop/Shop";
 import Product from "../Product/Product";       
-import Cart from "../Cart/Cart";
 import Contact from "../Contact/Contact";
-import Profile from "../Profile/Profile";
 import Wishlist from "../Wishlist/Wishlist";
-import OrdersList from '../Profile/OrdersList/OrdersList';
-import Messages from "../Profile/Messages/Messages";
-/* Auth */
 import Authentification from "../Auth/Authentification";
-
-
+/* order */
+import Order from "../Order/Order";
+import Cart from "../Order/Cart/Cart";
+import Payment from "../Order/Payment/Payment";
+import OrderConfirmation from "../Order/OrderConfirmation/OrderConfirmation";
+/* Auth */
+import Profile from "../Profile/Profile";
+import Messages from "../Profile/Messages/Messages";
+import OrdersList from '../Profile/OrdersList/OrdersList';
 
 
 function App() {
-
 
 
   const  ScrollToTop= () => {
@@ -55,7 +54,7 @@ function App() {
         {/* NAVBAR */}
         <NavBar />
       
-        {/* ROUTES */}
+        {/* ROUTER */}
         <Routes >
           {/* Home */}
           <Route path="/" element={< Home />}/>
@@ -63,29 +62,29 @@ function App() {
           <Route path="/shoppy" element={< About />} />
           {/* Contact */}
           <Route path="/nous-contactez" element={< Contact />} />
-          {/* Shop A REVOIR */}
-          <Route path="/shop/:gender/:ProductCategory" element={< Shop />}/>
+          {/* shop */}
+          <Route path="/shop/:gender/:ProductCategory" element={< Shop />
+          /* product */}/>
           <Route path="/shop/:category/ref/:refProduct" element={< Product />}/>
-        
           {/* Cart */}
-          <Route path="/panier" element={< Cart />} />
+          <Route path="/commande/:step" element={< Order />} >
+            <Route path="panier" element={< Cart />} /> 
+            <Route path="paiement" element={< Payment />} /> 
+            <Route path="confirmation-de-commande" element={< OrderConfirmation />} /> 
+          </Route>
+          {/* Wishlist */}
           <Route path="/favoris" element={< Wishlist />} />
           {/* Authentification */}
           <Route path="/authentification" element={< Authentification />} />
-        
           {/* profile */}
           <Route path="/profil/:username" element={< Profile />}>
             <Route path="messages" element={< Messages />} />
             <Route path="mes-achats" element={< OrdersList />} />
           </Route>
-
-            
-
           <Route path="*" element={< Home />}/>
         </Routes>
 
-        {/* FOOTER 
-        */}
+        {/* FOOTER  */}
         < Footer/>
 
       </div>
