@@ -135,39 +135,37 @@ export default function Cart(props) {
                         {/* PART : SALE CODE FORM */}
                         <div className='saleCode'>
                             <label htmlFor="code">Code de réduction</label>
-                            <p>{props.codeMessageErreur}</p>
+                            <p>{props.cart.codeMessageErreur}</p>
                             <form method='POST' onSubmit={(e) => props.handleSaleCodeSubmit(e)}>
-                                <Input disabled={props.code.valid ? true : false} type="text" id="code" name="code" value={props.code.codeId} onChange={(e) => props.setCode({...props.code , codeId : e.target.value})} />
+                                <Input disabled={props.code.valid ? true : false} type="text" id="code" name="code" value={props.cart.coupon.id} onChange={(e) => props.setCode({...props.code , codeId : e.target.value})} />
                                 <SButton type="submit">{props.code.valid ? "Annuler": "Ajouter"}</SButton>
                             </form>
                         </div>
 
                         {/* PART : CART TOTAL */}
                         <div>
-                        <table className="carttable">
-                            <tfoot>
-                                <tr>
-                                    <td>Total</td>
-                                    <td>{props.total} €</td>
-                                </tr>
-                            </tfoot>
-                            <tbody>
-                                <tr>
-                                    <td>Valeur de la commande</td>
-                                    <td>{props.subTotal} €</td>
-                                </tr>
-                                <tr>
-                                    <td>Livraison</td>
-                                    <td>{props.deliveryFee}{props.deliveryFee === "GRATUIT*" ? null : " €"}</td>
-                                </tr>
-                                <tr>
-                                    <td>{props.coupon.name}</td>
-                                    <td>{props.coupon.amount}</td>
-                                </tr>
-                            </tbody>
-                        </table>
-
-
+                            <table className="carttable">
+                                <tfoot>
+                                    <tr>
+                                        <td>Total</td>
+                                        <td>{props.cart.total} €</td>
+                                    </tr>
+                                </tfoot>
+                                <tbody>
+                                    <tr>
+                                        <td>Valeur de la commande</td>
+                                        <td>{props.cart.subTotal} €</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Livraison</td>
+                                        <td>{props.cart.deliveryFee}{props.cart.deliveryFee === "GRATUIT*" ? null : " €"}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>{props.cart.coupon.name}</td>
+                                        <td>{props.cart.coupon.discountAmount}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
                         </div>
 
                         <BButton primary onClick={() => navigate('/commande/paiement')} >Effectuer le paiement</BButton>

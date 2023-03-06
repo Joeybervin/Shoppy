@@ -28,6 +28,19 @@ const [coupon, setCoupon] = useState({})
 const [codeMessageErreur, setCodeMessageErreur] = useState("");
 const [code, setCode] = useState({valid : false, codeId : "", discountAmount : 0});
 
+const cart = {
+    subTotal : subTotal,
+    total: total,
+    deliveryFee : deliveryFee,
+    codeMessageErreur : codeMessageErreur,
+    coupon : 
+        {
+            name : coupon.name,
+            id : code.codeId,
+            discountAmount : coupon.amount
+        }
+}
+
 /*======= USEEFFECT =======*/
 useEffect(() => {
     const cartTotal = () => {
@@ -64,7 +77,6 @@ const handleSaleCodeSubmit = (e) => {
         setCode({valid : false, codeId : "", discountAmount : 0});
     }
     else if (code.valid) {
-        console.log("DEJA VALIDER")
         setCode({valid : false, codeId : "", discountAmount : 0});
         setCoupon({});
     }
@@ -80,12 +92,12 @@ const handleSaleCodeSubmit = (e) => {
 
     if (step === "panier") {
         return (
-            < Cart coupon={coupon} setCoupon={setCoupon} setCode={setCode} code={code} codeMessageErreur={codeMessageErreur} handleSaleCodeSubmit={handleSaleCodeSubmit} subTotal={subTotal} total={total} deliveryFee={deliveryFee} setCodeMessageErreur={setCodeMessageErreur}/>
+            < Cart cart={cart} code={code} setCoupon={setCoupon} setCode={setCode} handleSaleCodeSubmit={handleSaleCodeSubmit} setCodeMessageErreur={setCodeMessageErreur}/>
         )
     }
     else if (step === "paiement") {
         return (
-            <Payment total={total} code={code} deliveryFee={deliveryFee}  />
+            <Payment cart={cart} />
         )
     }
     else if (step === "confirmation-de-commande") {
