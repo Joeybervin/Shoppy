@@ -6,14 +6,8 @@ import productsData from "../../data/products.json";
 import brandData from "../../data/brands.json";
 import servicesData from "../../data/services.json";
 import categoriesData from "../../data/categories.json";
-/* layouts */
-import Header from "../../components/layouts/Header/Header";
 /* components */
-import { BigButton as Button } from "../../components/ui/Button";
-import CategoryCard from "../../components/ui/CategoryCard";
-import ServiceContainer from "../../components/ServiceCard";
-import InfiniteSliderLoop from "../../components/InfiniteSliderLoop/InfiniteSliderLoop";
-import { HomePageProductCard } from "../../components/ui/ProductCard";
+import { BigButton as Button, CategoryCard, ServiceCard, InfiniteSliderLoop, HomePageProductCard , Header } from "../../components/index";
 import { SwiperSlide } from "swiper/react";
 /* icons */
 import { BiCrown, BiMailSend} from "react-icons/bi";
@@ -191,7 +185,7 @@ export default function Home() {
                 <section className="servicesSection">
                     {servicesData.map((service, index) => {
                         return (
-                            <ServiceContainer
+                            <ServiceCard
                                 key={`sc${index}`}
                                 iconSrc={service.icon}
                                 iconAlt={service.service}

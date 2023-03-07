@@ -224,7 +224,7 @@ export const StyledHome= styled.div`
         background-color: white;
         border: 1px solid black;
         &:last-of-type{
-            background-color: ${props => props.theme.colors.blue};
+            background-color: ${props => props.theme.colors.darkBlue};
             transform: rotate(2deg);
             border: none;
             > div {
@@ -235,6 +235,7 @@ export const StyledHome= styled.div`
                 font-weight :${props => props.theme.fontWeight.bold};
                 &:hover{
                     color :${props => props.theme.colors.secondary};
+                    cursor: default;
                 }
             }
         }
@@ -249,6 +250,7 @@ export const StyledHome= styled.div`
             display : inline-block;
             &:hover{
             color :${props => props.theme.colors.primary};
+            cursor: default;
             }
         }
     }

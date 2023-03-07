@@ -5,7 +5,7 @@ import { BsChevronDown } from "react-icons/bs";
 /* style */
 import { StyledHeader } from "./header.style";
 
-export default function Header() {
+export const  Header = () =>{
     return (
         <StyledHeader>
 

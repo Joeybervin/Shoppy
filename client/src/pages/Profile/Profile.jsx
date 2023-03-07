@@ -67,11 +67,12 @@ export default function Profile() {
   const [errorMessage, setErrorMessage] = useState("")
   const [profile, setProfile] = useState(true)
 
-  /*======= USEEFFECT ==.pathname
+  /*======= USEEFFECT ========*/
   // ------> show the wanted rubric ofthe profile
   useEffect(() => { 
       const customerParams = location.pathname.split("/").pop();
-      if (customerParams === "messages" || customerParams === "mes-achats") {
+      const url = location.pathname
+      if (customerParams === "messages" || url.includes("mes-achats")) {
         setProfile(false)
       }
       else {
@@ -301,7 +302,7 @@ export default function Profile() {
             {user.orders.map((order, index) => {
               console.log(order)
               return (
-                <div key={index} onClick={() => {profileRubricsInteractions(`mes-achats/commande/${order.id}`)}}>
+                <div key={index} /* onClick={() => {profileRubricsInteractions(`mes-achats/commande/${order.id}`)}} */>
                   <OrderCard
 
                     date={order.date}

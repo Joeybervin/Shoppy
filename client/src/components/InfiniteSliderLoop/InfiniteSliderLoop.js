@@ -9,7 +9,7 @@ import "./infiniteSliderLoop.style.css"
 // import required modules
 import { Navigation, Mousewheel } from "swiper";
 
-export default function InfiniteSliderLoop({ ...props }) {
+export const InfiniteSliderLoop = ({ ...props }) => {
     return (
         <>
             <Swiper

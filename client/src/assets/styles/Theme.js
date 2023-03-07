@@ -37,6 +37,7 @@ export const theme = {
         purple : '#7C44FF',
         neoGreen : '#AEFF44',
         lightBlue : '#92AFFF',
+        darkBlue : '#0F3292',
         pink: '#FF44FF',
         orange : '#FF7944',
     },

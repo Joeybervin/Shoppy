@@ -56,7 +56,7 @@ const StyleCategoryCard = styled.div`
 
 `
 
-const CategoryCard = ({ src, alt, category, ...props }) => {
+export const CategoryCard = ({ src, alt, category, ...props }) => {
     return (
         <StyleCategoryCard className={props.className} onClick={props.onClick}>
 
@@ -69,4 +69,3 @@ const CategoryCard = ({ src, alt, category, ...props }) => {
     );
 }
 
-export default CategoryCard;

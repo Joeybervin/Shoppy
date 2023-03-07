@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 
-const Div = styled.div`
+const StyledServiceCard = styled.div`
 
     text-align: center;
     margin : 15px auto;
@@ -40,16 +40,13 @@ const Div = styled.div`
     }
 `
 
-
-
-const ServiceCard = ({service, serviceDetail, iconSrc, iconAlt})=> {
+export const ServiceCard = ({service, serviceDetail, iconSrc, iconAlt})=> {
     return (
-        <Div>
+        <StyledServiceCard>
             <img src={iconSrc} alt={iconAlt} />
             <p>{service}</p>
             <p>{serviceDetail}</p>
-        </Div>
+        </StyledServiceCard>
     )
 }
 
-export default ServiceCard
