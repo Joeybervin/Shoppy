@@ -1,6 +1,6 @@
 
 
-const fetchData = async (url, data, method) => {
+export const fetchData = async (url, data, method) => {
 
     const rawResponse = await fetch(url, {
         method: method,
@@ -14,4 +14,3 @@ const fetchData = async (url, data, method) => {
     return response
 }
 
-export default fetchData

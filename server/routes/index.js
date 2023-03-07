@@ -23,8 +23,6 @@ const sendUserInfos = (data, res) => {
             message_id: message.message_id
         })
     })
-    console.log("userMessagesInfos : ", userMessagesInfos)
-
 
     let userInfos = {
 

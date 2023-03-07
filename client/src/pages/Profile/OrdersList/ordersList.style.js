@@ -5,7 +5,7 @@ export const StyledOrdersList = styled.div`
     background-color: #ffffff;
     border-radius : 8px;
     padding : 10px;
-    border : 5px solid #FFE344;
+    
     filter: drop-shadow(3px 3px 7px #858585);
 
     > div:first-child {
@@ -41,9 +41,20 @@ export const StyledOrdersList = styled.div`
         overflow-y: scroll;
         -ms-overflow-style: none;  
         scrollbar-width: none; 
+        > p {
+            text-align: center;
+        }
     }
     > div:nth-child(3)::-webkit-scrollbar {
         display: none;
+    }
+
+    @media screen and (min-width: 768px) {
+        border : 5px solid #FFE344;
+        min-width : 320px ;
+        max-width: 600px;
+        margin : 0 10px 0 0;
+        
     }
 
 

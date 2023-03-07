@@ -1,14 +1,14 @@
 /* data */
 import productData from "../../data/products";
 /* hooks */
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 /* slice */
 import  { addToCart }  from '../../store/slices/cartSlice' ;
 import { addProductToWishlist, removeProducFromWishlist } from '../../store/slices/userSlice';
 /* hooks */
-import  fetchData  from '../../utils/fetchData'
+import  {fetchData}  from '../../utils/index'
 /* component */
 import { BigButton as Button } from "../../components/ui/Button";
 import { RadioInput as Radio, RadioLabel } from "../../components/ui/Input";
@@ -107,7 +107,7 @@ export default function Product() {
         }
         dispatch(addToCart(productInfos)) // send to slice the product to add to cart
         if (event === "buy now") {
-            navigate("/panier") // redirect the user to the cart page
+            navigate("/commande/panier") // redirect the user to the cart page
         }
     };
 

@@ -8,9 +8,9 @@ import { useNavigate } from "react-router-dom";
 /* slice */
 import { removeProducFromWishlist } from "../../store/slices/userSlice"
 /* utils */
-import fetchData from '../../utils/fetchData';
+import {fetchData} from '../../utils/index';
 /* components */
-import {BigCard as Card } from '../../components/WishlistCards'
+import {BigCard as Card } from '../../components/index'
 /* style */
 import { StyledWishlist } from "./wishlist.style";
 

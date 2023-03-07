@@ -45,10 +45,12 @@ const userSlice = createSlice({
             state.messages.push(messageToSave)
         },
 
-        orderProduct(state, action) {},
+        addAnOrder(state, action) {
+            state.orders.push(action.payload)
+        },
     }
 })
 
-export const {save, logOut, addProductToWishlist, removeProducFromWishlist, saveMessage, orderProduct} = userSlice.actions;
+export const {save, logOut, addProductToWishlist, removeProducFromWishlist, saveMessage, addAnOrder} = userSlice.actions;
 
 export default userSlice.reducer

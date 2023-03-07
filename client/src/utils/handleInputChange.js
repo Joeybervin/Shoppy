@@ -1,7 +1,7 @@
 
 import { whiteSpace } from "./whiteSpace";
 
-const handleInputChange = (event, whiteSpaceCheck , fieldsToCheck, setFormData, setErrorMessage) => {
+export const handleInputChange = (event, whiteSpaceCheck , fieldsToCheck, setFormData, setErrorMessage) => {
 
     const { name, value } = event.target;
 
@@ -27,4 +27,3 @@ const handleInputChange = (event, whiteSpaceCheck , fieldsToCheck, setFormData, 
 
 };
 
-export default handleInputChange

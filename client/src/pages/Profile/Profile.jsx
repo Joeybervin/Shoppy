@@ -1,24 +1,19 @@
-/* API */
-import api from '../../data/products.json';
-import React, {useEffect, useState} from 'react'
-/* librairies */
+/* DATA */
+import data from '../../data/products.json';
+/* HOOKS */
+import { useEffect, useState} from 'react'
 import { useSelector, useDispatch } from "react-redux"
 import { useNavigate , Outlet, useLocation } from "react-router-dom";
-/* slice */
+/* SLICES */
 import { logOut, save, removeProducFromWishlist} from '../../store/slices/userSlice'
-/* utils */
-import fetchData from '../../utils/fetchData';
-import  handleInputChange  from '../../utils/handleInputChange'
-import { capitalizeFirstLetter } from '../../utils/capitalizeFirstLetter';
-/* components */
-import  BadWay  from '../../components/BadWay' ;
-import { TextInput as Input , TextLabel as Label} from '../../components/ui/Input';
-import { BigButton as Button } from '../../components/ui/Button';
-import { SmallCard as WishListCard } from '../../components/WishlistCards';
-/* icons */
+/* UTILS */
+import { fetchData, handleInputChange, capitalizeFirstLetter } from '../../utils/index';
+/* COMPONENTS */
+import { TextInput as Input , TextLabel as Label, BigButton as Button, SmallCard as WishListCard, BadWay, OrderCard } from '../../components/index';
+/* ICONS */
 import { HiOutlineLocationMarker, HiOutlineShoppingCart, HiOutlineChatAlt, HiChevronRight, HiHeart, HiOutlineUserCircle } from "react-icons/hi";
 import { RiCustomerService2Line } from "react-icons/ri";
-/* style */
+/* STYLE */
 import StyledProfile from './profile.style';
 
 export default function Profile() {
@@ -37,7 +32,33 @@ export default function Profile() {
     address : `${user.address || ''}`,
     city: `${user.city || ''}`,
   };
-  const userFullName = capitalizeFirstLetter(user.lastName).concat(capitalizeFirstLetter(user.lastName))
+  const formFields = [
+    {
+      label: 'Prénom',
+      name : 'firstName',
+
+    },
+    {
+      label: 'Nom',
+      name : 'lastName',
+
+    },
+    {
+      label: 'E-mail',
+      name : 'email',
+
+    },
+    {
+      label: 'Votre Adresse',
+      name : 'address',
+
+    },
+    {
+      label: 'Ville',
+      name : 'city',
+
+    },
+  ]
 
   /*======= STATES =======*/
   const [userWishlist, setUserWishlist] = useState([])
@@ -46,20 +67,18 @@ export default function Profile() {
   const [errorMessage, setErrorMessage] = useState("")
   const [profile, setProfile] = useState(true)
 
-  /*======= USEEFFECT =======*/
+  /*======= USEEFFECT ==.pathname
+  // ------> show the wanted rubric ofthe profile
   useEffect(() => { 
-    const changeProfileView = () => {
       const customerParams = location.pathname.split("/").pop();
       if (customerParams === "messages" || customerParams === "mes-achats") {
         setProfile(false)
       }
-      else if ( customerParams === userFullName) {
+      else {
         setProfile(true)
       }
-    }
-    changeProfileView()
 
-  }, [location, userFullName]);
+  }, [location]);
   // ----> redirect of the customer is not connected
   useEffect(() => {
     if (!user.token) {
@@ -68,22 +87,18 @@ export default function Profile() {
   })
   // ----> charge the customer wishlist infos
   useEffect(() => { 
-    let wishlistData = api.filter(product => user.wishlist.includes(product.ref))
+    let wishlistData = data.filter(product => user.wishlist.includes(product.ref))
     setUserWishlist(wishlistData)
   }, [user.wishlist])
 
 
 /*======= FUNCTIONS =======*/
+  // ------> submit the form
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    const rawResponse = await fetch('/user/updateProfile', {
-      method : 'PUT',
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({formData , userEmail :user.email}),
-    })
-    const response = await rawResponse.json()
+    const response = await  fetchData('/user/updateProfile', {formData , userEmail :user.email}, 'PUT')
     dispatch(save(response.userInfos))
+    setIsActive(!isActive)
 
   }
 
@@ -94,10 +109,12 @@ export default function Profile() {
     setIsActive(!isActive) // close the update section
   }
 
+  // ------> add product from the wishlist to the cart
   const addToCart = (refProduct, catProduct) => {
     navigate(`/shop/${catProduct}/ref/${refProduct}`)
   }
 
+  // ------> delete the product from the wishlist
   const DeleteFromWishlist = async (refProduct) => {
     const response = await  fetchData('/user/removeFromWishlist', {email : user.email, productref : refProduct}, 'PUT')
             if (response.status === "success") {
@@ -106,6 +123,11 @@ export default function Profile() {
             else {
               console.log("Une erreur")
             }
+  }
+
+  // ------> send the user to the wanted rubric
+  const profileRubricsInteractions = (rubric) => {
+    navigate(`/profil/${capitalizeFirstLetter(user.firstName)}${capitalizeFirstLetter(user.lastName)}/${rubric}`)
   }
 
   /*======= REDIRECT =======*/
@@ -136,7 +158,7 @@ export default function Profile() {
         </div>
 
         {/* ACCESS TO USER MESSAGES */}
-        <div onClick={() => {navigate(`/profil/${capitalizeFirstLetter(user.firstName)}${capitalizeFirstLetter(user.lastName)}/messages`)}} className="messages">
+        <div onClick={() => profileRubricsInteractions("messages")} className="messages">
           <div>
             <HiOutlineChatAlt />
             <p>Nos échanges</p>
@@ -157,7 +179,7 @@ export default function Profile() {
 
       <div className={!profile ? "noProfile" : null}>
 
-        {/* Form to update the user profile */}
+        {/* update the user profile */}
         <section className="updateSection">
         <div 
           onClick={() => {setIsActive(!isActive)}} >
@@ -168,78 +190,50 @@ export default function Profile() {
               <HiChevronRight className={`${ isActive ? 'isActive' : null} showAllUpdateSection`} />
           </div>
 
+        {/* form */}
         <form method="PUT" noValidate onSubmit={(e) => {handleSubmit(e)}}>
-
+        {/* firstName & lastname */}
         <div>
-          {/* FIRSTNAME */}
-          <div>
-            <Label htmlFor="prénom">Prénom : </Label>
-            <Input 
-            placeholder="Prénom"
-            id="prénom"
-            name="firstName"
-            type="text"
-            value={formData.firstName}
-            onChange={(e) => {handleInputChange(e, true, ["firstName", "lastName"], setFormData, setErrorMessage)}}/>
-          </div>
-          
-          {/* LASTNAME */}
-          <div>
-              <Label htmlFor="nom">Nom</Label>
+          {formFields.map((field, index) => {
+            if (field.name === "firstName" || field.name === "lastName") 
+            return (
+              <div key={"ff1"+index} >
+              <Label htmlFor={field.name}>{field.label}</Label>
               <Input 
-              placeholder="Nom"
-              id="nom"
-              name="lastName"
-              type="text"
-              value={formData.lastName}
-              onChange={(e) => {handleInputChange(e, true, ["firstName", "lastName"], setFormData, setErrorMessage)}}/>
-          </div>
+                  max="20"
+                  id={field.name}
+                  placeholder={field.label}
+                  name={field.name}
+                  type="text"
+                  value={formData[field.name]}
+                  onChange={(e) => {handleInputChange(e, true, ["firstName", "lastName"], setFormData, setErrorMessage)}}/>
+      
+              </div>
+            )
+            else return null
+          })}
         </div>
 
-        {/* EMAIL */}
-        <div className={ !isActive ? 'isActive' : null}>
-        <Label htmlFor="e-mail">E-mail</Label>
-        <Input 
-          id="e-mail"
-          className={ !isActive ? 'isActive' : null}
-            placeholder="E-mail"
-            name="email"
-            type="email"
-            value={formData.email}
-          onChange={(e) => {handleInputChange(e, false, [], setFormData, setErrorMessage)}}/>
-
-        </div>
-        
-        {/* ADDRESS */}
-        <div className={ !isActive ? 'isActive' : null}>
-          <Label htmlFor="adresse">Votre adresse</Label>
-          <Input 
-              id="adresse"
-              className={ !isActive ? 'isActive' : null}
-              placeholder="Votre adresse..."
-              name="address"
-              type="text"
-              value={formData.address}
+        {/* email & address & city */}
+        {formFields.map((field, index) => {
+          if (field.name !== "firstName" && field.name !== "lastName") {
+          return (
+            <div key={"ff2"+index} className={ !isActive ? 'isActive' : null}>
+            <Label htmlFor={field.name}>{field.label}</Label>
+            <Input 
+              id={field.name}
+                placeholder={field.label}
+                name={field.name}
+                type={field.name}
+                value={formData[field.name]}
               onChange={(e) => {handleInputChange(e, false, [], setFormData, setErrorMessage)}}/>
-        </div>
-        
+    
+            </div>
+          )}
+          else return null
+        })}
 
-        {/* CITY */}
-        <div className={ !isActive ? 'isActive' : null}>
-          <Label htmlFor="ville">Ville</Label>
-          <Input 
-              id="ville"
-              placeholder="Ville"
-              name="city"
-              type="text"
-              value={formData.city}
-              onChange={(e) => {handleInputChange(e, false, [], setFormData, setErrorMessage)}}/>
-        </div>
-        
-       
-
-        <div className={`${ !isActive ? 'isActive' : null} 
-        buttonsGroup`}>
+        <div className={`${ !isActive ? 'isActive' : null} buttonsGroup`}>
           {/* server error message*/}
           <p>{errorMessage}</p>
           <Button onClick={handleSubmitCancel} type="button">Annuler</Button>
@@ -287,9 +281,9 @@ export default function Profile() {
           
         </section>
 
+        {/* PART : order */}
         <section className="orderSection">
-        <div 
-          onClick={() => {navigate(`/profil/${userFullName}/mes-achats`)}}>
+        <div>
             <div className='sectionTitle'>
               <HiOutlineShoppingCart />
               <p>Tous vos achats</p>
@@ -305,9 +299,16 @@ export default function Profile() {
           :
           <div>
             {user.orders.map((order, index) => {
+              console.log(order)
               return (
-                <div key={index}>
-                  commande
+                <div key={index} onClick={() => {profileRubricsInteractions(`mes-achats/commande/${order.id}`)}}>
+                  <OrderCard
+
+                    date={order.date}
+                    cartListLength={order.cart.length}
+                    orderTotal={order.payment.total}
+                 />
+                 <hr />
                 </div>
               )
             })}

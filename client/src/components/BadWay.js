@@ -1,7 +1,7 @@
 import React from 'react'
 
-export default function BadWay() {
+export const BadWay = () => {
   return (
-    <div>BadWay component</div>
+    <div>404</div>
   )
 }

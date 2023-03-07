@@ -65,7 +65,7 @@ const TextInput = styled.input`
 const TextAreaInput = styled.textarea`
     border : 2px solid black ;
     border-radius : 10px ;
-    max-width : 100%;
+    width : 100%;
     padding : 12px;
     min-height: 150px;
     &::placeholder { 

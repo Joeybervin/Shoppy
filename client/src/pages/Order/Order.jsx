@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { useParams} from 'react-router-dom';
 import { useSelector} from 'react-redux';
 /* utils */
-import applyDiscount from '../../utils/applyDiscount';
+import { applyDiscount, twoDecimal } from '../../utils/index';
 /* components */
 import  Cart  from './Cart/Cart' ;
 import  Payment from './Payment/Payment' ;
@@ -29,8 +29,8 @@ const [codeMessageErreur, setCodeMessageErreur] = useState("");
 const [code, setCode] = useState({valid : false, codeId : "", discountAmount : 0});
 
 const cart = {
-    subTotal : subTotal,
-    total: total,
+    subTotal : twoDecimal(subTotal),
+    total: twoDecimal(total),
     deliveryFee : deliveryFee,
     codeMessageErreur : codeMessageErreur,
     coupon : 
@@ -53,10 +53,10 @@ useEffect(() => {
         if (cartTotal > 49) {
             setDeliveryFee("GRATUIT*");
             setTotal(subTotal);
-            setTotal((Number(subTotal - code.discountAmount)).toFixed(2));
+            setTotal((Number(subTotal - code.discountAmount)));
         }
         else {
-            setTotal((Number(subTotal - code.discountAmount) + deliveryFee).toFixed(2));
+            setTotal((Number(subTotal - code.discountAmount) + deliveryFee));
         }
 
         

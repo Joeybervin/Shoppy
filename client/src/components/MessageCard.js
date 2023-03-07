@@ -1,6 +1,6 @@
 import styled from "styled-components";
 /* utils */
-import { formatDate } from "../utils/formatDate"
+import { formatDate } from "../utils/index"
 /* icons */
 import { TbCircleOff } from "react-icons/tb";
 
@@ -9,8 +9,9 @@ import { TbCircleOff } from "react-icons/tb";
 const StyledMessageCard = styled.div`
 
     margin-bottom : 5px;
+    padding : 0 8px;
     border-radius: 8px;
-    max-height : 115px;
+    max-height : 205px;
     overflow-y: scroll;
     -ms-overflow-style: none;  
     scrollbar-width: none;  
@@ -20,10 +21,10 @@ const StyledMessageCard = styled.div`
     &:hover {
         background-color : #FAF8F8;
     }
-    > div {
+    > div > div {
         display: flex;
         justify-content : space-between;
-        padding : 8px;
+       
     }
 
     p {
@@ -37,24 +38,21 @@ const StyledMessageCard = styled.div`
 `;
 
 
-export const MessageCard = ({date, message, message_id, order_id, subject, title,...props}) => {
+export const MessageCard = ({date, message, message_id, order_id, subject, title}) => {
+
+  
+
     return (
         <StyledMessageCard>
-            <div>
+         
                 <div>
-                    <p><span>Titre : {title}</span></p>
+                    <div><p><span>dossier : </span>{message_id}</p> <p>{formatDate(date)}</p></div>
+                    <p><span>Titre : </span>{title}</p>
                     <p><span>Sujet : </span>{subject === "" ? <span><TbCircleOff /></span> :  subject}</p>
-                    <p><span>Numéro de commande : #{order_id === "" ? <span>-</span> :  order_id}</span> </p>
+                    <p><span>Numéro de commande : #</span>{order_id === "" ? <span>-</span> :  order_id} </p>
                     <p><span>Message : </span>{message}</p>
                 </div>
-
-                <div>
-                    <p>{formatDate(date)}</p>
-                    <p><span>{}</span>{}</p>
-                </div>
-
-
-            </div>
+ 
         </StyledMessageCard>
         
     )

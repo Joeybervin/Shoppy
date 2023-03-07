@@ -12,9 +12,11 @@ import { BsArrowLeft, BsBag } from "react-icons/bs";
 
 function OrdersList() {
 
-  const navigate = useNavigate();
 
-    /*======= HOOKS =======*/
+  /*======= HOOKS =======*/
+  const navigate = useNavigate();
+  const user = useSelector(state => state.user)
+  const userOrdersList = user.orders;
 
   /*======= VARIABLES =======*/
 
@@ -35,8 +37,20 @@ function OrdersList() {
             <BsBag />
             <p>Vos achats</p>
         </div>
-        
-        <div></div>
+        <div>
+        {userOrdersList.length === 0 ? 
+          <p>Vous n'avez effectuez aucune commande.</p>
+          :
+          userOrdersList.map((order, index) => {
+            return (
+              <div key={"order"+index}>
+                <p>commande</p>
+                <hr></hr>
+              </div>
+            )
+          })}
+
+        </div>
     </StyledOrdersList>
   );
 }

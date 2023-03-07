@@ -21,9 +21,8 @@ const StyledProfile = styled.div`
 
     // =============> PART : RIGHT <============= //
     > div {
-        width : 100%;
         section {
-            margin : 30px 0;
+            margin-bottom :  30px ;
 
             > div:first-of-type {
                 display: flex;
@@ -58,6 +57,7 @@ const StyledProfile = styled.div`
     section.userSection{
 
         width : 100%;
+        margin-bottom :  30px ;
 
         img {
             width : clamp(198px, 20vw,450px);
@@ -139,6 +139,7 @@ const StyledProfile = styled.div`
     // =============> SECTION : WISHLIST
     section.wishlistSection{
         max-width : 100%;
+
         
         >div:last-of-type {
             width : inherit ;
@@ -154,7 +155,19 @@ const StyledProfile = styled.div`
     }
 
     // =============> SECTION : ORDER
-    section.orderSection{}
+    section.orderSection{
+        >div:last-of-type {
+            width : inherit ;
+            max-height : 350px;
+            overflow-x : hidden;
+            overflow-y : scroll;
+            -ms-overflow-style: none;  /* IE and Edge */
+            scrollbar-width: none;  /* Firefox */
+        }
+        > div:last-of-type::-webkit-scrollbar {
+            display: none;
+        }
+    }
 
     /* ------------- @MEDIA ------------- */
 
@@ -165,13 +178,20 @@ const StyledProfile = styled.div`
 
         section {
             border-radius : 8px;
+            margin : 0 0 0 10px;
+        }
+        > div {
+        section {
+            margin-right : 10px;
+        }
         }
 
         // =============> SECTION : USER
         section.userSection{
-            width : max-content;
-            margin-left : auto;
+            min-width : max-content;
+            max-width : max-content;
             border : 5px solid #92AFFF;
+            margin-bottom : 0;
         }
 
         // =============> PART : RIGHT <============= //
@@ -181,11 +201,7 @@ const StyledProfile = styled.div`
             margin-top : 0;
             border : 5px solid #FF44FF;
         }
-        > div {
-        
-            margin-right: auto;
-            width : max-content;
-        }
+       
 
         // =============> SECTION : USER
         section.wishlistSection{

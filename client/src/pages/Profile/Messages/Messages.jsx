@@ -8,15 +8,14 @@ import { MessageCard } from "../../../components/MessageCard"
 import { StyledMessages } from "./messages.style";
 /* icons */
 import { BsEnvelope, BsArrowLeft } from "react-icons/bs";
-
+import { capitalizeFirstLetter } from '../../../utils/index';
 
 function Messages() {
 
+  /*======= HOOKS =======*/
   const navigate = useNavigate();
-
-    /*======= HOOKS =======*/
-    const user = useSelector(state => state.user)
-    const userMessagesList = user.messages
+  const user = useSelector(state => state.user)
+  const userMessagesList = user.messages
 
   /*======= VARIABLES =======*/
 
@@ -25,6 +24,7 @@ function Messages() {
   /*======= USEEFFECT =======*/
 
   /*======= FUNCTIONS =======*/
+  console.log(userMessagesList)
 
   return (
     <StyledMessages>
@@ -40,20 +40,23 @@ function Messages() {
         </div>
         
         <div>
-          {userMessagesList.map((message, index) => {
+          {userMessagesList.length === 0 ? 
+          <p>Vous n'avez pas de messages</p>
+          :
+          userMessagesList.map((message, index) => {
             return (
-              <>
+              <div key={"message"+index}>
                 <MessageCard 
-                  key={"message"+index}
+                  
                   date={message.insert_date}
                   message={message.message}
                   message_id={message.message_id}
                   order_id={message.order_id}
                   subject={message.subject}
                   title={message.title}
-              />
-              <hr></hr>
-             </>
+                />
+                <hr></hr>
+              </div>
             )
           })}
 

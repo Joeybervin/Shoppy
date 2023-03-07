@@ -135,8 +135,6 @@ export default function Shop() {
         setProductsSortFilter("Pertinence")
     }
 
-    console.log(productsData)
-
     return (
         <StyledShop>
 

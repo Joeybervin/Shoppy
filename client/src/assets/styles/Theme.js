@@ -4,13 +4,6 @@ export const theme = {
 
     
     colors: {
-        green : '#62FBD4',
-        darkGreen : '#00C29D',
-        blue : '#001281',
-        lightPurple : '#F3E6FF',
-        purple : '#5C38FC',
-        yellow: '#F9F871',
-        orange : '#FFCA5E',
         /* general */
         primary : '#7777FF',
         primaryAlpha : '#7777FF40',
@@ -39,6 +32,13 @@ export const theme = {
         danger: '#FD3838',
         warning : '#FFA115',
         success: '#00644F',
+        /* bonus */
+        yellow : '#FFE344',
+        purple : '#7C44FF',
+        neoGreen : '#AEFF44',
+        lightBlue : '#92AFFF',
+        pink: '#FF44FF',
+        orange : '#FF7944',
     },
     fonts: {
         primaryFont: 'Poppins',

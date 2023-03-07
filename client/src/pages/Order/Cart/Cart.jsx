@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom'
 import { removeProducFromWishlist, addProductToWishlist } from '../../../store/slices/userSlice';
 import { removeFromCart, clearCart, updateCart } from '../../../store/slices/cartSlice' ;
 /* utils */
-import fetchData from '../../../utils/fetchData'
+import {fetchData, twoDecimal} from '../../../utils/index'
 /* components */
 import { CartCard } from '../../../components/CartCard';
 import { BigButton as BButton, SmallButton as SButton } from '../../../components/ui/Button';
@@ -67,7 +67,7 @@ export default function Cart(props) {
     }
 
     const productSubTotal = (productPrice, productQuantity) => {
-        return (productPrice * productQuantity).toFixed(2)
+        return twoDecimal(productPrice * productQuantity)
     }
     const interactionWishList = async (productRef) => {
 
@@ -89,6 +89,12 @@ export default function Cart(props) {
             }
         }
 
+    }
+
+    const checkout = () => {
+        if (cartList.length !== 0) {
+            navigate('/commande/paiement')
+        }
     }
 
 
@@ -168,7 +174,7 @@ export default function Cart(props) {
                             </table>
                         </div>
 
-                        <BButton primary onClick={() => navigate('/commande/paiement')} >Effectuer le paiement</BButton>
+                        <BButton primary onClick={() => checkout()} >Effectuer le paiement</BButton>
 
                         <div>
                             <p>Nous acceptons</p>

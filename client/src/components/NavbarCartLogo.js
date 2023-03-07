@@ -2,7 +2,7 @@ import styled from 'styled-components';
 /* icons */
 import { BsBag } from 'react-icons/bs';
 
-const Cart = styled.div`
+const StyledNavbarCartLogo = styled.div`
 margin-right: 10px;
 position : relative;
 
@@ -19,13 +19,13 @@ span.badge {
 }
 `
 
-const StyledCart =  ({...props }) => {
+const NavbarCartLogo =  ({...props }) => {
     return (
-        <Cart>
+        <StyledNavbarCartLogo>
             <BsBag size="1.7rem" />
             <span className="badge">{props.children}</span>
-        </Cart>
+        </StyledNavbarCartLogo>
     );
 }
 
-export default StyledCart
+export default NavbarCartLogo

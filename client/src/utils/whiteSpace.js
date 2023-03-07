@@ -1,3 +1,3 @@
-export  const whiteSpace = (s) => {
+export const whiteSpace = (s) => {
     return (/\s/).test(s);
 }

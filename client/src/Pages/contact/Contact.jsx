@@ -3,12 +3,9 @@ import {useSelector, useDispatch } from "react-redux";
 /* slices */
 import {saveMessage} from '../../store/slices/userSlice'
 /* utils */
-import handleInputChange from '../../utils/handleInputChange';
-import fetchData from '../../utils/fetchData';
+import { fetchData , handleInputChange} from '../../utils/index';
 /* components */
-import { TextInput as Input , TextAreaInput as TextArea,  TextLabel as Label } from '../../components/ui/Input'
-import { Select } from '../../components/ui/Select'
-import { BigButton as Button } from '../../components/ui/Button'
+import { TextInput as Input , TextAreaInput as TextArea,  TextLabel as Label, Select, BigButton as Button } from '../../components/index'
 /* icons */
 import { AiOutlineSend } from "react-icons/ai";
 /* style */

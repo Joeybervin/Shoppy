@@ -4,15 +4,12 @@ import { useDispatch } from 'react-redux'
 /* slice */
 import { save } from '../../store/slices/userSlice';
 /* utils */
-import fetchData from '../../utils/fetchData';
-import { capitalizeFirstLetter } from '../../utils/capitalizeFirstLetter'
-import { whiteSpace } from '../../utils/whiteSpace'
+import {fetchData, capitalizeFirstLetter, whiteSpace} from '../../utils/index';
 /* icons */
 import { RiEyeLine, RiEyeOffLine } from "react-icons/ri";
 import { useNavigate } from "react-router-dom";
 /* component */
-import { TextInput as Input } from "../../components/ui/Input";
-import { BigButton as Button } from '../../components/ui/Button'
+import { TextInput as Input, BigButton as Button  } from "../../components/index";
 /* style */
 import StyledAuthentification from './authentification.style'
 
@@ -76,7 +73,7 @@ export default function Authentification() {
                 firstName : firstName,
                 lastName : lastName,
                 address : `${address || ""}`,
-                city : `${address || ""}`,
+                city : `${city || ""}`,
             }
             let response = await fetchData('/signUp', userInfos, 'POST' )
             let userInfosSaved = response.userInfos

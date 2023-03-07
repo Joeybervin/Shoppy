@@ -5,10 +5,10 @@ import { useState} from 'react';
 import { useSelector } from 'react-redux'
 import { NavLink, useNavigate} from 'react-router-dom';
 /* utils */
-import { capitalizeFirstLetter } from '../../../utils/capitalizeFirstLetter';
+import { capitalizeFirstLetter } from '../../../utils/index';
 
 /* Compoments */
-import StyledCart from '../../Cart';
+import NavbarCartLogo from '../../NavbarCartLogo';
 
 /* Assets & Icons => library : react-icons  */
 import logo from "../../../assets/logo/logo.png";
@@ -85,7 +85,7 @@ export default function NavBar() {
 
         {/* cart */}
         <NavLink to="/commande/panier">
-            <StyledCart>{cart.length}</StyledCart>
+            <NavbarCartLogo>{cart.length}</NavbarCartLogo>
         </NavLink>
             
           {/* navigation: burgermenu */}

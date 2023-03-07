@@ -79,7 +79,7 @@ function App() {
           {/* profile */}
           <Route path="/profil/:username" element={< Profile />}>
             <Route path="messages" element={< Messages />} />
-            <Route path="mes-achats" element={< OrdersList />} />
+            <Route path="mes-achats/commande/:orderId" element={< OrdersList />} />
           </Route>
           <Route path="*" element={< Home />}/>
         </Routes>
