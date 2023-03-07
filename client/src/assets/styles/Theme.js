@@ -57,8 +57,6 @@ export const theme = {
             h1 : 'clamp(1.8125rem, 1.5rem + 1.6667vw, 3rem)', /* min: 16px | max: 18px */
             h2 : 'clamp(1.125rem, 1.0536rem + 0.3571vw, 1.375rem);', /* min: 16px | max: 18px */
             h3 : 'clamp(0.875rem, 0.8393rem + 0.1786vw, 1rem);', /* min: 16px | max: 18px */
-            
-
         }
     },
     fontWeight : {
