@@ -8,7 +8,7 @@ var options = {
     useNewUrlParser: true,
 }
 
-mongoose.connect('mongodb+srv://joey:mdpjoey@cluster.0tz9c.mongodb.net/shoppy?retryWrites=true&w=majority',
+mongoose.connect('process.env.MONGO_DB',
     options,
     function (err) {
         if (err) {
