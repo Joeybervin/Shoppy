@@ -1,0 +1,160 @@
+[
+    
+        {
+            "ref" : "bagmunchkingrey",
+            "productName" : "munchkin",
+            "category" : "sacs",
+            "gender" : "F",
+            "type" : "crossBody Bag",
+            "color" : "grey",
+            "price" : "695" ,
+            "stock" : "10",
+            "creator" : "Damien Poulain",
+            "brand" : "RSVP",
+            "reviews" : "8",
+            "note" : "3.7",
+            "badges" : ["Trend"],
+            "description" : 
+                {
+                    "productDescription" : "Surnommé ainsi en raison sa petite taille, le Munchkin est le dernier né de la gamme Golden Eyes, dont les deux bijoux argentés signature rappellent un visage. Il est équipé d’une poignée, et d'une bandoulière ajustable permettant de la porter en croisé ou sur l'épaule, qui s'accroche à la poignée à l'aide de deux mousquetons. L'aménagement intérieur est composé d'un compartiment central unique et d’une poche plaquée. Le système de fermeture est aimanté. Les bijoux sont en laiton, couverts de trois microns de palladium argenté.",
+                    "productEntretien" : "Cuir de veau italien d'aspect miroir. Tanné au chrome. Peu sensible au rayures et aux marques du quotidien, il est facile d'entretien et se nettoie délicatement avec un chiffon doux."
+                },
+            "productImage" : ["https://cdn.shopify.com/s/files/1/0904/1894/products/RSVP-Paris-Munchkin-Spazolatto-Mirror-01_1920x.jpg?v=1666154709", "https://cdn.shopify.com/s/files/1/0904/1894/products/RSVP-Paris-Munchkin-Spazolatto-Mirror-02_1920x.jpg?v=1666154709", "https://cdn.shopify.com/s/files/1/0904/1894/products/RSVP-Paris-Munchkin-Spazolatto-Mirror-03_1920x.jpg?v=1666154709", "https://cdn.shopify.com/s/files/1/0904/1894/products/RSVP-Paris-Munchkin-Bag_f4efc71d-330c-4e6a-bc78-a9a682be93d8_1920x.jpg?v=1666154709"]
+        },
+        {
+            "ref" : "baggoldeneyesred",
+            "productName" : "Golden Eyes",
+            "category" : "sacs",
+            "gender" : "F",
+            "type" : "crossBody Bag",
+            "color" : "red",
+            "price" : "495" ,
+            "stock" : "10",
+            "creator" : "Damien Poulain",
+            "brand" : "RSVP",
+            "reviews" : "530",
+            "note" : "3.2",
+            "badges" : ["Populaire"],
+            "description" : 
+                {
+                    "productDescription" : "Le Golden Eyes est le modèle iconique de la marque issu de notre première collection. Les deux bijoux dorés positionnés sur la face avant qui rappellent un visage lui valent son surnom de Golden Eyes.Equipée d’une bandoulière ajustable permettant de la porter en croisé ou sur l’épaule. L’aménagement intérieur est composé d’un compartiment central unique et d’une poche plaquée. Le système de fermeture est équipé d'aimants invisibles. Les bijoux et les mousquetons sont en laiton, couverts de trois microns d’or.",
+                    "productEntretien" : "Cuir de veau d'origine France. Tanné au chrome, ce veau box tout droit venu d' Annonay est un classique de la maroquinerie.Initialement développé par un célèbre chausseur Français pour la fabrication de ses mocassins, ce cuir robuste à la main ferme s'est taillé la part du lion en maroquinerie. A tel point qu'il est devenu très difficile de s'en procurer. Heureusement, RSVP a ses entrées.Pleine fleur et peu couvert en pigments, il est sensible aux marques du quotidien, et mérite un soin particulier. Il prendra à l'usage une patine homogène qui confère au sublime. Un must indémodable, à notre humble avis."
+                },
+            "productImage" : ["https://cdn.shopify.com/s/files/1/0904/1894/products/RSVP-Paris-Samples-Sale-GEV2-Damien-Poulain-Rouge-01.jpg?v=1667925968","https://cdn.shopify.com/s/files/1/0904/1894/products/RSVP-Paris-Samples-Sale-GEV2-Damien-Poulain-Rouge-02_1920x.jpg?v=1667925968","https://cdn.shopify.com/s/files/1/0904/1894/products/RSVP-Paris-Samples-Sale-GEV2-Damien-Poulain-Rouge-04_1920x.jpg?v=1667925968"]
+        
+        },
+        {
+            "ref" : "backpackexplorerlight",
+            "productName" : "Explorer Light Backpack Plus",
+            "category" : "sacs",
+            "gender" : "M",
+            "type" : "backpack",
+            "color" : "black",
+            "price" : "221.95" ,
+            "stock" : "10",
+            "creator" : "",
+            "brand" : "Maverick & Co.",
+            "reviews" : "0",
+            "note" : "0",
+            "badges" : ["Nouveauté"],
+            "description" : 
+                {
+                    "productDescription" : "Nothing matters to us more than turning what you asked into reality. This season, we have collected numerous ideas from the Maverick Community and gave our signature collections a full upgrade, so that they can better serve your various needs - Maverick & Co. DesignersEveryone loves a good upgrade, and the new Explorer Plus is bringing your everyday backpack's style and functions to the next level. From workplace essentials to gym necessities, the double main compartments and numerous pockets keep them all smartly organized. The laptop compartment is thoughtfully separated to give your 16?â‚¬? laptop extra protection. Beautifully crafted in vegan leather, the upgraded Explorer backpack is the polished daily carry that every modern elite need.",
+                    "productEntretien" : "Microfiber vegan leather."
+                },
+            "productImage" : ["https://cdn.shopify.com/s/files/1/1301/7071/products/maverick-co-explorer-light-backpack-plus-black-1-b_1800x1800.jpg?v=1647583275","https://cdn.shopify.com/s/files/1/1301/7071/products/maverick-co-explorer-light-backpack-plus-black-grey-3_1800x1800.jpg?v=1647583275","https://cdn.shopify.com/s/files/1/1301/7071/products/maverick-co-explorer-light-backpack-plus-black-grey-2_1800x1800.jpg?v=1647583275", "https://cdn.shopify.com/s/files/1/1301/7071/products/maverick-co-explorer-light-backpack-plus-black-grey-4_1800x1800.jpg?v=1647583275"]
+        
+        },
+
+
+        {
+            "ref" : "topclassictshirtwhite",
+            "productName" : "Classic T-shirt",
+            "category" : "vetements",
+            "gender" : "UNI",
+            "type" : "top",
+            "color" : "white",
+            "price" : "8.95" ,
+            "stock" : "50",
+            "creator" : "",
+            "brand" : "BrandNew",
+            "reviews" : "472",
+            "note" : "4.2",
+            "badges" : ["Dernière chance"],
+            "description" : 
+                {
+                    "productDescription" : "Jersey T-shirt with a round neck.",
+                    "productEntretien" : "Cotton 100%."
+                },
+            "productImage" : ["https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80","https://images.unsplash.com/photo-1622445270936-5dcb604970e7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80", "https://images.unsplash.com/photo-1622445272054-ef281b3b8639?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80"]
+        
+        },
+        {
+            "ref" : "sweatshirtfitsweatshirtblack",
+            "productName" : "Fit Sweatshirt",
+            "category" : "vetements",
+            "gender" : "M",
+            "type" : "sweatshirt",
+            "color" : "black",
+            "price" : "19.99" ,
+            "stock" : "75",
+            "creator" : "",
+            "brand" : "H&M",
+            "description" : 
+                {
+                    "productDescription" : "Top in sweatshirt fabric made from a cotton blend. Relaxed fit with dropped shoulders and ribbing around the neckline, cuffs and hem. Soft brushed inside.",
+                    "productEntretien" : "Cotton 100%.Cotton 60%, Polyester 40%"
+                },
+            "productImage" : ["https://lp2.hm.com/hmgoepprod?set=format%5Bwebp%5D%2Cquality%5B79%5D%2Csource%5B%2F54%2F60%2F546091a5910a7edaec2a189b113b6a82f4449e64.jpg%5D%2Corigin%5Bdam%5D%2Ccategory%5B%5D%2Ctype%5BDESCRIPTIVESTILLLIFE%5D%2Cres%5Bm%5D%2Chmver%5B2%5D&call=url%5Bfile%3A%2Fproduct%2Fmain%5D","https://lp2.hm.com/hmgoepprod?set=quality%5B79%5D%2Csource%5B%2Ffc%2Fd1%2Ffcd1b834ec98821caa5f744ff15015a6f3a38cac.jpg%5D%2Corigin%5Bdam%5D%2Ccategory%5B%5D%2Ctype%5BLOOKBOOK%5D%2Cres%5Bm%5D%2Chmver%5B1%5D&call=url[file:/product/main]","https://lp2.hm.com/hmgoepprod?set=format%5Bwebp%5D%2Cquality%5B79%5D%2Csource%5B%2F21%2Fc0%2F21c0260ee71ec5f286c538f6d3d7df30939e785f.jpg%5D%2Corigin%5Bdam%5D%2Ccategory%5B%5D%2Ctype%5BLOOKBOOK%5D%2Cres%5Bm%5D%2Chmver%5B1%5D&call=url%5Bfile%3A%2Fproduct%2Fmain%5D", "https://lp2.hm.com/hmgoepprod?set=format%5Bwebp%5D%2Cquality%5B79%5D%2Csource%5B%2Fae%2F00%2Fae00b9422602766bac841010850b4f81de37b1ce.jpg%5D%2Corigin%5Bdam%5D%2Ccategory%5B%5D%2Ctype%5BLOOKBOOK%5D%2Cres%5Bm%5D%2Chmver%5B1%5D&call=url%5Bfile%3A%2Fproduct%2Fmain%5D"]
+        
+        },
+
+
+        {
+            "ref" : "chaussuresairforceonemulti",
+            "productName" : "Air Force 1 Shadow sneakers",
+            "category" : "chaussures",
+            "gender" : "F",
+            "type" : "sneackers",
+            "color" : "white",
+            "price" : "330.95" ,
+            "stock" : "120",
+            "creator" : "",
+            "brand" : "Nike",
+            "reviews" : "132",
+            "note" : "4.7",
+            "badges" : ["Populaire", "Nouveauté"],
+            "description" : 
+                {
+                    "productDescription" : "The perfect sweet statement. These Air Force 1 Shadow sneakers from Nike are crafted from pastel panels of leather for a delicate and subtle finish. The idea pair.",
+                    "productEntretien" : "Sole: Rubber 100% | Outer: Leather 100% | Lining: Polyamide 100%"
+                },
+            "productImage" : ["https://img01.ztat.net/article/spp-media-p1/d501bfe565db4226a4bf088f3332a263/2e7bc4baf85e4fa1b600e8526348bfc3.jpg?imwidth=1800","https://cdn-images.farfetch-contents.com/16/09/66/67/16096667_30288835_1000.jpg", "https://cdn-images.farfetch-contents.com/16/09/66/67/16096667_30288838_1000.jpg", "https://cdn-images.farfetch-contents.com/16/09/66/67/16096667_30288840_1000.jpg", "https://img01.ztat.net/article/spp-media-p1/46a20f39c4484a8b9e953baa4fa87cce/90374e70fd04498e847171de231dbd30.jpg?imwidth=1800"]
+        
+        },
+        {
+            "ref" : "chaussuresairjordanonemidlightsmokegrey",
+            "productName" : "Air Jordan One Mid light Smoke Grey",
+            "category" : "chaussures",
+            "gender" : "H",
+            "type" : "sneackers",
+            "color" : "grey",
+            "price" : "251." ,
+            "stock" : "5",
+            "creator" : "",
+            "brand" : "Nike",
+            "reviews" : "25",
+            "note" : "4.7",
+            "badges" : [],
+            "description" : 
+                {
+                    "productDescription" : "The Air Jordan 1 Mid is getting ready for the chillier months ahead. Its latest edition is the Air Jordan 1 Mid Smoke Grey Black sporting a winter colourway.The toe cap, eye stays, collar flaps and heel counter are all in a buttery Smoke Grey leather. The base of the upper is a clean white leather peeping out of the toe box and mid-quarter panel. A pitch-black Swoosh is a striking contrast to the white mid-quarter panel. This black is repeated on the collar, the tongue, and the sock liner. The midsole is white while the outsole is a Smoke Grey, giving this pair an overall greyscale look. A white Wings logo is embossed on the Smoke Grey collar flap and white Jumpman is featured on the Smoke Grey tongue tab.",
+                    "productEntretien" : "Sole: Rubber 100% | Outer: Leather 100% | Lining: Fabric 100%"
+                },
+            "productImage" : ["https://laced.imgix.net/products/2a5e2a26-4e80-49c6-a26b-d3e170dbe1e3.jpg?auto=format&fit=crop&w=1200","https://laced.imgix.net/products/e6ff01f6-9718-4365-a9a8-bf280491fa99.jpg?auto=format&fit=crop&w=1200","http://cdn.shopify.com/s/files/1/1471/7880/products/image_e35e9e9c-d5d5-49d4-965e-e8d0cb9cb13e_1200x1200.jpg?v=1663238912"]
+        
+        }
+
+
+
+]

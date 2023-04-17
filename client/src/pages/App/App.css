@@ -1,0 +1,24 @@
+.App {
+  position: relative;
+  margin: 0 auto ;
+  max-width: 100vw;
+  min-width: 200px; /* ! A REVOIR */
+  min-height : 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+@media screen and (min-width : 425px) {
+}
+
+@media screen and (min-width : 768px) {
+  .App {
+    
+    max-width: 85vw;
+  }
+}
+
+@media screen and (min-width : 1024px) {
+  
+}

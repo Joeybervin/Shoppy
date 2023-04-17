@@ -1,0 +1,38 @@
+[
+    {
+        "brand": "logo de h&m",
+        "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/H%26M-Logo.svg/1064px-H%26M-Logo.svg.png?20130107164928"
+    },
+    {
+        "brand": "logo de RSVP",
+        "img": "https://cdn.shopify.com/s/files/1/0904/1894/t/49/assets/logo-rsvp-768_2x.png"
+    },
+    {
+        "brand": "logo de nike",
+        "img": "https://1000logos.net/wp-content/uploads/2021/11/Nike-Logo.png"
+    },
+    {
+        "brand": "logo de marverick & Co.",
+        "img": "https://cdn.shopify.com/s/files/1/1301/7071/files/maverickandco-logo_250x.png?v=1646708755"
+    },
+    {
+        "brand": "logo de converse",
+        "img": "https://logos-marques.com/wp-content/uploads/2020/06/Converse-Logo-2011.jpg"
+    },
+    {
+        "brand": "logo de urban outfiters",
+        "img": "https://images.ctfassets.net/q602vtcuu3w3/5Kn3hosoikXHaQhOx4GikS/a97e3757c14fb0539d553c0a0462f4c7/URBAN-OUTFITTERS_LOGO_2022.svg"
+    },
+    {
+        "brand": "logo de monki",
+        "img": "https://thexjay.files.wordpress.com/2016/10/1282820387622monki.jpg?w=700"
+    },
+    {
+        "brand": "logo de undiz",
+        "img": "https://www.undiz.com/on/demandware.static/-/Sites/default/dw56ad4b54/logo-transparent-undiz.png"
+    },
+    {
+        "brand": "logo de sephora",
+        "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/Sephora_logo.svg/2560px-Sephora_logo.svg.png"
+    }
+]

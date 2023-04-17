@@ -1,0 +1,36 @@
+.thumbsGalleryLoop {
+    width: 100%;
+    height: 100%;
+}
+
+.thumbsGalleryLoopPart1 {
+    height: 90%;
+    max-width: 600px;
+    border-radius: 20px;
+}
+
+.thumbsGalleryLoopPart1-image {
+    margin : auto;
+}
+
+.thumbsGalleryLoopPart2 {
+    padding: 20px 0;
+}
+
+.thumbsGalleryLoopPart2-images {
+    width: 100%;
+    opacity: 0.4;
+    
+}
+
+.thumbsGalleryLoopPart2 .swiper-slide-thumb-active {
+    width: 100%;
+    opacity: 1;
+}
+
+.thumbsGalleryLoopPart2 .swiper-slide img {
+    border-radius: 12px;
+    width: 100px;
+    height: 105px;
+    padding : 5px;
+}

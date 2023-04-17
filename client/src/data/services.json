@@ -1,0 +1,22 @@
+[
+    { 
+        "service" : "Livraison offerte",
+        "detail" : "dès 49€ d'achat !",
+        "icon" : "https://cdn-icons-png.flaticon.com/512/3233/3233997.png"
+    },
+    { 
+        "service" : "Alma",
+        "detail" : "Paiement 3x sans frais*",
+        "icon" : "https://cdn-icons-png.flaticon.com/512/5057/5057469.png"
+    },
+    { 
+        "service" : "Shopping tranquille",
+        "detail" : "Retour facile en point relais",
+        "icon" : "https://cdn-icons-png.flaticon.com/512/126/126142.png"
+    },
+    { 
+        "service" : "Paiement sécurisé",
+        "detail" : "Vos données sont protégées",
+        "icon" : "https://cdn-icons-png.flaticon.com/512/1024/1024759.png"
+    }
+]
