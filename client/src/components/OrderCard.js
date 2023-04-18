@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 /* utils */
 import { formatDate } from "../utils/index"
 /* icons */
-import { BsChevronRight, BsBox2Heart } from "react-icons/bs";
+import { BsChevronRight } from "react-icons/bs";
 
 
 

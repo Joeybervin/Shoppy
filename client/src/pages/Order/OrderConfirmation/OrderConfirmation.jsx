@@ -1,4 +1,4 @@
-import { useNavigate, Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 /* COMPONENTS */
 import { BigButton as Button} from '../../../components/index';
 /*  STYLE */

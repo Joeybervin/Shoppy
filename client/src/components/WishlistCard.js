@@ -1,6 +1,4 @@
 import styled from "styled-components";
-/* components */
-import { SmallButton as Button } from './ui/Button'
 /* icons */
 import { BsTrash, BsCartPlus } from "react-icons/bs";
 

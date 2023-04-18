@@ -1,6 +1,6 @@
 import React from "react";
 /* hooks */
-import { useSelector, useDispatch } from "react-redux"
+import { useSelector } from "react-redux"
 import { useNavigate } from "react-router-dom";
 /* components */
 

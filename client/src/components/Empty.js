@@ -25,7 +25,8 @@ const StyledEmpty = styled.div`
             font-weight : ${props => props.theme.fontWeight.bold}
         }
         p:last-of-type {
-            font-size : ${props => props.theme.fontSize.paragraphe.small}
+            font-size : ${props => props.theme.fontSize.paragraphe.small};
+            text-align: center;
         }
     }
     
@@ -37,7 +38,7 @@ export const Empty = ({ message, messageTitle, ...props }) => {
         <StyledEmpty>
             <div>
 
-                <img src="/icons/empty-box.png" alt="boîte vide - flaticon" />
+                <img src="/assets/icons/empty-box.png" alt="boîte vide - flaticon" />
                 <p>{messageTitle}</p>
                 <p>{message}</p>
 

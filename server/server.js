@@ -20,7 +20,7 @@ app.use(express.json());
 require("./bdd_connection")
 
 // static files
-/* app.use(express.static(path.join(__dirname, 'public'))); */
+app.use(express.static(path.join(__dirname, 'public/'))); 
 
 // ROUTES
 app.use('/', indexRouter);

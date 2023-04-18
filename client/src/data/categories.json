@@ -1,41 +1,41 @@
 [
     {
         "category_name": "Femme",
-        "category_id": "vetements",
-        "gender" : "Femme",
+        "category_id": "vetement",
+        "gender" : "Female",
         "category_img": "https://images.unsplash.com/photo-1529139574466-a303027c1d8b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80",
         "alt": "plusieurs t-shirts blancs et roses accroché sur un portant - Jason Leung - unslpash"
     },
     {
         "category_name": "Homme",
         "category_id": "vetement",
-        "gender" : "Homme",
+        "gender" : "Male",
         "category_img": "https://images.unsplash.com/photo-1528311205469-a0f2917476d9?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1yZWxhdGVkfDEyfHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=500&q=60",
         "alt": "plusieurs t-shirts blancs et roses accroché sur un portant - Jason Leung - unslpash"
     },
     {
         "category_name": "Chaussures",
-        "category_id": "chaussures",
+        "category_id": "chaussure",
         "gender" : "Uni",
         "category_img": "https://images.unsplash.com/photo-1600185365926-3a2ce3cdb9eb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1025&q=80",
         "alt": "une paire de basket nike blanche et orange - Luis Felipe Lins - unslpash"
     },
     {
-        "category_name": "accessoires",
-        "category_id": "accessoires",
+        "category_name": "Accessoires",
+        "category_id": "accessoire",
         "gender" : "Uni",
         "category_img": "https://images.unsplash.com/photo-1606760227091-3dd870d97f1d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80",
         "alt": "ensemble de bijoux en or - Martin de Arriba - unslpash"
     },
     {
-        "category_name": "sacs",
-        "category_id": "sacs",
+        "category_name": "Sacs",
+        "category_id": "sac",
         "gender" : "Uni",
         "category_img": "https://images.unsplash.com/photo-1578237493287-8d4d2b03591a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=326&q=80",
         "alt": "Tote bag noir accroché à une chaise- Tereza Ruba - unslpash"
     },
     {
-        "category_name": "beauté",
+        "category_name": "Beauté",
         "category_id": "beauté",
         "gender" : "Uni",
         "category_img": "https://images.unsplash.com/photo-1512496015851-a90fb38ba796?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=435&q=80",

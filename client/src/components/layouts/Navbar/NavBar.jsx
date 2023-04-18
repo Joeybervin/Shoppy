@@ -10,8 +10,6 @@ import { capitalizeFirstLetter } from '../../../utils/index';
 /* Compoments */
 import NavbarCartLogo from '../../NavbarCartLogo';
 
-/* Assets & Icons => library : react-icons  */
-import logo from "../../../assets/logo/logo.png";
 import { RxCross1, RxHamburgerMenu, RxPerson, RxHeart, RxHeartFilled } from "react-icons/rx";
 
 /* Style */
@@ -47,16 +45,16 @@ export default function NavBar() {
     <StyledNavbar >
       {/* Left */}
 
-        <NavLink to="/"><img className="logo" src={logo} alt="shoppy logo" /></NavLink>
+        <NavLink to="/"><img className="logo" src="/assets/shoppy.png" alt="shoppy logo" /></NavLink>
 
       
       {/* navigation */}
       <div onClick={handleToggle} className={`navNavigation ${!navigationSidebarOpen ? "hideSidebarNavigation" : "showSidebarNavigation"}`}>
         <ul>
-          <li onClick={handleToggle}><NavLink to="/shop/Uni/vetements">Vêtements</NavLink></li>
-          <li onClick={handleToggle}><NavLink to="/shop/Uni/chaussures">Chaussures</NavLink></li>
-          <li onClick={handleToggle}><NavLink to="/shop/Uni/accessoires">Accessoires</NavLink></li>
-          <li onClick={handleToggle}><NavLink to="/shop/Uni/sacs">sacs</NavLink></li>
+          <li onClick={handleToggle}><NavLink to="/shop/Uni/vetement">Vêtements</NavLink></li>
+          <li onClick={handleToggle}><NavLink to="/shop/Uni/chaussure">Chaussures</NavLink></li>
+          <li onClick={handleToggle}><NavLink to="/shop/Uni/accessoire">Accessoires</NavLink></li>
+          <li onClick={handleToggle}><NavLink to="/shop/Uni/sac">Sacs</NavLink></li>
           <li onClick={handleToggle}><NavLink to="/shop/Uni/beauté">Beauté</NavLink></li>
         </ul>
       </div>

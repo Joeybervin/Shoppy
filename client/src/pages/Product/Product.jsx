@@ -41,10 +41,10 @@ export default function Product() {
 
     /*======= FUNCTIONS =======*/
     const productSizes = (category) => {
-        if (category === "chaussures") {
+        if (category === "chaussure") {
             productSizesList = ["36", "37", "38", "39", "40", "41", "42", "43"];
         }
-        else if (category === "vetements") {
+        else if (category === "vetement") {
             productSizesList = ["XS", "S", "M", "L", "XL", "XXL"];
         }
         else {

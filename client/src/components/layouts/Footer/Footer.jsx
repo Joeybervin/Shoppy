@@ -4,8 +4,6 @@ import './footer.style.js';
 /* Components */
 import Mailto from '../../Mailto';
 import {StyledFooter} from './footer.style'
-/* Logo */
-import logo from "../../../assets/logo/logo.png";
 /* icons */
 import { SlSocialLinkedin, SlSocialInstagram, SlSocialPintarest, SlSocialYoutube, SlSocialTwitter, SlSocialFacebook } from "react-icons/sl";
 
@@ -21,7 +19,7 @@ export default function Footer() {
 
 {/* Brand */}
 <div className='brand'>
-    <img src={logo} alt="Shoppy"/>
+    <img src="/assets/shoppy.png" alt="Shoppy"/>
     <p>Shoppy is an online store dealing with all product
     Shppy provide cheap, high quality, products to
     customers</p>

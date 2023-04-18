@@ -4,8 +4,8 @@ import { useEffect } from "react";
 /* Style */
 import './App.css';
 import { ThemeProvider } from 'styled-components'
-import { GlobalStyles } from '../../assets/styles/Global'
-import { theme } from '../../assets/styles/Theme'
+import { GlobalStyles } from '../../styles/Global'
+import { theme } from '../../styles/Theme'
 /* Layouts */
 import NavBar from '../../components/layouts/Navbar/NavBar';
 import Footer from '../../components/layouts/Footer/Footer';

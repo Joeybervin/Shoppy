@@ -8,7 +8,6 @@ import { MessageCard } from "../../../components/MessageCard"
 import { StyledMessages } from "./messages.style";
 /* icons */
 import { BsEnvelope, BsArrowLeft } from "react-icons/bs";
-import { capitalizeFirstLetter } from '../../../utils/index';
 
 function Messages() {
 

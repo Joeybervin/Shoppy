@@ -121,7 +121,7 @@ export default function Home() {
                 {/* section : clearpay */}
                 <section className="clearpaySection">
                     <div>
-                        <img src="/icons/clearpay.png" alt="clearpay - facilité de paiement en 3 fois" />
+                        <img src="assets/icons/clearpay.png" alt="clearpay - facilité de paiement en 3 fois" />
                         <p>Je l'aime. Je l'achète. Je le paie en 3 fois avec Clearpay.</p>
                         <p>Conditions gégénrales*</p>
                     </div>

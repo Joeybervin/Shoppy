@@ -45,15 +45,17 @@ export default function Shop() {
     useEffect(()=> { // filter the data first with the URL and next with the customer preferencies
         const applyParams = (pertinenceFilter, priceFilter)  => {
 
-            let filteredData = [...data];
+           
 
+            let filteredData = [...data];
             // --------> gender filter
             if (gender === "Uni") {
                 filteredData = [...data]
             }
             else {
-                filteredData = filteredData.filter((data) => data.gender === gender.charAt(0))
-            };
+                filteredData = filteredData.filter((data) => data.gender === gender.charAt(0) || data.gender === "Uni")
+            }; 
+            
             // --------> category filter
             if (category !== "Tout") {
                 filteredData = filteredData.filter((data) => data.category === category)
@@ -122,7 +124,7 @@ export default function Shop() {
     const handleDataFilter = (e, filter) => {
         if (filter === "pertinence") setProductsSortFilter(e.target.value)
         if (filter === "price") setProductsPriceFilter(e.target.value)
-        if (filter === "Femme" || filter === "Homme" || filter === "Uni") {
+        if (filter === "Female" || filter === "Male" || filter === "Uni") {
             setGender(filter)
             navigate(`/shop/${filter}/${category}`)
         }
@@ -141,9 +143,9 @@ export default function Shop() {
             {/* FILTRES : gender, cat, price range, pertinence, color, clean */}
             <div>
                 <div className="gender">
-                    <p  className={gender === "Femme" ? "selected" : null} onClick={(e) => handleDataFilter(e,"Femme")}><BsGenderFemale/> Femme</p>
+                    <p  className={gender === "Female" ? "selected" : null} onClick={(e) => handleDataFilter(e,"Female")}><BsGenderFemale/> Femme</p>
                     <p className={gender === "Uni" ? "selected" : null}  onClick={(e) => handleDataFilter(e,"Uni")}><BsGenderAmbiguous /> UNIgender</p>
-                    <p className={gender === "Homme" ? "selected" : null}  onClick={(e) => handleDataFilter(e,"Homme")}><BsGenderMale /> Homme</p>
+                    <p className={gender === "Male" ? "selected" : null}  onClick={(e) => handleDataFilter(e,"Male")}><BsGenderMale /> Homme</p>
                 </div>
                 <div  className="filtersToogle" onClick={() => setFilterIsClosed(!filterIsClosed)}>
                     <HiOutlineFilter />

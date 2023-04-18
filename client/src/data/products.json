@@ -3,7 +3,7 @@
         {
             "ref" : "bagmunchkingrey",
             "productName" : "munchkin",
-            "category" : "sacs",
+            "category" : "sac",
             "gender" : "F",
             "type" : "crossBody Bag",
             "color" : "grey",
@@ -24,7 +24,7 @@
         {
             "ref" : "baggoldeneyesred",
             "productName" : "Golden Eyes",
-            "category" : "sacs",
+            "category" : "sac",
             "gender" : "F",
             "type" : "crossBody Bag",
             "color" : "red",
@@ -46,7 +46,7 @@
         {
             "ref" : "backpackexplorerlight",
             "productName" : "Explorer Light Backpack Plus",
-            "category" : "sacs",
+            "category" : "sac",
             "gender" : "M",
             "type" : "backpack",
             "color" : "black",
@@ -70,8 +70,8 @@
         {
             "ref" : "topclassictshirtwhite",
             "productName" : "Classic T-shirt",
-            "category" : "vetements",
-            "gender" : "UNI",
+            "category" : "vetement",
+            "gender" : "Uni",
             "type" : "top",
             "color" : "white",
             "price" : "8.95" ,
@@ -92,7 +92,7 @@
         {
             "ref" : "sweatshirtfitsweatshirtblack",
             "productName" : "Fit Sweatshirt",
-            "category" : "vetements",
+            "category" : "vetement",
             "gender" : "M",
             "type" : "sweatshirt",
             "color" : "black",
@@ -113,7 +113,7 @@
         {
             "ref" : "chaussuresairforceonemulti",
             "productName" : "Air Force 1 Shadow sneakers",
-            "category" : "chaussures",
+            "category" : "chaussure",
             "gender" : "F",
             "type" : "sneackers",
             "color" : "white",
@@ -135,7 +135,7 @@
         {
             "ref" : "chaussuresairjordanonemidlightsmokegrey",
             "productName" : "Air Jordan One Mid light Smoke Grey",
-            "category" : "chaussures",
+            "category" : "chaussure",
             "gender" : "H",
             "type" : "sneackers",
             "color" : "grey",
