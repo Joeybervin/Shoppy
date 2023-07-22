@@ -1,2 +1,2 @@
-# shoppy-api
+# shoppy
  
