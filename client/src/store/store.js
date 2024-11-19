@@ -3,7 +3,7 @@
 import { combineReducers } from 'redux';
 import { persistReducer, persistStore, FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
-import { configureStore, getDefaultMiddleware  } from '@reduxjs/toolkit'
+import { configureStore } from '@reduxjs/toolkit'
 
 /* reducers */
 import userSlice from './slices/userSlice'
@@ -26,11 +26,12 @@ const persistedRootReducer = persistReducer(persistConfig, rootReducer);
 
 export const store = configureStore({
   reducer: persistedRootReducer,
-  middleware: getDefaultMiddleware({
-    serializableCheck: {
-      ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER]
-    }
-  })
+  middleware: (getDefaultMiddleware) =>
+  getDefaultMiddleware({
+      serializableCheck: {
+          ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+      },
+  }),
 });
 
 export const persistor = persistStore(store);

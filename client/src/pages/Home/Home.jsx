@@ -24,7 +24,7 @@ export default function Home() {
     const [newsletterSuscriber, setNewsletterSuscriber] = useState(false)
 
     /*======= FUNCTIONS =======*/
-    // --------> create a raay with the word and length of your choice
+    // --------> create array with the word and length of your choice
     const CreateABigArray = (arraySize, arrayContent) => { 
         let index = 0;
         let array = [];

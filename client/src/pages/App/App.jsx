@@ -63,8 +63,8 @@ function App() {
           {/* Contact */}
           <Route path="/nous-contactez" element={< Contact />} />
           {/* shop */}
-          <Route path="/shop/:gender/:ProductCategory" element={< Shop />
-          /* product */}/>
+          <Route path="/shop/:gender/:ProductCategory" element={< Shop />}/>
+          {/* product */}
           <Route path="/shop/:category/ref/:refProduct" element={< Product />}/>
           {/* Cart */}
           <Route path="/commande/:step" element={< Order />} >
